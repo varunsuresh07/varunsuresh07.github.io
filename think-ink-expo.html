@@ -1,1 +1,182 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Think-Ink Expo — PARICHAY 4.0</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+<style>
+:root{--ac:#ff00c8;--acg:#9d00ff;--bg:#02040f;--bg2:#050a1a;--bg3:#080f20;
+  --c:#00f5ff;--m:#ff00c8;--v:#9d00ff;--g:#00ff88;--border:rgba(0,245,255,.13);}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:#b8d4f0;font-family:"Exo 2",sans-serif;overflow-x:hidden;cursor:none;}
+#cursor{position:fixed;width:10px;height:10px;border-radius:50%;background:#ff00c8;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);mix-blend-mode:screen;transition:transform .1s;}
+#cursor-ring{position:fixed;width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,0,200,.35);pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:left .1s ease,top .1s ease;mix-blend-mode:screen;}
+.cursor-particle{position:fixed;pointer-events:none;z-index:99997;border-radius:50%;transform:translate(-50%,-50%);animation:ptF .5s ease-out forwards;}
+@keyframes ptF{0%{opacity:.8;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-50%) scale(0)}}
+#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.hex-bg{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath d='M28 66L0 50V18L28 2l28 16v32L28 66zM28 100L0 84V52l28-16 28 16v32L28 100z' fill='none' stroke='%23ff00c8' stroke-width='0.4'/%3E%3C/svg%3E");animation:hxD 35s linear infinite;}
+@keyframes hxD{from{background-position:0 0}to{background-position:56px 100px}}
+.noise{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.02;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+.scanlines{position:fixed;inset:0;z-index:1;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,0,200,.01) 2px,rgba(255,0,200,.01) 4px);}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(2,4,15,.88);backdrop-filter:blur(22px);border-bottom:1px solid rgba(255,0,200,.1);}
+.nav-bar{position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#ff00c8,transparent);opacity:.5;}
+.nav-inner{max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;}
+.nav-logo{font-family:"Orbitron",monospace;font-weight:900;font-size:1rem;letter-spacing:.22em;background:linear-gradient(90deg,#ff00c8,#9d00ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none;filter:drop-shadow(0 0 8px rgba(255,0,200,.3));}
+.nav-logo span{color:var(--m);-webkit-text-fill-color:var(--m);}
+.nav-links{display:flex;gap:0;list-style:none;}
+.nav-links a{font-family:"Share Tech Mono",monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:#3a6a84;text-decoration:none;padding:.45rem 1rem;transition:color .2s;position:relative;display:block;}
+.nav-links a::after{content:"";position:absolute;bottom:0;left:15%;width:70%;height:1px;background:linear-gradient(90deg,transparent,#ff00c8,transparent);transform:scaleX(0);transition:transform .3s;}
+.nav-links a:hover{color:#ff00c8;}
+.nav-links a:hover::after{transform:scaleX(1);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;border-radius:1px;background:#ff00c8;transition:all .3s;}
+@media(max-width:900px){.hamburger{display:flex;}.nav-links{display:none;position:absolute;top:64px;left:0;width:100%;background:rgba(2,4,15,.98);flex-direction:column;border-bottom:1px solid rgba(255,0,200,.08);}.nav-links.open{display:flex;}.nav-links a{padding:1rem 2rem;border-bottom:1px solid rgba(255,0,200,.05);}}
+
+/* HERO */
+.ev-hero{position:relative;min-height:58vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 4rem;overflow:hidden;z-index:3;}
+.ev-mesh{position:absolute;inset:0;background:radial-gradient(ellipse 75% 60% at 50% 0%,rgba(255,0,200,.2) 0%,transparent 65%),radial-gradient(ellipse 40% 30% at 80% 80%,rgba(255,0,200,.1) 0%,transparent 55%),var(--bg);}
+.ev-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,0,200,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,0,200,.045) 1px,transparent 1px);background-size:50px 50px;mask-image:radial-gradient(ellipse 80% 75% at 50% 0%,black 25%,transparent 75%);}
+.ev-orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;}
+.ev-orb1{width:500px;height:500px;top:-120px;left:-150px;background:radial-gradient(circle,rgba(255,0,200,.22),transparent 70%);animation:fO 13s ease-in-out infinite;}
+.ev-orb2{width:400px;height:400px;bottom:-80px;right:-100px;background:radial-gradient(circle,rgba(255,0,200,.18),transparent 70%);animation:fO 9s ease-in-out infinite reverse;}
+@keyframes fO{0%,100%{transform:translate(0,0) scale(1)}40%{transform:translate(40px,-35px) scale(1.05)}70%{transform:translate(-25px,22px) scale(.97)}}
+.ev-content{position:relative;z-index:4;display:flex;flex-direction:column;align-items:center;}
+.ev-badge{font-family:"Share Tech Mono",monospace;font-size:.6rem;letter-spacing:.5em;color:#ff00c8;text-transform:uppercase;border:1px solid rgba(255,0,200,.25);padding:.3rem 1.4rem;margin-bottom:1.5rem;background:rgba(255,0,200,.05);opacity:0;animation:fU .7s .1s forwards;}
+.logo-outer{width:120px;height:120px;position:relative;margin-bottom:1.5rem;opacity:0;animation:fU .8s .25s forwards;}
+.logo-outer svg{width:100%;height:100%;filter:drop-shadow(0 0 28px #ff00c8);}
+.logo-outer::before{content:"";position:absolute;inset:-8px;border-radius:50%;border:1px solid rgba(255,0,200,.2);animation:spinRing 12s linear infinite;}
+.logo-outer::after{content:"";position:absolute;inset:-22px;border-radius:50%;background:radial-gradient(circle,rgba(255,0,200,.12),transparent 70%);animation:lGlow 3s ease-in-out infinite;}
+@keyframes spinRing{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes lGlow{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.2);opacity:1}}
+.ev-title{font-family:"Orbitron",monospace;font-weight:900;font-size:clamp(2.8rem,8vw,6.5rem);line-height:1;letter-spacing:.04em;position:relative;opacity:0;animation:fU .9s .4s forwards;
+  background:linear-gradient(135deg,#ff00c8,#9d00ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 30px rgba(255,0,200,.3));}
+.ev-title::before,.ev-title::after{content:"THINK-INK EXPO";position:absolute;inset:0;background:linear-gradient(135deg,#ff00c8,#9d00ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.ev-title::before{animation:gl1 7s infinite;}
+.ev-title::after{animation:gl2 7s infinite;}
+@keyframes gl1{0%,88%,100%{clip-path:inset(0 0 100% 0);transform:translate(0)}90%{clip-path:inset(30% 0 50% 0);transform:translate(-4px,2px)}93%{clip-path:inset(60% 0 15% 0);transform:translate(4px,-2px)}}
+@keyframes gl2{0%,85%,100%{clip-path:inset(0 0 100% 0)}87%{clip-path:inset(50% 0 30% 0);transform:translate(4px,-2px)}90%{clip-path:inset(15% 0 65% 0);transform:translate(-3px,2px)}}
+.ev-tagline{font-family:"Exo 2",sans-serif;font-size:.9rem;font-weight:300;font-style:italic;color:rgba(255,0,200,.45);letter-spacing:.2em;text-transform:uppercase;margin-top:.8rem;opacity:0;animation:fU .8s .6s forwards;}
+.ev-rule{width:260px;max-width:100%;height:1px;background:linear-gradient(90deg,transparent,#ff00c8,#9d00ff,transparent);opacity:.5;margin:1.5rem auto;opacity:0;animation:fU .8s .7s forwards;}
+
+/* BACK BTN */
+.back-btn{display:inline-flex;align-items:center;gap:.55rem;font-family:"Orbitron",monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:#ff00c8;border:1px solid rgba(255,0,200,.25);padding:.7rem 1.6rem;transition:all .3s;margin-bottom:2.5rem;background:rgba(255,0,200,.04);position:relative;overflow:hidden;clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px);}
+.back-btn::before{content:"";position:absolute;inset:0;background:rgba(255,0,200,.1);transform:translateX(-100%);transition:transform .3s;}
+.back-btn:hover{border-color:#ff00c8;box-shadow:0 0 25px rgba(255,0,200,.3);}
+.back-btn:hover::before{transform:translateX(0);}
+.back-btn span{position:relative;z-index:1;}
+
+/* CONTENT */
+main{max-width:880px;margin:0 auto;padding:2rem 1.5rem 5rem;position:relative;z-index:3;}
+.info-strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1rem;margin-bottom:2.5rem;}
+.ic{background:rgba(255,0,200,.04);border:1px solid rgba(255,0,200,.14);padding:1rem 1.2rem;text-align:center;position:relative;overflow:hidden;transition:all .3s;}
+.ic::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#ff00c8,transparent);}
+.ic:hover{background:rgba(255,0,200,.08);border-color:#ff00c8;transform:translateY(-2px);}
+.ic .v{font-family:"Orbitron",monospace;font-size:.92rem;color:#ff00c8;display:block;margin-bottom:.3rem;}
+.ic .l{font-family:"Share Tech Mono",monospace;font-size:.57rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,0,200,.3);}
+
+.sec-card{background:rgba(8,15,32,.94);border:1px solid rgba(255,0,200,.13);padding:2.4rem 2.6rem;margin-bottom:1.8rem;position:relative;overflow:hidden;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px));}
+.sec-card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#ff00c8,#9d00ff,transparent);}
+.sec-card::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,0,200,.03),transparent 50%);pointer-events:none;}
+.sec-hd{font-family:"Share Tech Mono",monospace;font-size:.7rem;letter-spacing:.42em;text-transform:uppercase;color:#ff00c8;margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;opacity:.9;}
+.sec-hd::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(255,0,200,.3),transparent);}
+.sec-card p{font-size:.9rem;font-weight:300;line-height:1.92;color:#3a6070;position:relative;z-index:1;}
+
+.rules{list-style:none;display:flex;flex-direction:column;gap:.9rem;position:relative;z-index:1;}
+.rules li{display:flex;gap:1rem;font-size:.87rem;font-weight:300;line-height:1.78;color:#3a6070;padding:.9rem 1.1rem;background:rgba(255,0,200,.025);border-left:2px solid rgba(255,0,200,.3);transition:background .25s,border-color .25s;}
+.rules li:hover{background:rgba(255,0,200,.055);border-left-color:#ff00c8;}
+.rules li::before{content:attr(data-n);font-family:"Share Tech Mono",monospace;color:#ff00c8;font-size:.7rem;min-width:1.6rem;margin-top:.18rem;flex-shrink:0;opacity:.8;}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.active{opacity:1;transform:none;}
+@keyframes fU{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+/* FOOTER */
+footer{position:relative;z-index:3;background:var(--bg2);border-top:1px solid rgba(255,0,200,.08);text-align:center;padding:2.5rem 1.5rem 2rem;}
+footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#ff00c8,transparent);opacity:.35;}
+.fl{font-family:"Orbitron",monospace;font-weight:900;font-size:1rem;letter-spacing:.25em;background:linear-gradient(90deg,#ff00c8,#9d00ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.fl-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-top:1.1rem;}
+.fl-links a{font-family:"Share Tech Mono",monospace;font-size:.6rem;letter-spacing:.2em;color:rgba(255,0,200,.3);text-decoration:none;text-transform:uppercase;transition:color .2s;}
+.fl-links a:hover{color:#ff00c8;}
+.fl-copy{font-family:"Share Tech Mono",monospace;font-size:.6rem;color:#1a3040;letter-spacing:.12em;margin-top:.7rem;}
+</style>
+</head>
+<body>
+<div id="cursor"></div><div id="cursor-ring"></div>
+<canvas id="bg-canvas"></canvas>
+<div class="hex-bg"></div><div class="noise"></div><div class="scanlines"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">PARICHAY <span>4.0</span></a>
+    <div class="hamburger" onclick="document.getElementById('nL').classList.toggle('open')"><span></span><span></span><span></span></div>
+    <ul class="nav-links" id="nL">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="events.html" style="color:#ff00c8">Events</a></li>
+      <li><a href="sponsors.html">Sponsors</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <div class="nav-bar"></div>
+</nav>
+
+<div class="ev-hero">
+  <div class="ev-mesh"></div><div class="ev-grid"></div>
+  <div class="ev-orb ev-orb1"></div><div class="ev-orb ev-orb2"></div>
+  <div class="ev-content">
+    <div class="ev-badge">[ EVENT_02 // CREATIVE ARTS — PARICHAY 4.0 ]</div>
+    <div class="logo-outer"><svg viewBox="0 0 120 120" fill="none"><circle cx="60" cy="60" r="52" fill="none" stroke="#ff00c8" stroke-width="1.2" opacity=".18"/><circle cx="60" cy="60" r="42" fill="none" stroke="#ff00c8" stroke-width=".9" opacity=".35" stroke-dasharray="5,3"/><rect x="28" y="22" width="64" height="76" rx="5" fill="rgba(255,0,200,.07)" stroke="#ff00c8" stroke-width="1.8"/><rect x="36" y="30" width="48" height="60" rx="2" fill="none" stroke="#ff00c8" stroke-width=".9" opacity=".35"/><line x1="40" y1="42" x2="80" y2="42" stroke="#ff00c8" stroke-width="2" stroke-linecap="round"/><line x1="40" y1="52" x2="80" y2="52" stroke="#ff00c8" stroke-width="2" stroke-linecap="round"/><line x1="40" y1="62" x2="65" y2="62" stroke="#ff00c8" stroke-width="2" stroke-linecap="round"/><line x1="40" y1="72" x2="60" y2="72" stroke="#ff00c8" stroke-width="2" stroke-linecap="round" opacity=".6"/><path d="M68 80 L80 68 L87 75 L75 87 L68 80Z" fill="rgba(255,0,200,.15)" stroke="#ff00c8" stroke-width="2"/><line x1="87" y1="58" x2="96" y2="49" stroke="#ff00c8" stroke-width="3" stroke-linecap="round"/><circle cx="96" cy="46" r="3.5" fill="#ff00c8" opacity=".9"/><path d="M28 22 L36 22 M28 22 L28 30" stroke="#ff00c8" stroke-width="1" opacity=".4"/><path d="M92 22 L84 22 M92 22 L92 30" stroke="#ff00c8" stroke-width="1" opacity=".4"/><path d="M28 98 L36 98 M28 98 L28 90" stroke="#ff00c8" stroke-width="1" opacity=".4"/><path d="M92 98 L84 98 M92 98 L92 90" stroke="#ff00c8" stroke-width="1" opacity=".4"/></svg></div>
+    <h1 class="ev-title">Think-Ink Expo</h1>
+    <p class="ev-tagline">Think Deeper. Write Bolder. Speak Louder.</p>
+    <div class="ev-rule"></div>
+  </div>
+</div>
+
+<main>
+  <a href="events.html" class="back-btn reveal"><span>← Back to All Events</span></a>
+  <div class="info-strip reveal"><div class="ic"><span class="v">4 Formats</span><span class="l">Sub-Events</span></div><div class="ic"><span class="v">Solo / Duo</span><span class="l">Participation</span></div><div class="ic"><span class="v">₹200</span><span class="l">Entry Fee</span></div><div class="ic"><span class="v">Apr 21</span><span class="l">Date</span></div></div>
+  <div class="sec-card reveal">
+    <div class="sec-hd">// About the Event</div>
+    <p>Think-Ink Expo is a celebration of intellect and expression at PARICHAY 4.0. This multifaceted creative event gathers writers, debaters, poets, and visual thinkers under one roof. Compete in Poster Making, Essay Writing, Extempore Speaking, or the Grand Debate. Each discipline is a stage to showcase your voice, vision, and values. No compiler required — your sharpest weapon is your mind.</p>
+  </div>
+  <div class="sec-card reveal">
+    <div class="sec-hd">// Rules &amp; Regulations</div>
+    <ul class="rules"><li data-n="01">Register for one sub-event only: Poster Making, Essay Writing, Extempore, or Grand Debate. Multi-category entries are void.</li>
+<li data-n="02">Poster Making — All materials provided. Create original artwork within 90 minutes. No digital devices or reference material permitted.</li>
+<li data-n="03">Essay Writing — Topic revealed on the day of the event. Duration: 60 minutes. Must be handwritten on provided answer sheets only.</li>
+<li data-n="04">Extempore — Topics drawn by lottery. 2 minutes preparation, 3 minutes delivery. No notes allowed at the podium under any circumstance.</li>
+<li data-n="05">Grand Debate — Teams of 2. Topic announced 48 hours prior. 5 minutes per side for arguments, 2 minutes rebuttal each.</li>
+<li data-n="06">Plagiarism or use of pre-prepared material in Essay/Extempore events leads to immediate disqualification and forfeiture of prize.</li>
+<li data-n="07">Criteria: Content Quality, Originality, Clarity, and Delivery. Judges' verdicts are final with no appeals accepted.</li></ul>
+  </div>
+</main>
+
+<footer>
+  <div class="fl">PARICHAY 4.0</div>
+  <div class="fl-links">
+    <a href="index.html">Home</a><a href="about.html">About</a>
+    <a href="events.html">Events</a><a href="sponsors.html">Sponsors</a><a href="contact.html">Contact</a>
+  </div>
+  <p class="fl-copy">© 2026 PARICHAY 4.0 — College Fest</p>
+</footer>
+
+<script>
+const cur=document.getElementById("cursor"),ring=document.getElementById("cursor-ring");
+let mx=0,my=0,rx=0,ry=0,ptT=0;
+document.addEventListener("mousemove",e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+"px";cur.style.top=my+"px";if(Date.now()-ptT>55){ptT=Date.now();const p=document.createElement("div");p.className="cursor-particle";const cols=["#ff00c8","#ff00c8","#9d00ff","#00ff88"],s=(Math.random()*4+2)+"px";p.style.cssText=`background:${cols[Math.floor(Math.random()*4)]};left:${mx}px;top:${my}px;width:${s};height:${s};`;document.body.appendChild(p);setTimeout(()=>p.remove(),500);}});
+(function a(){rx+=(mx-rx)*.13;ry+=(my-ry)*.13;ring.style.left=rx+"px";ring.style.top=ry+"px";requestAnimationFrame(a);})();
+document.querySelectorAll("a,button").forEach(el=>{el.addEventListener("mouseenter",()=>{cur.style.transform="translate(-50%,-50%) scale(2.5)";cur.style.background="#ff00c8";});el.addEventListener("mouseleave",()=>{cur.style.transform="translate(-50%,-50%) scale(1)";cur.style.background="#ff00c8";});});
+const cv=document.getElementById("bg-canvas"),ctx=cv.getContext("2d");let W,H,pts=[];
+function rs(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;}rs();window.addEventListener("resize",()=>{rs();iP();});
+function iP(){pts=[];const n=Math.floor(W*H/16000);for(let i=0;i<n;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*1.3+.3,c:`rgba(255,0,200,${Math.random()*.3+.08})`});}iP();
+(function dr(){ctx.clearRect(0,0,W,H);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.c;ctx.fill();});for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<100){ctx.beginPath();ctx.strokeStyle=`rgba(255,0,200,${.06*(1-d/100)})`;ctx.lineWidth=.4;ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.stroke();}};requestAnimationFrame(dr);})();
+const ro=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add("active"),i*80);ro.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll(".reveal").forEach(el=>ro.observe(el));
+</script>
+</body>
+</html>
