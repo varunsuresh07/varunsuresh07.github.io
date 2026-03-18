@@ -3,216 +3,285 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Parichay 4.0</title>
-
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-
+  <title>IGNITE 2026 — College Fest</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --gold:#D4AF37;
-      --gold-light:#F2D16B;
-      --gold-dark:#A08020;
-      --bg:#080808;
-      --bg2:#111;
-      --bg3:#161616;
+      --cyan:    #00f5ff;
+      --cyan2:   #00c8e0;
+      --magenta: #ff00c8;
+      --violet:  #8b00ff;
+      --blue:    #0050ff;
+      --green:   #00ff88;
+      --bg:      #030610;
+      --bg2:     #060b1a;
+      --bg3:     #0a1020;
+      --panel:   rgba(0,245,255,0.04);
+      --border:  rgba(0,245,255,0.15);
+      --glow-c:  rgba(0,245,255,0.35);
+      --glow-m:  rgba(255,0,200,0.3);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: #c8ddf5; font-family: 'Exo 2', sans-serif; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 65% 55% at 15% 20%, rgba(0,80,255,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 55% 45% at 85% 75%, rgba(139,0,255,0.16) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 35% at 50% 50%, rgba(0,245,255,0.06) 0%, transparent 65%),
+        radial-gradient(ellipse 30% 25% at 70% 10%, rgba(255,0,200,0.12) 0%, transparent 55%);
+    }
+    body::after {
+      content: ''; position: fixed; inset: 0; z-index: 1; pointer-events: none;
+      background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,245,255,0.012) 3px, rgba(0,245,255,0.012) 4px);
+    }
+    .tech-gradient {
+      background: linear-gradient(90deg, var(--cyan) 0%, var(--blue) 45%, var(--magenta) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
 
-    body{
-      background:var(--bg);
-      color:#e8e0cc;
-      font-family:'Raleway',sans-serif;
-      animation:fadePage 1s ease;
-      overflow-x:hidden;
-    }
-
-    @keyframes fadePage{from{opacity:0}to{opacity:1}}
-
-    /* cursor glow */
-    #cursor{
-      position:fixed;
-      width:180px;height:180px;
-      background:radial-gradient(circle,rgba(212,175,55,.2),transparent 70%);
-      pointer-events:none;
-      transform:translate(-50%,-50%);
-      z-index:9999;
-      mix-blend-mode:screen;
-    }
-
-    /* navbar */
-    nav{
-      position:fixed;
-      width:100%;
-      top:0;
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid rgba(212,175,55,.2);
-      background:rgba(0,0,0,.8);
-      z-index:100;
-    }
-
-    .nav-inner{
-      max-width:1200px;
-      margin:auto;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:1rem;
-    }
-
-    .nav-logo{
-      font-family:'Cinzel',serif;
-      color:var(--gold);
-      letter-spacing:.2em;
-      text-shadow:0 0 20px rgba(212,175,55,.4);
-    }
-
-    .nav-links{display:flex;gap:2rem;}
-    .nav-links a{
-      font-size:.8rem;
-      letter-spacing:.15em;
-      color:#aaa;
-    }
-    .nav-links a:hover{color:var(--gold-light)}
-
-    /* hero */
-    #hero{
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      padding-top:80px;
-    }
-
-    .title{
-      font-family:'Cinzel Decorative';
-      font-size:clamp(3rem,8vw,7rem);
-      background:linear-gradient(120deg,#a08020,#ffd700,#a08020);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      animation:shimmer 4s infinite linear;
-    }
-
-    @keyframes shimmer{
-      0%{background-position:-200%}
-      100%{background-position:200%}
-    }
-
-    .subtitle{color:#999;margin-top:1rem}
-    .date{margin-top:1rem;color:var(--gold-light)}
-
-    /* countdown */
-    .countdown{
-      display:flex;
-      gap:1rem;
-      margin-top:2rem;
-      flex-wrap:wrap;
-      justify-content:center;
-    }
-
-    .box{
-      padding:1rem;
-      min-width:80px;
-      background:rgba(20,20,20,.6);
-      border:1px solid rgba(212,175,55,.2);
-      backdrop-filter:blur(10px);
-      text-align:center;
-    }
-
-    /* events */
-    #events{padding:4rem 1rem}
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:1.5rem;
-      max-width:1100px;
-      margin:auto;
-    }
-
-    .card{
-      padding:1.5rem;
-      background:rgba(20,20,20,.6);
-      border:1px solid rgba(212,175,55,.2);
-      backdrop-filter:blur(10px);
-      transition:.3s;
-    }
-
-    .card:hover{
-      transform:translateY(-8px) scale(1.03);
-      box-shadow:0 0 40px rgba(212,175,55,.2);
-    }
-
-    /* mobile */
+    /* NAV */
+    nav { position: fixed; top: 0; width: 100%; z-index: 200; background: rgba(3,6,16,0.88); backdrop-filter: blur(18px); border-bottom: 1px solid var(--border); }
+    nav::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--cyan), var(--magenta), var(--cyan), transparent); opacity: 0.5; }
+    .nav-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 66px; }
+    .nav-logo { font-family: 'Orbitron', monospace; font-weight: 900; font-size: 1.15rem; letter-spacing: 0.18em; background: linear-gradient(90deg, var(--cyan), var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; filter: drop-shadow(0 0 10px rgba(0,245,255,0.45)); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-family: 'Exo 2', sans-serif; font-weight: 500; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: #4a7a9b; text-decoration: none; transition: color 0.2s; position: relative; padding-bottom: 4px; }
+    .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: linear-gradient(90deg, var(--cyan), var(--magenta)); transition: width 0.3s; }
+    .nav-links a:hover { color: var(--cyan); }
+    .nav-links a:hover::after { width: 100%; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 26px; height: 2px; border-radius: 2px; transition: all 0.3s; }
+    .hamburger span:nth-child(1){ background: var(--cyan); }
+    .hamburger span:nth-child(2){ background: var(--blue); }
+    .hamburger span:nth-child(3){ background: var(--magenta); }
     @media(max-width:768px){
-      .nav-links{display:none}
+      .hamburger{display:flex;}
+      .nav-links{display:none;position:absolute;top:66px;left:0;width:100%;background:rgba(3,6,16,0.98);flex-direction:column;gap:0;border-bottom:1px solid var(--border);}
+      .nav-links.open{display:flex;}
+      .nav-links li a{display:block;padding:1rem 2rem;border-bottom:1px solid rgba(0,245,255,0.06);}
     }
+
+    /* HERO */
+    #hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 1.5rem 4rem; overflow: hidden; z-index: 2; }
+    .hero-grid { position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(0,245,255,0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(0,245,255,0.055) 1px, transparent 1px); background-size: 50px 50px; mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, transparent 75%); }
+    .orb { position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; z-index: 0; }
+    .orb-1 { width: 560px; height: 560px; top: -120px; left: -160px; background: radial-gradient(circle, rgba(0,80,255,0.28), transparent 70%); animation: floatOrb 12s ease-in-out infinite; }
+    .orb-2 { width: 420px; height: 420px; bottom: -80px; right: -110px; background: radial-gradient(circle, rgba(139,0,255,0.25), transparent 70%); animation: floatOrb 9s ease-in-out infinite reverse; }
+    .orb-3 { width: 320px; height: 320px; top: 40%; left: 55%; background: radial-gradient(circle, rgba(255,0,200,0.18), transparent 70%); animation: floatOrb 14s ease-in-out infinite 3s; }
+    .hero-badge { font-family: 'Share Tech Mono', monospace; font-size: 0.7rem; letter-spacing: 0.35em; color: var(--cyan); text-transform: uppercase; border: 1px solid rgba(0,245,255,0.3); padding: 0.35rem 1.2rem; margin-bottom: 1.8rem; display: inline-block; position: relative; z-index: 1; opacity: 0; animation: fadeUp 0.7s 0.2s forwards; background: rgba(0,245,255,0.05); }
+    .hero-badge::before,.hero-badge::after { content: '//'; font-size: 0.65rem; color: var(--magenta); padding: 0 0.5rem; }
+    .hero-title { font-family: 'Orbitron', monospace; font-weight: 900; font-size: clamp(3.5rem, 11vw, 9rem); line-height: 0.95; letter-spacing: 0.04em; position: relative; z-index: 1; opacity: 0; animation: fadeUp 0.9s 0.35s forwards; }
+    .hero-sub { font-family: 'Exo 2', sans-serif; font-weight: 300; font-size: clamp(0.8rem, 2vw, 1rem); letter-spacing: 0.32em; text-transform: uppercase; color: #2e5a72; margin-top: 1rem; position: relative; z-index: 1; opacity: 0; animation: fadeUp 0.9s 0.5s forwards; }
+    .hero-tagline { font-size: clamp(0.85rem, 1.8vw, 1rem); font-weight: 300; color: #3a6080; margin-top: 0.5rem; max-width: 480px; opacity: 0; animation: fadeUp 0.9s 0.65s forwards; position: relative; z-index: 1; }
+    .hero-date { margin-top: 1.8rem; font-family: 'Share Tech Mono', monospace; font-size: 0.85rem; letter-spacing: 0.22em; background: linear-gradient(90deg, var(--cyan), var(--green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; opacity: 0; animation: fadeUp 0.9s 0.8s forwards; position: relative; z-index: 1; }
+    .hero-cta { margin-top: 2.8rem; opacity: 0; animation: fadeUp 0.9s 0.95s forwards; position: relative; z-index: 1; }
+    .btn-primary { display: inline-block; padding: 0.85rem 2.4rem; font-family: 'Orbitron', monospace; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; position: relative; overflow: hidden; background: linear-gradient(var(--bg), var(--bg)) padding-box, linear-gradient(90deg, var(--cyan), var(--blue), var(--magenta)) border-box; border: 1px solid transparent; color: var(--cyan); transition: all 0.35s; }
+    .btn-primary::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, var(--cyan), var(--blue), var(--magenta)); opacity: 0; transition: opacity 0.35s; }
+    .btn-primary:hover { color: var(--bg); box-shadow: 0 0 35px var(--glow-c); }
+    .btn-primary:hover::before { opacity: 1; }
+    .btn-primary span { position: relative; z-index: 1; }
+    .scroll-hint { position: absolute; bottom: 2.5rem; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0; animation: fadeUp 1s 1.2s forwards; }
+    .scroll-hint span { font-family: 'Share Tech Mono', monospace; font-size: 0.6rem; letter-spacing: 0.3em; color: #1a3a4a; text-transform: uppercase; }
+    .scroll-line { width: 1px; height: 44px; background: linear-gradient(180deg, var(--cyan), transparent); animation: scrollPulse 2s ease-in-out infinite; }
+
+    /* COUNTDOWN */
+    #countdown { padding: 5rem 1.5rem; position: relative; z-index: 2; }
+    .section-eyebrow { text-align: center; font-family: 'Share Tech Mono', monospace; font-size: 0.65rem; letter-spacing: 0.45em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.6rem; opacity: 0.65; }
+    .section-title { text-align: center; font-family: 'Orbitron', monospace; font-size: clamp(1.2rem, 3vw, 1.8rem); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; background: linear-gradient(90deg, #c8ddf5, var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 3rem; }
+    .tech-divider { width: 320px; max-width: 100%; height: 1px; margin: 0 auto 2.8rem; background: linear-gradient(90deg, transparent, var(--cyan), var(--magenta), var(--cyan), transparent); opacity: 0.45; }
+    .countdown-grid { display: flex; justify-content: center; gap: clamp(0.8rem, 2.5vw, 2rem); flex-wrap: wrap; max-width: 750px; margin: 0 auto; }
+    .cd-box { display: flex; flex-direction: column; align-items: center; position: relative; min-width: 110px; padding: clamp(1.2rem,3vw,2rem) clamp(1.2rem,3.5vw,2.5rem); background: var(--panel); border: 1px solid var(--border); box-shadow: 0 0 30px rgba(0,245,255,0.05), inset 0 0 20px rgba(0,245,255,0.03); transition: box-shadow 0.3s, border-color 0.3s; overflow: hidden; }
+    .cd-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--cyan), transparent); }
+    .cd-box:hover { border-color: rgba(0,245,255,0.4); box-shadow: 0 0 40px rgba(0,245,255,0.15), inset 0 0 30px rgba(0,245,255,0.06); }
+    .cd-num { font-family: 'Orbitron', monospace; font-weight: 900; font-size: clamp(2.2rem,5vw,3.8rem); line-height: 1; background: linear-gradient(180deg, var(--cyan) 0%, var(--blue) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; filter: drop-shadow(0 0 12px rgba(0,245,255,0.45)); }
+    .cd-label { font-family: 'Share Tech Mono', monospace; font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: #254a5a; margin-top: 0.7rem; }
+    .cd-sep { font-family: 'Orbitron', monospace; font-size: 2.5rem; font-weight: 700; align-self: center; padding-bottom: 1.2rem; color: rgba(0,245,255,0.2); }
+
+    /* EVENTS */
+    #events { padding: 5rem 1.5rem 7rem; position: relative; z-index: 2; }
+    .events-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(285px,100%),1fr)); gap: 1.6rem; max-width: 1180px; margin: 0 auto; }
+    .event-card { position: relative; background: var(--bg3); border: 1px solid var(--border); padding: 2rem 1.8rem 2.6rem; cursor: pointer; text-decoration: none; display: block; color: inherit; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; overflow: hidden; }
+    .event-card::before { content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity 0.35s; }
+    .event-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; transition: width 0.4s ease; }
+    .event-card:hover { transform: translateY(-7px); }
+    .event-card:hover::before { opacity: 1; }
+    .event-card:hover::after { width: 100%; }
+
+    .card-cyan::before  { background: linear-gradient(135deg, rgba(0,245,255,0.08),  transparent 60%); }
+    .card-cyan::after   { background: linear-gradient(90deg, var(--cyan), var(--blue)); }
+    .card-cyan:hover    { border-color: rgba(0,245,255,0.5); box-shadow: 0 16px 50px rgba(0,0,0,0.65), 0 0 35px rgba(0,245,255,0.12); }
+    .card-magenta::before { background: linear-gradient(135deg, rgba(255,0,200,0.08), transparent 60%); }
+    .card-magenta::after  { background: linear-gradient(90deg, var(--magenta), var(--violet)); }
+    .card-magenta:hover   { border-color: rgba(255,0,200,0.45); box-shadow: 0 16px 50px rgba(0,0,0,0.65), 0 0 35px rgba(255,0,200,0.12); }
+    .card-green::before { background: linear-gradient(135deg, rgba(0,255,136,0.08),  transparent 60%); }
+    .card-green::after  { background: linear-gradient(90deg, var(--green), var(--cyan)); }
+    .card-green:hover   { border-color: rgba(0,255,136,0.45); box-shadow: 0 16px 50px rgba(0,0,0,0.65), 0 0 35px rgba(0,255,136,0.12); }
+    .card-violet::before { background: linear-gradient(135deg, rgba(139,0,255,0.09), transparent 60%); }
+    .card-violet::after  { background: linear-gradient(90deg, var(--violet), var(--magenta)); }
+    .card-violet:hover   { border-color: rgba(139,0,255,0.5); box-shadow: 0 16px 50px rgba(0,0,0,0.65), 0 0 35px rgba(139,0,255,0.14); }
+    .card-blue::before { background: linear-gradient(135deg, rgba(0,80,255,0.09), transparent 60%); }
+    .card-blue::after  { background: linear-gradient(90deg, var(--blue), var(--cyan)); }
+    .card-blue:hover   { border-color: rgba(0,80,255,0.5); box-shadow: 0 16px 50px rgba(0,0,0,0.65), 0 0 35px rgba(0,80,255,0.14); }
+
+    /* corner bracket decoration */
+    .card-corner { position: absolute; top: 0; right: 0; width: 40px; height: 40px; pointer-events: none; }
+    .card-corner::before,.card-corner::after { content: ''; position: absolute; }
+    .card-corner::before { top: 0; right: 0; width: 1px; height: 20px; }
+    .card-corner::after  { top: 0; right: 0; height: 1px; width: 20px; }
+    .card-cyan    .card-corner::before,.card-cyan    .card-corner::after { background: var(--cyan); }
+    .card-magenta .card-corner::before,.card-magenta .card-corner::after { background: var(--magenta); }
+    .card-green   .card-corner::before,.card-green   .card-corner::after { background: var(--green); }
+    .card-violet  .card-corner::before,.card-violet  .card-corner::after { background: var(--violet); }
+    .card-blue    .card-corner::before,.card-blue    .card-corner::after { background: var(--blue); }
+
+    .card-icon { font-size: 2rem; margin-bottom: 1rem; position: relative; z-index: 1; }
+    .card-tag { display: inline-block; font-family: 'Share Tech Mono', monospace; font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase; border: 1px solid; padding: 0.18rem 0.6rem; margin-bottom: 0.9rem; position: relative; z-index: 1; }
+    .card-cyan    .card-tag { color: var(--cyan);    border-color: rgba(0,245,255,0.3); }
+    .card-magenta .card-tag { color: var(--magenta); border-color: rgba(255,0,200,0.3); }
+    .card-green   .card-tag { color: var(--green);   border-color: rgba(0,255,136,0.3); }
+    .card-violet  .card-tag { color: var(--violet);  border-color: rgba(139,0,255,0.35); }
+    .card-blue    .card-tag { color: #4488ff;         border-color: rgba(0,80,255,0.35); }
+
+    .card-title { font-family: 'Orbitron', monospace; font-size: 1rem; font-weight: 700; letter-spacing: 0.08em; color: #cce4f8; margin-bottom: 0.65rem; position: relative; z-index: 1; }
+    .card-desc { font-size: 0.83rem; font-weight: 300; color: #354f65; line-height: 1.7; position: relative; z-index: 1; }
+    .card-arrow { position: absolute; bottom: 1.3rem; right: 1.5rem; font-family: 'Share Tech Mono', monospace; font-size: 0.85rem; color: #1a3040; transition: transform 0.3s, color 0.3s; z-index: 1; }
+    .event-card:hover .card-arrow { transform: translate(4px,-2px); }
+    .card-cyan:hover    .card-arrow { color: var(--cyan); }
+    .card-magenta:hover .card-arrow { color: var(--magenta); }
+    .card-green:hover   .card-arrow { color: var(--green); }
+    .card-violet:hover  .card-arrow { color: var(--violet); }
+    .card-blue:hover    .card-arrow { color: #4488ff; }
+
+    /* FOOTER */
+    footer { position: relative; z-index: 2; background: var(--bg2); border-top: 1px solid var(--border); text-align: center; padding: 2.5rem 1.5rem; }
+    footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--cyan), var(--magenta), var(--cyan), transparent); opacity: 0.4; }
+    .footer-logo { font-family: 'Orbitron', monospace; font-weight: 900; font-size: 1rem; letter-spacing: 0.22em; background: linear-gradient(90deg, var(--cyan), var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .footer-sub { font-family: 'Share Tech Mono', monospace; font-size: 0.68rem; color: #1a3a4a; letter-spacing: 0.15em; }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:none;} }
+    @keyframes scrollPulse { 0%,100%{opacity:0.2;}50%{opacity:1;} }
+    @keyframes floatOrb {
+      0%,100%{transform:translate(0,0) scale(1);}
+      33%{transform:translate(40px,-30px) scale(1.05);}
+      66%{transform:translate(-25px,20px) scale(0.97);}
+    }
+    .reveal { opacity:0; transform:translateY(30px); transition:opacity 0.7s ease,transform 0.7s ease; }
+    .revealed { opacity:1; transform:none; }
   </style>
 </head>
-
 <body>
 
-<div id="cursor"></div>
-
-<!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <div class="nav-logo">PARICHAY 4.0</div>
-    <div class="nav-links">
-      <a href="#hero">Home</a>
-      <a href="#events">Events</a>
-    </div>
+    <div class="nav-logo">IGNITE_26</div>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#countdown">Countdown</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
   </div>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
-  <h1 class="title">PARICHAY 4.0</h1>
-  <p class="subtitle">Where Innovation Meets Excellence</p>
-  <p class="date">April 21 | 10:00 AM – 3:00 PM</p>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="hero-grid"></div>
+  <div style="position:relative;z-index:2;">
+    <div class="hero-badge"> Annual College Fest </div>
+    <h1 class="hero-title"><span class="tech-gradient">IGNITE</span></h1>
+    <p class="hero-sub">Edition &nbsp;·&nbsp; 2 0 2 6</p>
+    <p class="hero-tagline">Where Innovation Meets Excellence</p>
+    <p class="hero-date">[ APR 21, 2026 &nbsp;·&nbsp; 10:00 HRS ]</p>
+    <div class="hero-cta"><a href="#events" class="btn-primary"><span>// Explore Events</span></a></div>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
 
-  <div class="countdown">
-    <div class="box"><span id="d"></span><br>Days</div>
-    <div class="box"><span id="h"></span><br>Hours</div>
-    <div class="box"><span id="m"></span><br>Minutes</div>
-    <div class="box"><span id="s"></span><br>Seconds</div>
+<section id="countdown">
+  <p class="section-eyebrow reveal">[ SYS.CLOCK — INITIATING ]</p>
+  <h2 class="section-title reveal">Event Launches In</h2>
+  <div class="tech-divider reveal"></div>
+  <div class="countdown-grid">
+    <div class="cd-box reveal"><span class="cd-num" id="cd-days">00</span><span class="cd-label">Days</span></div>
+    <div class="cd-sep reveal">:</div>
+    <div class="cd-box reveal"><span class="cd-num" id="cd-hours">00</span><span class="cd-label">Hours</span></div>
+    <div class="cd-sep reveal">:</div>
+    <div class="cd-box reveal"><span class="cd-num" id="cd-mins">00</span><span class="cd-label">Minutes</span></div>
+    <div class="cd-sep reveal">:</div>
+    <div class="cd-box reveal"><span class="cd-num" id="cd-secs">00</span><span class="cd-label">Seconds</span></div>
   </div>
 </section>
 
-<!-- EVENTS -->
 <section id="events">
-  <h2 class="text-center text-3xl text-yellow-400 mb-8">Events</h2>
-
-  <div class="grid">
-    <a href="hacksphere.html" class="card">HACKSPHERE</a>
-    <a href="think-ink-expo.html" class="card">THINK-INK EXPO</a>
-    <a href="gaming.html" class="card">GAMING</a>
-    <a href="robo-race.html" class="card">ROBO RACE</a>
-    <a href="visual-odyssey.html" class="card">VISUAL ODYSSEY</a>
+  <p class="section-eyebrow reveal">[ EVENTS.LIST — LOADED ]</p>
+  <h2 class="section-title reveal">Featured Events</h2>
+  <div class="tech-divider reveal"></div>
+  <div class="events-grid">
+    <a href="hacksphere.html" class="event-card card-cyan reveal">
+      <div class="card-corner"></div>
+      <div class="card-tag">Tech</div><div class="card-icon">⚡</div>
+      <div class="card-title">Hacksphere</div>
+      <p class="card-desc">A high-voltage hackathon where ideas become solutions. Code, collaborate, and conquer challenges across domains in 24 hours.</p>
+      <span class="card-arrow">→_</span>
+    </a>
+    <a href="think-ink.html" class="event-card card-magenta reveal">
+      <div class="card-corner"></div>
+      <div class="card-tag">Creative</div><div class="card-icon">🖋</div>
+      <div class="card-title">Think-Ink Expo</div>
+      <p class="card-desc">An intersection of thought and artistry — poster making, essay writing, and debate for the creatively ambitious mind.</p>
+      <span class="card-arrow">→_</span>
+    </a>
+    <a href="gaming.html" class="event-card card-green reveal">
+      <div class="card-corner"></div>
+      <div class="card-tag">Gaming</div><div class="card-icon">🎮</div>
+      <div class="card-title">Gaming</div>
+      <p class="card-desc">Compete in adrenaline-fueled tournaments. Prove your reflexes and strategy across multiple titles and genres.</p>
+      <span class="card-arrow">→_</span>
+    </a>
+    <a href="robo-race.html" class="event-card card-violet reveal">
+      <div class="card-corner"></div>
+      <div class="card-tag">Robotics</div><div class="card-icon">🤖</div>
+      <div class="card-title">Robo Race</div>
+      <p class="card-desc">Engineer, build, and race your autonomous bot through obstacle-laden arenas. The fastest and smartest machine wins.</p>
+      <span class="card-arrow">→_</span>
+    </a>
+    <a href="visual-odyssey.html" class="event-card card-blue reveal">
+      <div class="card-corner"></div>
+      <div class="card-tag">Design</div><div class="card-icon">🎨</div>
+      <div class="card-title">Visual Odyssey</div>
+      <p class="card-desc">A visual arts journey — photography, digital design, and filmmaking showcasing stories through the power of imagery.</p>
+      <span class="card-arrow">→_</span>
+    </a>
   </div>
 </section>
+
+<footer id="contact">
+  <div class="footer-logo">IGNITE_26</div>
+  <p class="footer-sub" style="margin-top:0.4rem;">Annual College Fest &nbsp;·&nbsp; April 21, 2026</p>
+  <p class="footer-sub" style="margin-top:1rem;">contact@ignite2026.edu &nbsp;·&nbsp; +91 98765 43210</p>
+</footer>
 
 <script>
-  // cursor glow
-  document.addEventListener("mousemove",e=>{
-    const c=document.getElementById("cursor");
-    c.style.left=e.clientX+"px";
-    c.style.top=e.clientY+"px";
-  });
-
-  // countdown
-  const target=new Date("2026-04-21T10:00:00").getTime();
-  setInterval(()=>{
-    const now=Date.now();
-    const diff=target-now;
-
-    document.getElementById("d").innerText=Math.floor(diff/86400000);
-    document.getElementById("h").innerText=Math.floor((diff%86400000)/3600000);
-    document.getElementById("m").innerText=Math.floor((diff%3600000)/60000);
-    document.getElementById("s").innerText=Math.floor((diff%60000)/1000);
-  },1000);
+  function updateCountdown(){
+    const diff=new Date('2026-04-21T10:00:00').getTime()-Date.now();
+    if(diff<=0){['days','hours','mins','secs'].forEach(id=>document.getElementById('cd-'+id).textContent='00');return;}
+    const pad=n=>String(Math.floor(n)).padStart(2,'0');
+    document.getElementById('cd-days').textContent=pad(diff/86400000);
+    document.getElementById('cd-hours').textContent=pad((diff%86400000)/3600000);
+    document.getElementById('cd-mins').textContent=pad((diff%3600000)/60000);
+    document.getElementById('cd-secs').textContent=pad((diff%60000)/1000);
+  }
+  updateCountdown();setInterval(updateCountdown,1000);
+  const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('revealed'),i*90);obs.unobserve(e.target);}});},{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');}
 </script>
-
 </body>
 </html>
