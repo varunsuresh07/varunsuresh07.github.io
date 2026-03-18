@@ -1,1 +1,218 @@
-hi
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Parichay 4.0</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --gold:#D4AF37;
+      --gold-light:#F2D16B;
+      --gold-dark:#A08020;
+      --bg:#080808;
+      --bg2:#111;
+      --bg3:#161616;
+    }
+
+    body{
+      background:var(--bg);
+      color:#e8e0cc;
+      font-family:'Raleway',sans-serif;
+      animation:fadePage 1s ease;
+      overflow-x:hidden;
+    }
+
+    @keyframes fadePage{from{opacity:0}to{opacity:1}}
+
+    /* cursor glow */
+    #cursor{
+      position:fixed;
+      width:180px;height:180px;
+      background:radial-gradient(circle,rgba(212,175,55,.2),transparent 70%);
+      pointer-events:none;
+      transform:translate(-50%,-50%);
+      z-index:9999;
+      mix-blend-mode:screen;
+    }
+
+    /* navbar */
+    nav{
+      position:fixed;
+      width:100%;
+      top:0;
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(212,175,55,.2);
+      background:rgba(0,0,0,.8);
+      z-index:100;
+    }
+
+    .nav-inner{
+      max-width:1200px;
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:1rem;
+    }
+
+    .nav-logo{
+      font-family:'Cinzel',serif;
+      color:var(--gold);
+      letter-spacing:.2em;
+      text-shadow:0 0 20px rgba(212,175,55,.4);
+    }
+
+    .nav-links{display:flex;gap:2rem;}
+    .nav-links a{
+      font-size:.8rem;
+      letter-spacing:.15em;
+      color:#aaa;
+    }
+    .nav-links a:hover{color:var(--gold-light)}
+
+    /* hero */
+    #hero{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding-top:80px;
+    }
+
+    .title{
+      font-family:'Cinzel Decorative';
+      font-size:clamp(3rem,8vw,7rem);
+      background:linear-gradient(120deg,#a08020,#ffd700,#a08020);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      animation:shimmer 4s infinite linear;
+    }
+
+    @keyframes shimmer{
+      0%{background-position:-200%}
+      100%{background-position:200%}
+    }
+
+    .subtitle{color:#999;margin-top:1rem}
+    .date{margin-top:1rem;color:var(--gold-light)}
+
+    /* countdown */
+    .countdown{
+      display:flex;
+      gap:1rem;
+      margin-top:2rem;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    .box{
+      padding:1rem;
+      min-width:80px;
+      background:rgba(20,20,20,.6);
+      border:1px solid rgba(212,175,55,.2);
+      backdrop-filter:blur(10px);
+      text-align:center;
+    }
+
+    /* events */
+    #events{padding:4rem 1rem}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:1.5rem;
+      max-width:1100px;
+      margin:auto;
+    }
+
+    .card{
+      padding:1.5rem;
+      background:rgba(20,20,20,.6);
+      border:1px solid rgba(212,175,55,.2);
+      backdrop-filter:blur(10px);
+      transition:.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-8px) scale(1.03);
+      box-shadow:0 0 40px rgba(212,175,55,.2);
+    }
+
+    /* mobile */
+    @media(max-width:768px){
+      .nav-links{display:none}
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="cursor"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">PARICHAY 4.0</div>
+    <div class="nav-links">
+      <a href="#hero">Home</a>
+      <a href="#events">Events</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <h1 class="title">PARICHAY 4.0</h1>
+  <p class="subtitle">Where Innovation Meets Excellence</p>
+  <p class="date">April 21 | 10:00 AM – 3:00 PM</p>
+
+  <div class="countdown">
+    <div class="box"><span id="d"></span><br>Days</div>
+    <div class="box"><span id="h"></span><br>Hours</div>
+    <div class="box"><span id="m"></span><br>Minutes</div>
+    <div class="box"><span id="s"></span><br>Seconds</div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section id="events">
+  <h2 class="text-center text-3xl text-yellow-400 mb-8">Events</h2>
+
+  <div class="grid">
+    <a href="hacksphere.html" class="card">HACKSPHERE</a>
+    <a href="think-ink-expo.html" class="card">THINK-INK EXPO</a>
+    <a href="gaming.html" class="card">GAMING</a>
+    <a href="robo-race.html" class="card">ROBO RACE</a>
+    <a href="visual-odyssey.html" class="card">VISUAL ODYSSEY</a>
+  </div>
+</section>
+
+<script>
+  // cursor glow
+  document.addEventListener("mousemove",e=>{
+    const c=document.getElementById("cursor");
+    c.style.left=e.clientX+"px";
+    c.style.top=e.clientY+"px";
+  });
+
+  // countdown
+  const target=new Date("2026-04-21T10:00:00").getTime();
+  setInterval(()=>{
+    const now=Date.now();
+    const diff=target-now;
+
+    document.getElementById("d").innerText=Math.floor(diff/86400000);
+    document.getElementById("h").innerText=Math.floor((diff%86400000)/3600000);
+    document.getElementById("m").innerText=Math.floor((diff%3600000)/60000);
+    document.getElementById("s").innerText=Math.floor((diff%60000)/1000);
+  },1000);
+</script>
+
+</body>
+</html>
