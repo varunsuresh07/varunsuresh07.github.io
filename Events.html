@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Events — PARICHAY 4.0</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --c:#00f5ff;--m:#ff00c8;--v:#9d00ff;--b:#0040ff;--g:#00ff88;
+  --bg:#02040f;--bg2:#050a1a;--bg3:#080f20;
+  --border:rgba(0,245,255,.13);
+  --gc:rgba(0,245,255,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:#b8d4f0;font-family:"Exo 2",sans-serif;overflow-x:hidden;cursor:none;}
+
+/* CURSOR */
+#cursor{position:fixed;width:10px;height:10px;border-radius:50%;background:var(--c);pointer-events:none;z-index:99999;transform:translate(-50%,-50%);mix-blend-mode:screen;transition:transform .1s,background .2s;}
+#cursor-ring{position:fixed;width:32px;height:32px;border-radius:50%;border:1px solid rgba(0,245,255,.45);pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:left .1s ease,top .1s ease;mix-blend-mode:screen;}
+.cursor-particle{position:fixed;pointer-events:none;z-index:99997;border-radius:50%;transform:translate(-50%,-50%);animation:ptFade .5s ease-out forwards;}
+@keyframes ptFade{0%{opacity:.8;transform:translate(-50%,-50%) scale(1);}100%{opacity:0;transform:translate(-50%,-50%) scale(0);}}
+
+/* BG LAYERS */
+#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.hex-bg{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.055;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath d='M28 66L0 50V18L28 2l28 16v32L28 66zM28 100L0 84V52l28-16 28 16v32L28 100z' fill='none' stroke='%2300f5ff' stroke-width='0.4'/%3E%3C/svg%3E");
+  animation:hexD 35s linear infinite;}
+@keyframes hexD{from{background-position:0 0}to{background-position:56px 100px}}
+.noise{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.022;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+.scanlines{position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,245,255,.012) 2px,rgba(0,245,255,.012) 4px);}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(2,4,15,.85);backdrop-filter:blur(22px) saturate(180%);border-bottom:1px solid rgba(0,245,255,.08);}
+.nav-bar{position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--c),var(--m),var(--v),var(--c),transparent);background-size:200% 100%;animation:navLine 4s linear infinite;}
+@keyframes navLine{from{background-position:0 0}to{background-position:200% 0}}
+.nav-inner{max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;}
+.nav-logo{font-family:"Orbitron",monospace;font-weight:900;font-size:1rem;letter-spacing:.22em;
+  background:linear-gradient(90deg,var(--c),var(--b));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 10px rgba(0,245,255,.55));text-decoration:none;}
+.nav-logo span{color:var(--m);-webkit-text-fill-color:var(--m);}
+.nav-links{display:flex;gap:0;list-style:none;}
+.nav-links a{font-family:"Share Tech Mono",monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+  color:#3a6a84;text-decoration:none;padding:.45rem 1rem;transition:color .2s;position:relative;display:block;}
+.nav-links a::after{content:"";position:absolute;bottom:0;left:15%;width:70%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--c),transparent);transform:scaleX(0);transition:transform .3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--c);}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
+.nav-links a.active{color:var(--c);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;border-radius:1px;transition:all .3s;}
+.hamburger span:nth-child(1){background:var(--c);}
+.hamburger span:nth-child(2){background:var(--v);}
+.hamburger span:nth-child(3){background:var(--m);}
+@media(max-width:900px){
+  .hamburger{display:flex;}
+  .nav-links{display:none;position:absolute;top:64px;left:0;width:100%;background:rgba(2,4,15,.98);flex-direction:column;border-bottom:1px solid var(--border);}
+  .nav-links.open{display:flex;}
+  .nav-links a{padding:1rem 2rem;border-bottom:1px solid rgba(0,245,255,.05);}
+}
+
+/* PAGE HERO BAND */
+.page-hero{position:relative;padding:9rem 2rem 4rem;text-align:center;overflow:hidden;z-index:3;}
+.page-hero-mesh{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(0,64,255,.2) 0%,transparent 65%),
+  radial-gradient(ellipse 40% 30% at 80% 80%,rgba(157,0,255,.14) 0%,transparent 55%),var(--bg);}
+.page-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,245,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(0,245,255,.045) 1px,transparent 1px);background-size:50px 50px;mask-image:radial-gradient(ellipse 80% 80% at 50% 0%,black 30%,transparent 75%);}
+.page-eyebrow{font-family:"Share Tech Mono",monospace;font-size:.62rem;letter-spacing:.5em;text-transform:uppercase;color:var(--c);opacity:.6;margin-bottom:.6rem;position:relative;z-index:1;}
+.page-title{font-family:"Orbitron",monospace;font-weight:900;font-size:clamp(2rem,6vw,4rem);letter-spacing:.06em;text-transform:uppercase;position:relative;z-index:1;
+  background:linear-gradient(135deg,#d0eaf8 0%,var(--c) 50%,var(--b) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 20px rgba(0,245,255,.3));}
+.page-sub{font-size:.88rem;font-weight:300;font-style:italic;color:#2a5068;letter-spacing:.12em;margin-top:.8rem;position:relative;z-index:1;}
+.cyber-divider{width:300px;max-width:100%;height:1px;margin:1.5rem auto 0;position:relative;
+  background:linear-gradient(90deg,transparent,var(--c),var(--m),var(--c),transparent);opacity:.45;}
+
+/* MAIN CONTENT WRAPPER */
+.page-content{max-width:1200px;margin:0 auto;padding:4rem 2rem 6rem;position:relative;z-index:3;}
+
+/* SECTION UTILS */
+.section-label{font-family:"Share Tech Mono",monospace;font-size:.62rem;letter-spacing:.45em;text-transform:uppercase;color:var(--c);opacity:.65;margin-bottom:.5rem;}
+.section-heading{font-family:"Orbitron",monospace;font-weight:900;font-size:clamp(1.2rem,3vw,1.9rem);letter-spacing:.08em;text-transform:uppercase;
+  background:linear-gradient(90deg,#d0eaf8,var(--c));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1rem;}
+
+/* GLASS CARD */
+.glass-card{background:rgba(8,15,32,.92);border:1px solid rgba(0,245,255,.12);position:relative;overflow:hidden;transition:border-color .3s,box-shadow .3s;}
+.glass-card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--c),transparent);}
+.glass-card::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,245,255,.028) 0%,transparent 55%);pointer-events:none;}
+.glass-card:hover{border-color:rgba(0,245,255,.3);box-shadow:0 0 40px rgba(0,245,255,.08);}
+
+/* CORNER BRACKETS */
+.corners::before,.corners::after,
+.corners .c-bl,.corners .c-br{content:"";position:absolute;width:12px;height:12px;pointer-events:none;}
+.corners::before{top:6px;left:6px;border-top:1px solid var(--c);border-left:1px solid var(--c);}
+.corners::after{top:6px;right:6px;border-top:1px solid var(--c);border-right:1px solid var(--c);}
+.corners .c-bl{bottom:6px;left:6px;border-bottom:1px solid var(--c);border-left:1px solid var(--c);}
+.corners .c-br{bottom:6px;right:6px;border-bottom:1px solid var(--c);border-right:1px solid var(--c);}
+
+/* FOOTER */
+footer{position:relative;z-index:3;background:var(--bg2);border-top:1px solid rgba(0,245,255,.07);text-align:center;padding:2.5rem 1.5rem 2rem;}
+footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--c),var(--m),var(--v),transparent);opacity:.35;}
+.footer-logo{font-family:"Orbitron",monospace;font-weight:900;font-size:1rem;letter-spacing:.25em;
+  background:linear-gradient(90deg,var(--c),var(--b),var(--m));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem;}
+.footer-links a{font-family:"Share Tech Mono",monospace;font-size:.6rem;letter-spacing:.2em;color:rgba(0,245,255,.3);text-decoration:none;text-transform:uppercase;transition:color .2s;}
+.footer-links a:hover{color:var(--c);}
+.footer-copy{font-family:"Share Tech Mono",monospace;font-size:.6rem;color:#1a3040;letter-spacing:.12em;margin-top:.8rem;}
+
+/* REVEAL ANIMATIONS */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.active{opacity:1;transform:none;}
+.reveal-left{opacity:0;transform:translateX(-36px);transition:opacity .7s ease,transform .7s ease;}
+.reveal-left.active{opacity:1;transform:none;}
+.reveal-right{opacity:0;transform:translateX(36px);transition:opacity .7s ease,transform .7s ease;}
+.reveal-right.active{opacity:1;transform:none;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:none;}}
+</style>
+
+<style>
+.events-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(310px,100%),1fr));gap:1.8rem;}
+.ev-card{position:relative;text-decoration:none;display:block;color:inherit;overflow:hidden;
+  clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,18px 100%,0 calc(100% - 18px));
+  transition:transform .35s,box-shadow .35s,border-color .35s;}
+.ev-card:hover{transform:translateY(-8px) scale(1.01);}
+.ev-top-bar{height:3px;width:100%;}
+.ev-inner{padding:2rem 1.8rem 2.4rem;position:relative;}
+.ev-logo{width:80px;height:80px;margin-bottom:1.2rem;position:relative;}
+.ev-logo svg{width:100%;height:100%;}
+.ev-logo::after{content:"";position:absolute;inset:-14px;border-radius:50%;background:radial-gradient(circle,var(--ev-glow),transparent 70%);animation:lp 2.5s ease-in-out infinite;}
+@keyframes lp{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.18);opacity:1}}
+.ev-sys{font-family:"Share Tech Mono",monospace;font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;margin-bottom:.6rem;opacity:.7;}
+.ev-name{font-family:"Orbitron",monospace;font-size:1.05rem;font-weight:700;letter-spacing:.07em;color:#cce4f8;margin-bottom:.6rem;}
+.ev-desc{font-size:.82rem;font-weight:300;color:#2e4a5a;line-height:1.75;}
+.ev-foot{display:flex;align-items:center;justify-content:space-between;margin-top:1.4rem;padding-top:.9rem;border-top:1px solid rgba(0,245,255,.07);}
+.ev-tag{font-family:"Share Tech Mono",monospace;font-size:.57rem;letter-spacing:.2em;text-transform:uppercase;padding:.18rem .65rem;border:1px solid;}
+.ev-arr{font-family:"Share Tech Mono",monospace;font-size:.82rem;transition:transform .3s;}
+.ev-card:hover .ev-arr{transform:translateX(5px);}
+
+/* PER-CARD COLOURS */
+.c-cyan{background:rgba(8,15,32,.95);border:1px solid rgba(0,245,255,.1);--ev-glow:rgba(0,245,255,.12);}
+.c-cyan .ev-top-bar{background:linear-gradient(90deg,#00f5ff,#0040ff);}
+.c-cyan:hover{border-color:rgba(0,245,255,.45);box-shadow:0 20px 60px rgba(0,0,0,.65),0 0 40px rgba(0,245,255,.1);}
+.c-cyan .ev-sys,.c-cyan .ev-arr{color:#00f5ff;}
+.c-cyan .ev-tag{color:#00f5ff;border-color:rgba(0,245,255,.3);}
+
+.c-mag{background:rgba(8,15,32,.95);border:1px solid rgba(255,0,200,.1);--ev-glow:rgba(255,0,200,.12);}
+.c-mag .ev-top-bar{background:linear-gradient(90deg,#ff00c8,#9d00ff);}
+.c-mag:hover{border-color:rgba(255,0,200,.45);box-shadow:0 20px 60px rgba(0,0,0,.65),0 0 40px rgba(255,0,200,.1);}
+.c-mag .ev-sys,.c-mag .ev-arr{color:#ff00c8;}
+.c-mag .ev-tag{color:#ff00c8;border-color:rgba(255,0,200,.3);}
+
+.c-grn{background:rgba(8,15,32,.95);border:1px solid rgba(0,255,136,.1);--ev-glow:rgba(0,255,136,.12);}
+.c-grn .ev-top-bar{background:linear-gradient(90deg,#00ff88,#00f5ff);}
+.c-grn:hover{border-color:rgba(0,255,136,.45);box-shadow:0 20px 60px rgba(0,0,0,.65),0 0 40px rgba(0,255,136,.1);}
+.c-grn .ev-sys,.c-grn .ev-arr{color:#00ff88;}
+.c-grn .ev-tag{color:#00ff88;border-color:rgba(0,255,136,.3);}
+
+.c-vio{background:rgba(8,15,32,.95);border:1px solid rgba(157,0,255,.12);--ev-glow:rgba(157,0,255,.14);}
+.c-vio .ev-top-bar{background:linear-gradient(90deg,#bb44ff,#ff00c8);}
+.c-vio:hover{border-color:rgba(157,0,255,.5);box-shadow:0 20px 60px rgba(0,0,0,.65),0 0 40px rgba(157,0,255,.12);}
+.c-vio .ev-sys,.c-vio .ev-arr{color:#bb44ff;}
+.c-vio .ev-tag{color:#bb44ff;border-color:rgba(157,0,255,.35);}
+
+.c-blu{background:rgba(8,15,32,.95);border:1px solid rgba(0,64,255,.12);--ev-glow:rgba(0,64,255,.14);}
+.c-blu .ev-top-bar{background:linear-gradient(90deg,#4488ff,#00f5ff);}
+.c-blu:hover{border-color:rgba(0,64,255,.5);box-shadow:0 20px 60px rgba(0,0,0,.65),0 0 40px rgba(0,64,255,.12);}
+.c-blu .ev-sys,.c-blu .ev-arr{color:#4488ff;}
+.c-blu .ev-tag{color:#4488ff;border-color:rgba(0,64,255,.35);}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<canvas id="bg-canvas"></canvas>
+<div class="hex-bg"></div>
+<div class="noise"></div>
+<div class="scanlines"></div>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">PARICHAY <span>4.0</span></a>
+    <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" data-page="index">Home</a></li>
+      <li><a href="about.html" data-page="about">About</a></li>
+      <li><a href="events.html" data-page="events">Events</a></li>
+      <li><a href="sponsors.html" data-page="sponsors">Sponsors</a></li>
+      <li><a href="contact.html" data-page="contact">Contact</a></li>
+    </ul>
+  </div>
+  <div class="nav-bar"></div>
+</nav>
+
+<script>document.querySelector('[data-page="events"]')?.classList.add('active');</script>
+
+<div class="page-hero">
+  <div class="page-hero-mesh"></div><div class="page-grid"></div>
+  <p class="page-eyebrow">[ EVENTS.EXE — LOADED ]</p>
+  <h1 class="page-title">Choose Your Arena</h1>
+  <p class="page-sub">Five battlegrounds. One winner per domain. No mercy.</p>
+  <div class="cyber-divider"></div>
+</div>
+
+<div class="page-content">
+  <div class="events-grid">
+
+    <a href="hacksphere.html" class="ev-card c-cyan reveal">
+      <div class="ev-top-bar"></div>
+      <div class="ev-inner">
+        <div class="ev-logo">
+          <svg viewBox="0 0 80 80" fill="none"><polygon points="40,5 73,22 73,58 40,75 7,58 7,22" fill="none" stroke="#00f5ff" stroke-width="1.2" opacity=".3"/><polygon points="40,13 65,27 65,53 40,67 15,53 15,27" fill="none" stroke="#00f5ff" stroke-width="1" opacity=".55"/><path d="M27 40L36 30 40 40M40 40L44 30 53 40" stroke="#00f5ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M31 48L36 43 40 48 44 43 49 48" stroke="#00f5ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="40" cy="40" r="3.5" fill="#00f5ff" opacity=".9"/><circle cx="40" cy="40" r="7" fill="none" stroke="#00f5ff" stroke-width=".8" opacity=".3" stroke-dasharray="3,2"/><circle cx="40" cy="5" r="2.5" fill="#00f5ff" opacity=".8"/><circle cx="40" cy="75" r="2.5" fill="#00f5ff" opacity=".8"/><line x1="17" y1="17" x2="24" y2="17" stroke="#00f5ff" stroke-width=".8" opacity=".35"/><line x1="17" y1="17" x2="17" y2="24" stroke="#00f5ff" stroke-width=".8" opacity=".35"/><line x1="63" y1="17" x2="56" y2="17" stroke="#00f5ff" stroke-width=".8" opacity=".35"/><line x1="63" y1="17" x2="63" y2="24" stroke="#00f5ff" stroke-width=".8" opacity=".35"/></svg>
+        </div>
+        <div class="ev-sys">EVENT_01 // 24H HACKATHON</div>
+        <div class="ev-name">Hacksphere</div>
+        <p class="ev-desc">A high-voltage hackathon where ideas become real solutions. Code, collaborate, and conquer challenges in 24 relentless hours.</p>
+        <div class="ev-foot"><span class="ev-tag">Tech / Code</span><span class="ev-arr">→_</span></div>
+      </div>
+    </a>
+
+    <a href="think-ink.html" class="ev-card c-mag reveal">
+      <div class="ev-top-bar"></div>
+      <div class="ev-inner">
+        <div class="ev-logo">
+          <svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="34" fill="none" stroke="#ff00c8" stroke-width="1" opacity=".2"/><circle cx="40" cy="40" r="26" fill="none" stroke="#ff00c8" stroke-width=".8" opacity=".4" stroke-dasharray="4,3"/><rect x="22" y="18" width="36" height="44" rx="3" fill="rgba(255,0,200,.07)" stroke="#ff00c8" stroke-width="1.5"/><line x1="28" y1="27" x2="52" y2="27" stroke="#ff00c8" stroke-width="1.6" stroke-linecap="round"/><line x1="28" y1="33" x2="52" y2="33" stroke="#ff00c8" stroke-width="1.6" stroke-linecap="round"/><line x1="28" y1="39" x2="45" y2="39" stroke="#ff00c8" stroke-width="1.6" stroke-linecap="round"/><path d="M46 50 L54 42 L59 47 L51 55 L46 50Z" fill="rgba(255,0,200,.15)" stroke="#ff00c8" stroke-width="1.6"/><line x1="59" y1="36" x2="65" y2="30" stroke="#ff00c8" stroke-width="2.2" stroke-linecap="round"/><circle cx="65" cy="28" r="2.8" fill="#ff00c8" opacity=".85"/></svg>
+        </div>
+        <div class="ev-sys">EVENT_02 // CREATIVE ARTS</div>
+        <div class="ev-name">Think-Ink Expo</div>
+        <p class="ev-desc">Poster making, essay writing, extempore, grand debate. Your intellect is the only weapon you need.</p>
+        <div class="ev-foot"><span class="ev-tag">Creative</span><span class="ev-arr">→_</span></div>
+      </div>
+    </a>
+
+    <a href="gaming.html" class="ev-card c-grn reveal">
+      <div class="ev-top-bar"></div>
+      <div class="ev-inner">
+        <div class="ev-logo">
+          <svg viewBox="0 0 80 80" fill="none"><rect x="6" y="25" width="68" height="40" rx="11" fill="rgba(0,255,136,.07)" stroke="#00ff88" stroke-width="1.5"/><rect x="13" y="31" width="54" height="28" rx="8" fill="none" stroke="#00ff88" stroke-width=".8" opacity=".4"/><rect x="16" y="41" width="7" height="7" rx="1" fill="rgba(0,255,136,.2)" stroke="#00ff88" stroke-width="1"/><rect x="23" y="34" width="7" height="7" rx="1" fill="rgba(0,255,136,.15)" stroke="#00ff88" stroke-width="1"/><rect x="23" y="48" width="7" height="7" rx="1" fill="rgba(0,255,136,.15)" stroke="#00ff88" stroke-width="1"/><circle cx="54" cy="37" r="4.5" fill="rgba(0,255,136,.12)" stroke="#00ff88" stroke-width="1.5"/><circle cx="62" cy="45" r="4.5" fill="rgba(0,255,136,.28)" stroke="#00ff88" stroke-width="1.8"/><circle cx="46" cy="45" r="4.5" fill="rgba(0,255,136,.12)" stroke="#00ff88" stroke-width="1.5"/><circle cx="54" cy="53" r="4.5" fill="rgba(0,255,136,.12)" stroke="#00ff88" stroke-width="1.5"/><path d="M26 15 L22 22 L26 22 L22 29" stroke="#00ff88" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M54 15 L50 22 L54 22 L50 29" stroke="#00ff88" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="ev-sys">EVENT_03 // ESPORTS</div>
+        <div class="ev-name">Gaming</div>
+        <p class="ev-desc">BGMI. Valorant. FIFA. Multi-title tournament brackets. Solo and squad formats. The arena never forgives lag.</p>
+        <div class="ev-foot"><span class="ev-tag">eSports</span><span class="ev-arr">→_</span></div>
+      </div>
+    </a>
+
+    <a href="robo-race.html" class="ev-card c-vio reveal">
+      <div class="ev-top-bar"></div>
+      <div class="ev-inner">
+        <div class="ev-logo">
+          <svg viewBox="0 0 80 80" fill="none"><rect x="24" y="28" width="32" height="28" rx="5" fill="rgba(157,0,255,.1)" stroke="#bb44ff" stroke-width="1.6"/><rect x="28" y="14" width="24" height="16" rx="3" fill="rgba(157,0,255,.12)" stroke="#bb44ff" stroke-width="1.6"/><rect x="31" y="19" width="7" height="5" rx="1.5" fill="rgba(157,0,255,.25)" stroke="#bb44ff" stroke-width="1"/><rect x="42" y="19" width="7" height="5" rx="1.5" fill="rgba(157,0,255,.25)" stroke="#bb44ff" stroke-width="1"/><rect x="33" y="21" width="3" height="1.5" rx=".5" fill="#bb44ff"/><rect x="44" y="21" width="3" height="1.5" rx=".5" fill="#bb44ff"/><line x1="40" y1="14" x2="40" y2="8" stroke="#bb44ff" stroke-width="1.8"/><circle cx="40" cy="6.5" r="2.2" fill="#bb44ff" opacity=".9"/><circle cx="20" cy="62" r="7" fill="rgba(157,0,255,.1)" stroke="#bb44ff" stroke-width="1.6"/><circle cx="60" cy="62" r="7" fill="rgba(157,0,255,.1)" stroke="#bb44ff" stroke-width="1.6"/><circle cx="20" cy="62" r="3" fill="rgba(157,0,255,.4)" stroke="#bb44ff" stroke-width=".8"/><circle cx="60" cy="62" r="3" fill="rgba(157,0,255,.4)" stroke="#bb44ff" stroke-width=".8"/><line x1="24" y1="38" x2="14" y2="48" stroke="#bb44ff" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="50" r="3.5" fill="rgba(157,0,255,.2)" stroke="#bb44ff" stroke-width="1.2"/><line x1="56" y1="38" x2="66" y2="48" stroke="#bb44ff" stroke-width="1.8" stroke-linecap="round"/><circle cx="68" cy="50" r="3.5" fill="rgba(157,0,255,.2)" stroke="#bb44ff" stroke-width="1.2"/><rect x="32" y="36" width="16" height="10" rx="1.5" fill="none" stroke="#bb44ff" stroke-width=".9" opacity=".5"/><line x1="34" y1="41" x2="46" y2="41" stroke="#bb44ff" stroke-width="1.3" stroke-linecap="round" opacity=".6"/></svg>
+        </div>
+        <div class="ev-sys">EVENT_04 // ROBOTICS</div>
+        <div class="ev-name">Robo Race</div>
+        <p class="ev-desc">Engineer autonomous bots. Navigate brutal obstacle arenas at speed. The smartest circuit wins.</p>
+        <div class="ev-foot"><span class="ev-tag">Robotics</span><span class="ev-arr">→_</span></div>
+      </div>
+    </a>
+
+    <a href="visual-odyssey.html" class="ev-card c-blu reveal">
+      <div class="ev-top-bar"></div>
+      <div class="ev-inner">
+        <div class="ev-logo">
+          <svg viewBox="0 0 80 80" fill="none"><rect x="8" y="26" width="64" height="46" rx="8" fill="rgba(0,64,255,.08)" stroke="#4488ff" stroke-width="1.6"/><circle cx="40" cy="49" r="16" fill="rgba(0,64,255,.07)" stroke="#4488ff" stroke-width="1.6"/><circle cx="40" cy="49" r="11" fill="none" stroke="#4488ff" stroke-width=".9" opacity=".5"/><circle cx="40" cy="49" r="7" fill="rgba(0,64,255,.2)" stroke="#4488ff" stroke-width="1.5"/><circle cx="40" cy="49" r="2.8" fill="#4488ff"/><rect x="28" y="14" width="16" height="14" rx="2.5" fill="rgba(0,64,255,.1)" stroke="#4488ff" stroke-width="1.5"/><rect x="48" y="16" width="12" height="8" rx="1.5" fill="rgba(0,64,255,.12)" stroke="#4488ff" stroke-width="1"/><circle cx="66" cy="34" r="5" fill="rgba(0,64,255,.18)" stroke="#4488ff" stroke-width="1.6"/><circle cx="66" cy="34" r="2.5" fill="rgba(0,64,255,.4)" stroke="#4488ff" stroke-width=".8"/></svg>
+        </div>
+        <div class="ev-sys">EVENT_05 // VISUAL ARTS</div>
+        <div class="ev-name">Visual Odyssey</div>
+        <p class="ev-desc">Photography. Digital illustration. Short films. One theme, infinite interpretations. Show us how you see the world.</p>
+        <div class="ev-foot"><span class="ev-tag">Design / Film</span><span class="ev-arr">→_</span></div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+
+<footer>
+  <div class="footer-logo">PARICHAY 4.0</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="events.html">Events</a>
+    <a href="sponsors.html">Sponsors</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <p class="footer-copy">© 2026 PARICHAY 4.0 — College Fest. All Rights Reserved.</p>
+</footer>
+
+
+<script>
+/* CURSOR */
+const cur=document.getElementById("cursor"),ring=document.getElementById("cursor-ring");
+let mx=0,my=0,rx=0,ry=0,ptT=0;
+document.addEventListener("mousemove",e=>{
+  mx=e.clientX;my=e.clientY;
+  cur.style.left=mx+"px";cur.style.top=my+"px";
+  if(Date.now()-ptT>50){ptT=Date.now();spawnPt(mx,my);}
+});
+(function anim(){rx+=(mx-rx)*.13;ry+=(my-ry)*.13;ring.style.left=rx+"px";ring.style.top=ry+"px";requestAnimationFrame(anim);})();
+document.querySelectorAll("a,button").forEach(el=>{
+  el.addEventListener("mouseenter",()=>{cur.style.transform="translate(-50%,-50%) scale(2.5)";cur.style.background="var(--m)";});
+  el.addEventListener("mouseleave",()=>{cur.style.transform="translate(-50%,-50%) scale(1)";cur.style.background="var(--c)";});
+});
+function spawnPt(x,y){
+  const p=document.createElement("div");p.className="cursor-particle";
+  const cols=["var(--c)","var(--m)","var(--v)","var(--g)"],s=(Math.random()*4+2)+"px";
+  p.style.cssText=`background:${cols[Math.floor(Math.random()*4)]};left:${x}px;top:${y}px;width:${s};height:${s};`;
+  document.body.appendChild(p);setTimeout(()=>p.remove(),500);
+}
+
+/* PARTICLE CANVAS */
+const cv=document.getElementById("bg-canvas"),ctx=cv.getContext("2d");
+let W,H,pts=[];
+function resize(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;}
+resize();window.addEventListener("resize",()=>{resize();initPts();});
+function initPts(){
+  pts=[];const n=Math.floor(W*H/15000);
+  const pal=["rgba(0,245,255,","rgba(157,0,255,","rgba(255,0,200,","rgba(0,64,255,"];
+  for(let i=0;i<n;i++){
+    const c=pal[Math.floor(Math.random()*pal.length)];
+    pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*1.4+.3,
+      col:c+(Math.random()*.35+.08)+")"});
+  }
+}
+initPts();
+function drawPts(){
+  ctx.clearRect(0,0,W,H);
+  pts.forEach(p=>{
+    p.x+=p.vx;p.y+=p.vy;
+    if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.col;ctx.fill();
+  });
+  for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
+    const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);
+    if(d<110){ctx.beginPath();ctx.strokeStyle=`rgba(0,245,255,${.07*(1-d/110)})`;ctx.lineWidth=.4;ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.stroke();}
+  }
+  requestAnimationFrame(drawPts);
+}
+drawPts();
+
+/* SCROLL REVEAL */
+const ro=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add("active"),i*80);ro.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll(".reveal,.reveal-left,.reveal-right").forEach(el=>ro.observe(el));
+
+/* NAV HAMBURGER */
+function toggleNav(){document.getElementById("navLinks").classList.toggle("open");}
+document.querySelectorAll(".nav-links a").forEach(a=>a.addEventListener("click",()=>document.getElementById("navLinks").classList.remove("open")));
+</script>
+
+</body>
+</html>
