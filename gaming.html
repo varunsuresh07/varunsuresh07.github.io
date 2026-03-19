@@ -103,6 +103,49 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
 .fl-links a:hover{color:#00ff88;}
 .fl-copy{font-family:"Share Tech Mono",monospace;font-size:.6rem;color:#1a3040;letter-spacing:.12em;margin-top:.7rem;}
 
+/* ── RULES STRONG OVERRIDE ── */
+.rules li strong{color:#cce4f8;font-weight:600;}
+
+/* ── DETAIL BANNER ── */
+.detail-banner{display:flex;align-items:flex-start;gap:1.2rem;padding:1.3rem 1.6rem;background:rgba(0,255,136,.04);border:1px solid rgba(0,255,136,.2);position:relative;z-index:1;}
+.detail-banner::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#00ff88,#00f5ff,transparent);}
+.detail-icon{font-size:1.6rem;filter:drop-shadow(0 0 10px rgba(0,255,136,.6));flex-shrink:0;margin-top:.1rem;}
+.detail-label{font-family:"Share Tech Mono",monospace;font-size:.58rem;letter-spacing:.35em;text-transform:uppercase;color:rgba(0,255,136,.55);margin-bottom:.4rem;}
+.detail-val{font-size:.88rem;font-weight:300;line-height:1.75;color:#3a6070;}
+.detail-val strong{color:#00ff88;font-weight:600;}
+
+/* ── POINT SYSTEM ── */
+.pts-header{display:flex;justify-content:center;margin-bottom:1.5rem;position:relative;z-index:1;}
+.pts-kill-badge{display:flex;flex-direction:column;align-items:center;padding:.9rem 2.5rem;background:linear-gradient(135deg,rgba(0,255,136,.12),rgba(0,245,255,.08));border:1px solid rgba(0,255,136,.35);position:relative;}
+.pts-kill-badge::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#00ff88,transparent);}
+.pts-kill-num{font-family:"Orbitron",monospace;font-size:2.2rem;font-weight:900;background:linear-gradient(90deg,#00ff88,#00f5ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 12px rgba(0,255,136,.6));line-height:1;}
+.pts-kill-lbl{font-family:"Share Tech Mono",monospace;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(0,255,136,.55);margin-top:.3rem;}
+
+.pts-table{display:flex;flex-direction:column;gap:.5rem;position:relative;z-index:1;}
+.pts-head{display:grid;grid-template-columns:1fr auto;padding:.5rem 1.2rem;font-family:"Share Tech Mono",monospace;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(0,255,136,.4);border-bottom:1px solid rgba(0,255,136,.12);margin-bottom:.3rem;}
+.pts-row{display:grid;grid-template-columns:1fr auto;align-items:center;padding:.75rem 1.2rem;background:rgba(0,255,136,.025);border:1px solid rgba(0,255,136,.08);font-size:.87rem;font-weight:300;color:#3a6070;transition:all .25s;gap:1rem;}
+.pts-row:hover{background:rgba(0,255,136,.06);border-color:rgba(0,255,136,.25);color:#6abf90;}
+.pts-pos{margin-right:.5rem;}
+.pts-val{font-family:"Orbitron",monospace;font-size:.92rem;font-weight:700;color:#00ff88;text-align:right;filter:drop-shadow(0 0 6px rgba(0,255,136,.4));}
+.gold-row{background:rgba(255,215,0,.04)!important;border-color:rgba(255,215,0,.2)!important;}
+.gold-row:hover{background:rgba(255,215,0,.08)!important;}
+.gold-row .pts-val{color:#ffd700;filter:drop-shadow(0 0 8px rgba(255,215,0,.5));}
+.silver-row{background:rgba(192,210,255,.03)!important;border-color:rgba(192,210,255,.15)!important;}
+.silver-row .pts-val{color:#c0d8ff;filter:drop-shadow(0 0 6px rgba(192,210,255,.4));}
+.bronze-row{background:rgba(205,127,50,.04)!important;border-color:rgba(205,127,50,.18)!important;}
+.bronze-row .pts-val{color:#cd7f32;filter:drop-shadow(0 0 6px rgba(205,127,50,.4));}
+
+/* ── COORDINATOR GRID ── */
+.coord-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;position:relative;z-index:1;}
+@media(max-width:500px){.coord-grid{grid-template-columns:1fr;}}
+.coord-card{background:rgba(0,255,136,.03);border:1px solid rgba(0,255,136,.14);padding:1.6rem;text-align:center;transition:all .3s;position:relative;}
+.coord-card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#00ff88,transparent);}
+.coord-card:hover{border-color:rgba(0,255,136,.35);background:rgba(0,255,136,.06);box-shadow:0 0 25px rgba(0,255,136,.08);}
+.coord-icon{font-size:1.8rem;margin-bottom:.7rem;filter:drop-shadow(0 0 8px rgba(0,255,136,.4));}
+.coord-name{font-family:"Orbitron",monospace;font-size:.88rem;font-weight:700;letter-spacing:.15em;color:#cce4f8;margin-bottom:.7rem;}
+.coord-phone{display:inline-flex;align-items:center;gap:.5rem;font-family:"Share Tech Mono",monospace;font-size:.82rem;letter-spacing:.12em;color:#00ff88;text-decoration:none;padding:.5rem 1.2rem;border:1px solid rgba(0,255,136,.25);background:rgba(0,255,136,.05);transition:all .3s;}
+.coord-phone:hover{border-color:#00ff88;background:rgba(0,255,136,.12);box-shadow:0 0 18px rgba(0,255,136,.2);}
+
 /* REGISTER BUTTON */
 .reg-btn{
   display:inline-flex;align-items:center;gap:.7rem;
@@ -192,15 +235,21 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
   <div class="ev-content">
     <div class="ev-badge">[ EVENT_03 // ESPORTS — PARICHAY 4.0 ]</div>
     <div class="logo-outer"><svg viewBox="0 0 120 120" fill="none"><rect x="8" y="36" width="104" height="60" rx="16" fill="rgba(0,255,136,.07)" stroke="#00ff88" stroke-width="1.8"/><rect x="18" y="46" width="84" height="40" rx="11" fill="none" stroke="#00ff88" stroke-width="1" opacity=".4"/><rect x="22" y="58" width="10" height="10" rx="1.5" fill="rgba(0,255,136,.22)" stroke="#00ff88" stroke-width="1.2"/><rect x="32" y="48" width="10" height="10" rx="1.5" fill="rgba(0,255,136,.15)" stroke="#00ff88" stroke-width="1.2"/><rect x="32" y="68" width="10" height="10" rx="1.5" fill="rgba(0,255,136,.15)" stroke="#00ff88" stroke-width="1.2"/><circle cx="80" cy="52" r="6.5" fill="rgba(0,255,136,.12)" stroke="#00ff88" stroke-width="1.8"/><circle cx="92" cy="62" r="6.5" fill="rgba(0,255,136,.3)" stroke="#00ff88" stroke-width="2.2"/><circle cx="68" cy="62" r="6.5" fill="rgba(0,255,136,.12)" stroke="#00ff88" stroke-width="1.8"/><circle cx="80" cy="72" r="6.5" fill="rgba(0,255,136,.12)" stroke="#00ff88" stroke-width="1.8"/><rect x="52" y="57" width="10" height="7" rx="1.5" fill="rgba(0,255,136,.18)" stroke="#00ff88" stroke-width="1"/><rect x="63" y="57" width="10" height="7" rx="1.5" fill="rgba(0,255,136,.18)" stroke="#00ff88" stroke-width="1"/><path d="M36 18 L28 30 L36 30 L28 42" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M84 18 L76 30 L84 30 L76 42" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 24 L18 24 M8 24 L8 34" stroke="#00ff88" stroke-width="1" opacity=".35"/><path d="M112 24 L102 24 M112 24 L112 34" stroke="#00ff88" stroke-width="1" opacity=".35"/><path d="M8 96 L18 96 M8 96 L8 86" stroke="#00ff88" stroke-width="1" opacity=".35"/><path d="M112 96 L102 96 M112 96 L112 86" stroke="#00ff88" stroke-width="1" opacity=".35"/></svg></div>
-    <h1 class="ev-title">Gaming</h1>
-    <p class="ev-tagline">Play Hard. Win Harder.</p>
+    <h1 class="ev-title">Inferno Clash</h1>
+    <p class="ev-tagline">🔥 Free Fire Tournament — No Mercy. No Second Chances.</p>
     <div class="ev-rule"></div>
   </div>
 </div>
 
 <main>
   <a href="events.html" class="back-btn reveal"><span>← Back to All Events</span></a>
-  <div class="info-strip reveal"><div class="ic"><span class="v">3 Titles</span><span class="l">Games</span></div><div class="ic"><span class="v">Solo / Squad</span><span class="l">Format</span></div><div class="ic"><span class="v">₹150</span><span class="l">Entry Fee</span></div><div class="ic"><span class="v">Apr 21</span><span class="l">Date</span></div></div>
+  <div class="info-strip reveal">
+    <div class="ic"><span class="v">Free Fire</span><span class="l">Game</span></div>
+    <div class="ic"><span class="v">4 Players</span><span class="l">Squad Size</span></div>
+    <div class="ic"><span class="v">Android / iOS</span><span class="l">Devices</span></div>
+    <div class="ic"><span class="v">BR / CS</span><span class="l">Round Format</span></div>
+    <div class="ic"><span class="v">Apr 21</span><span class="l">Date</span></div>
+  </div>
   
   <div class="reg-wrap reveal">
     <div class="reg-title">// Registration Open</div>
@@ -212,20 +261,96 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
     <div class="reg-note">Secure payment via EaseBuzz &nbsp;·&nbsp; Seat confirmation on payment</div>
   </div>
 
+  <!-- ABOUT -->
   <div class="sec-card reveal">
     <div class="sec-hd">// About the Event</div>
-    <p>The Gaming tournament at PARICHAY 4.0 is the ultimate battleground for competitive players. High-stakes brackets across BGMI, Valorant, and FIFA test reflexes, macro strategy, and team coordination under intense pressure. From 1v1 aim duels to full squad operations, every format is engineered to eliminate casual players and crown the truly elite. Prizes await those with the fastest hands and sharpest game sense.</p>
+    <p>The Free Fire battleground is calling! Step into the arena where only the strongest survive. This isn't just a tournament — it's a war of skill, strategy, and nerves. Drop in, gear up, and eliminate your enemies in a ruthless fight for survival.</p>
+    <p style="margin-top:1rem;">Experience heart-pounding action, intense battles, and unstoppable competition as players clash to prove who truly dominates the battlefield. Only the sharpest minds and fastest hands will survive the chaos.</p>
+    <p style="margin-top:1rem;">This is your moment to rise, conquer, and claim glory. Squad up, stay sharp, and get ready — because only one will emerge as the ultimate survivor. 🎮🔥</p>
   </div>
+
+  <!-- TEAM & FORMAT -->
   <div class="sec-card reveal">
-    <div class="sec-hd">// Rules &amp; Regulations</div>
-    <ul class="rules"><li data-n="01">Participants must bring their own device (mobile/PC/controller). Stable network access will be provided by organizers on-site.</li>
-<li data-n="02">All matches played on official tournament servers with settings locked by the event team. No custom configs beyond permitted loadouts.</li>
-<li data-n="03">Be present and ready 10 minutes before scheduled match time. Late players forfeit their slot — no exceptions.</li>
-<li data-n="04">Hacks, aimbots, exploits, or any 3rd-party performance software result in permanent ban from this and all future PARICHAY editions.</li>
-<li data-n="05">Toxic behaviour, harassment, or verbal abuse toward anyone in the venue results in immediate disqualification without refund.</li>
-<li data-n="06">Format: Round-robin group stage then single-elimination knockout. Group seeding based on match record and point differential.</li>
-<li data-n="07">Disputes raised with the match referee immediately. Post-match complaints not entertained under any circumstance.</li></ul>
+    <div class="sec-hd">// Team &amp; Format</div>
+    <ul class="rules">
+      <li data-n="👥">Each team consists of <strong>4 players only</strong>. No substitutes are permitted under any circumstance.</li>
+      <li data-n="📱">Only <strong>Android and iOS</strong> mobile devices are allowed for gameplay.</li>
+      <li data-n="🚫">Emulators and iPads are <strong>strictly prohibited</strong>. Violations lead to immediate disqualification.</li>
+    </ul>
   </div>
+
+  <!-- GAMEPLAY RULES -->
+  <div class="sec-card reveal">
+    <div class="sec-hd">// Gameplay Rules</div>
+    <ul class="rules">
+      <li data-n="🔧">Any use of game-modifying tools or third-party software will lead to <strong>immediate disqualification</strong>.</li>
+      <li data-n="🎙">In-game voice chat is <strong>mandatory</strong> for proper team coordination throughout all rounds.</li>
+      <li data-n="⚠">Use of unfair means — <strong>aimbot, trigger bot, or ESP</strong> — results in instant disqualification and ban.</li>
+      <li data-n="🐛">Bug exploitation or any act that hinders fair play will lead to disqualification of the entire team.</li>
+      <li data-n="⏰">Players must <strong>join 15 minutes before</strong> match start. Late teams forfeit their slot — no exceptions.</li>
+      <li data-n="🏆">In case of a tie, the number of <strong>Booyahs (wins)</strong> will decide the champion.</li>
+    </ul>
+  </div>
+
+  <!-- EVENT DETAILS -->
+  <div class="sec-card reveal">
+    <div class="sec-hd">// Event Details</div>
+    <div class="detail-banner">
+      <span class="detail-icon">🎯</span>
+      <div>
+        <div class="detail-label">Round Format</div>
+        <div class="detail-val">Number of rounds revealed on the day of action.<br/>Format will be either <strong>Battle Royale (BR)</strong> or <strong>Clash Squad (CS)</strong>.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POINT SYSTEM -->
+  <div class="sec-card reveal">
+    <div class="sec-hd">// 🏆 Point System</div>
+    <div class="pts-header">
+      <div class="pts-kill-badge">
+        <span class="pts-kill-num">1</span>
+        <span class="pts-kill-lbl">Point per Kill</span>
+      </div>
+    </div>
+    <div class="pts-table">
+      <div class="pts-head">
+        <span>Placement</span>
+        <span>Points</span>
+      </div>
+      <div class="pts-row gold-row"><span><span class="pts-pos">🥇</span> 1st Place</span><span class="pts-val">12</span></div>
+      <div class="pts-row silver-row"><span><span class="pts-pos">🥈</span> 2nd Place</span><span class="pts-val">9</span></div>
+      <div class="pts-row bronze-row"><span><span class="pts-pos">🥉</span> 3rd Place</span><span class="pts-val">8</span></div>
+      <div class="pts-row"><span><span class="pts-pos">4️⃣</span> 4th Place</span><span class="pts-val">7</span></div>
+      <div class="pts-row"><span><span class="pts-pos">5️⃣</span> 5th Place</span><span class="pts-val">6</span></div>
+      <div class="pts-row"><span><span class="pts-pos">6️⃣</span> 6th Place</span><span class="pts-val">5</span></div>
+      <div class="pts-row"><span><span class="pts-pos">7️⃣</span> 7th Place</span><span class="pts-val">4</span></div>
+      <div class="pts-row"><span><span class="pts-pos">8️⃣</span> 8th Place</span><span class="pts-val">3</span></div>
+      <div class="pts-row"><span><span class="pts-pos">9️⃣</span> 9th Place</span><span class="pts-val">2</span></div>
+    </div>
+  </div>
+
+  <!-- COORDINATORS -->
+  <div class="sec-card reveal">
+    <div class="sec-hd">// Event Coordinators</div>
+    <div class="coord-grid">
+      <div class="coord-card">
+        <div class="coord-icon">🎮</div>
+        <div class="coord-name">Dhyan</div>
+        <a href="tel:9731637732" class="coord-phone">
+          <span>📞</span>&nbsp;97316 37732
+        </a>
+      </div>
+      <div class="coord-card">
+        <div class="coord-icon">🎮</div>
+        <div class="coord-name">Sri Harsha</div>
+        <a href="tel:+917899896106" class="coord-phone">
+          <span>📞</span>&nbsp;78998 96106
+        </a>
+      </div>
+    </div>
+  </div>
+
 </main>
 
 <footer>
