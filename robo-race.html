@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,6 +102,68 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
 .fl-links a{font-family:"Share Tech Mono",monospace;font-size:.6rem;letter-spacing:.2em;color:rgba(157,0,255,.3);text-decoration:none;text-transform:uppercase;transition:color .2s;}
 .fl-links a:hover{color:#bb44ff;}
 .fl-copy{font-family:"Share Tech Mono",monospace;font-size:.6rem;color:#1a3040;letter-spacing:.12em;margin-top:.7rem;}
+
+/* REGISTER BUTTON */
+.reg-btn{
+  display:inline-flex;align-items:center;gap:.7rem;
+  padding:1rem 2.8rem;
+  font-family:"Orbitron",monospace;font-size:.75rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  text-decoration:none;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#bb44ff,#ff00c8);
+  color:#02040f;border:none;
+  clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);
+  transition:all .35s;cursor:none;
+  box-shadow:0 0 30px rgba(157,0,255,.45),0 0 60px rgba(157,0,255,.2);
+  animation:regPulse 3s ease-in-out infinite;
+}
+.reg-btn::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.25),transparent 60%);
+  pointer-events:none;
+}
+.reg-btn::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(135deg,#bb44ff,#ff00c8);
+  opacity:0;transition:opacity .3s;
+}
+.reg-btn:hover{
+  transform:translateY(-3px) scale(1.03);
+  box-shadow:0 0 50px rgba(157,0,255,.65),0 0 100px rgba(157,0,255,.3);
+  color:#02040f;
+}
+.reg-btn:hover::after{opacity:.3;}
+.reg-btn span{position:relative;z-index:1;}
+.reg-btn .reg-icon{font-size:1rem;position:relative;z-index:1;}
+@keyframes regPulse{
+  0%,100%{box-shadow:0 0 30px rgba(157,0,255,.45),0 0 60px rgba(157,0,255,.2);}
+  50%{box-shadow:0 0 50px rgba(157,0,255,.7),0 0 90px rgba(157,0,255,.35);}
+}
+.reg-wrap{
+  display:flex;flex-direction:column;align-items:center;gap:1rem;
+  margin:2.5rem 0;padding:2.5rem;
+  background:rgba(157,0,255,.04);
+  border:1px solid rgba(157,0,255,.18);
+  position:relative;overflow:hidden;
+  clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));
+}
+.reg-wrap::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,#bb44ff,#ff00c8,transparent);
+}
+.reg-wrap::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(157,0,255,.06),transparent 70%);
+  pointer-events:none;
+}
+.reg-title{
+  font-family:"Share Tech Mono",monospace;font-size:.68rem;letter-spacing:.45em;
+  text-transform:uppercase;color:#bb44ff;opacity:.8;
+}
+.reg-note{
+  font-family:"Share Tech Mono",monospace;font-size:.58rem;letter-spacing:.18em;
+  color:rgba(157,0,255,.4);text-transform:uppercase;
+}
+
 </style>
 </head>
 <body>
@@ -140,6 +201,17 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
 <main>
   <a href="events.html" class="back-btn reveal"><span>← Back to All Events</span></a>
   <div class="info-strip reveal"><div class="ic"><span class="v">2–3</span><span class="l">Team Size</span></div><div class="ic"><span class="v">Auto/Manual</span><span class="l">Bot Mode</span></div><div class="ic"><span class="v">₹400</span><span class="l">Entry / Team</span></div><div class="ic"><span class="v">Apr 21</span><span class="l">Date</span></div></div>
+  
+  <div class="reg-wrap reveal">
+    <div class="reg-title">// Registration Open</div>
+    <a href="https://edu.easebuzz.in/sign-up/TJohnInstituteofTechn/techfest_parichay_paymentlink/?inst_name=TJohnInstituteofTechn&form_name=techfest_parichay_paymentlink&jsonData=1" target="_blank" rel="noopener noreferrer" class="reg-btn">
+      <span class="reg-icon">⚡</span>
+      <span>Register Now</span>
+      <span class="reg-icon">→</span>
+    </a>
+    <div class="reg-note">Secure payment via EaseBuzz &nbsp;·&nbsp; Seat confirmation on payment</div>
+  </div>
+
   <div class="sec-card reveal">
     <div class="sec-hd">// About the Event</div>
     <p>Robo Race at PARICHAY 4.0 challenges participants to design, build, and race autonomous or manually controlled robots through a brutal obstacle course. The arena features ramps, maze segments, speed gates, and narrow corridors that eliminate poorly engineered bots instantly. Teams must combine mechanical design, electronics, and embedded programming to build machines that are fast, durable, and smart. The crowd goes wild as circuits battle physics.</p>
