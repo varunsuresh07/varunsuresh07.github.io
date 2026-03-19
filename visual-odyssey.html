@@ -103,6 +103,68 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
 .fl-links a:hover{color:#4488ff;}
 .fl-copy{font-family:"Share Tech Mono",monospace;font-size:.6rem;color:#1a3040;letter-spacing:.12em;margin-top:.7rem;}
 
+/* ── OBJECTIVES LIST ── */
+.obj-list{list-style:none;display:flex;flex-direction:column;gap:.75rem;position:relative;z-index:1;}
+.obj-list li{display:flex;align-items:flex-start;gap:.9rem;font-size:.88rem;font-weight:300;line-height:1.75;color:#3a6070;padding:.7rem 1rem;background:rgba(0,64,255,.025);border-left:2px solid rgba(68,136,255,.3);transition:all .25s;}
+.obj-list li:hover{background:rgba(0,64,255,.055);border-left-color:#4488ff;color:#5a8aaa;}
+.obj-dot{width:6px;height:6px;border-radius:50%;background:#4488ff;box-shadow:0 0 8px #4488ff;flex-shrink:0;margin-top:.55rem;}
+
+/* ── ROUND BLOCKS ── */
+.round-block{border:1px solid;padding:1.6rem;position:relative;margin-bottom:.5rem;}
+.round-1{border-color:rgba(68,136,255,.25);background:rgba(0,64,255,.03);}
+.round-1::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#4488ff,transparent);}
+.round-2{border-color:rgba(0,245,255,.22);background:rgba(0,245,255,.025);}
+.round-2::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#00f5ff,transparent);}
+.round-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem;flex-wrap:wrap;}
+.round-badge{font-family:"Orbitron",monospace;font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:.3rem .9rem;border:1px solid rgba(68,136,255,.4);color:#4488ff;background:rgba(0,64,255,.08);}
+.round-badge.r2{border-color:rgba(0,245,255,.4);color:#00f5ff;background:rgba(0,245,255,.06);}
+.round-title{font-family:"Orbitron",monospace;font-size:.88rem;font-weight:700;letter-spacing:.1em;color:#cce4f8;}
+.final-tag{font-family:"Share Tech Mono",monospace;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(0,245,255,.6);border:1px solid rgba(0,245,255,.25);padding:.15rem .6rem;margin-left:.5rem;vertical-align:middle;}
+.round-row{display:flex;gap:.9rem;margin-bottom:.9rem;align-items:flex-start;}
+.round-row:last-child{margin-bottom:0;}
+.round-icon{font-size:1.2rem;filter:drop-shadow(0 0 6px rgba(68,136,255,.5));flex-shrink:0;margin-top:.1rem;}
+.round-sub{font-family:"Orbitron",monospace;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:#4488ff;margin-bottom:.3rem;}
+.round-2 .round-sub{color:#00f5ff;}
+.round-desc{font-size:.84rem;font-weight:300;line-height:1.72;color:#3a6070;}
+.round-arrow{font-family:"Orbitron",monospace;font-size:1.6rem;color:rgba(68,136,255,.3);text-align:center;padding:.4rem 0;position:relative;z-index:1;}
+
+/* ── SUBMISSION GRID ── */
+.sub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem;position:relative;z-index:1;}
+.sub-item{background:rgba(0,64,255,.04);border:1px solid rgba(68,136,255,.15);padding:1.3rem 1.2rem;text-align:center;transition:all .3s;}
+.sub-item:hover{border-color:rgba(68,136,255,.4);background:rgba(0,64,255,.08);}
+.sub-icon{font-size:1.4rem;margin-bottom:.6rem;filter:drop-shadow(0 0 6px rgba(68,136,255,.4));}
+.sub-label{font-family:"Share Tech Mono",monospace;font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(68,136,255,.5);margin-bottom:.4rem;}
+.sub-val{font-family:"Exo 2",sans-serif;font-size:.84rem;font-weight:400;color:#8ab0cc;line-height:1.5;}
+
+/* ── EVALUATION BARS ── */
+.eval-list{display:flex;flex-direction:column;gap:.7rem;position:relative;z-index:1;}
+.eval-row{display:grid;grid-template-columns:180px 1fr 50px;align-items:center;gap:1rem;}
+@media(max-width:560px){.eval-row{grid-template-columns:120px 1fr 40px;}}
+.eval-label{font-family:"Share Tech Mono",monospace;font-size:.68rem;letter-spacing:.12em;color:#5a8aaa;text-transform:uppercase;}
+.eval-bar-wrap{background:rgba(0,64,255,.1);border:1px solid rgba(68,136,255,.12);height:8px;border-radius:0;overflow:hidden;}
+.eval-bar{height:100%;background:linear-gradient(90deg,#4488ff,#00f5ff);border-radius:0;animation:barGrow 1.2s ease-out forwards;transform-origin:left;box-shadow:0 0 10px rgba(68,136,255,.4);}
+@keyframes barGrow{from{width:0!important;}to{}}
+.eval-marks{font-family:"Orbitron",monospace;font-size:.78rem;font-weight:700;color:#4488ff;text-align:right;}
+.eval-total{display:flex;justify-content:space-between;align-items:center;margin-top:.8rem;padding-top:.8rem;border-top:1px solid rgba(68,136,255,.2);font-family:"Share Tech Mono",monospace;font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(68,136,255,.6);}
+.eval-total-num{font-family:"Orbitron",monospace;font-size:1rem;font-weight:900;background:linear-gradient(90deg,#4488ff,#00f5ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 8px rgba(68,136,255,.4));}
+
+/* ── NOTE BOX ── */
+.note-box{display:flex;gap:1.2rem;align-items:flex-start;padding:1.5rem 1.8rem;background:rgba(0,64,255,.04);border:1px solid rgba(68,136,255,.2);position:relative;margin-bottom:1.8rem;}
+.note-box::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#4488ff,transparent);}
+.note-icon{font-size:1.4rem;flex-shrink:0;filter:drop-shadow(0 0 8px rgba(68,136,255,.5));}
+.note-title{font-family:"Orbitron",monospace;font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;color:#4488ff;margin-bottom:.5rem;}
+.note-text{font-size:.85rem;font-weight:300;line-height:1.78;color:#3a6070;}
+
+/* COORDINATOR */
+.coord-solo{display:flex;align-items:center;gap:1.8rem;padding:1.4rem 1.6rem;background:rgba(0,64,255,.04);border:1px solid rgba(0,64,255,.18);position:relative;overflow:hidden;}
+.coord-solo::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#4488ff,#00f5ff,transparent);}
+.coord-avatar{font-size:2.5rem;filter:drop-shadow(0 0 14px rgba(0,64,255,.6));flex-shrink:0;}
+.coord-name{font-family:"Orbitron",monospace;font-size:1.05rem;font-weight:700;letter-spacing:.15em;color:#cce4f8;margin-bottom:.3rem;}
+.coord-role{font-family:"Share Tech Mono",monospace;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(68,136,255,.55);margin-bottom:.8rem;}
+.coord-phone{display:inline-flex;align-items:center;gap:.5rem;font-family:"Share Tech Mono",monospace;font-size:.88rem;letter-spacing:.12em;color:#4488ff;text-decoration:none;padding:.5rem 1.2rem;border:1px solid rgba(0,64,255,.3);background:rgba(0,64,255,.06);transition:all .3s;}
+.coord-phone:hover{border-color:#4488ff;background:rgba(0,64,255,.14);box-shadow:0 0 20px rgba(0,64,255,.25);color:#00f5ff;}
+@media(max-width:480px){.coord-solo{flex-direction:column;text-align:center;}.coord-info{text-align:center;}}
+
 /* REGISTER BUTTON */
 .reg-btn{
   display:inline-flex;align-items:center;gap:.7rem;
@@ -200,7 +262,13 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
 
 <main>
   <a href="events.html" class="back-btn reveal"><span>← Back to All Events</span></a>
-  <div class="info-strip reveal"><div class="ic"><span class="v">3 Formats</span><span class="l">Sub-Events</span></div><div class="ic"><span class="v">Solo</span><span class="l">Participation</span></div><div class="ic"><span class="v">₹150</span><span class="l">Entry Fee</span></div><div class="ic"><span class="v">Apr 21</span><span class="l">Date</span></div></div>
+  <div class="info-strip reveal">
+    <div class="ic"><span class="v">Individual</span><span class="l">Participation</span></div>
+    <div class="ic"><span class="v">2 Rounds</span><span class="l">Event Structure</span></div>
+    <div class="ic"><span class="v">45–60 Min</span><span class="l">Round 1 Time</span></div>
+    <div class="ic"><span class="v">100 Marks</span><span class="l">Total Score</span></div>
+    <div class="ic"><span class="v">Apr 21</span><span class="l">Date</span></div>
+  </div>
   
   <div class="reg-wrap reveal">
     <div class="reg-title">// Registration Open</div>
@@ -212,20 +280,172 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
     <div class="reg-note">Secure payment via EaseBuzz &nbsp;·&nbsp; Seat confirmation on payment</div>
   </div>
 
+  <!-- OBJECTIVES -->
   <div class="sec-card reveal">
-    <div class="sec-hd">// About the Event</div>
-    <p>Visual Odyssey at PARICHAY 4.0 is a tribute to artists, photographers, and filmmakers who see the world differently. Competing across Photography, Digital Illustration, and Short Film Making, participants receive a single theme as a creative prompt — interpretation is entirely theirs. From raw documentary photography to cinematic micro-films to meticulously crafted digital art, Visual Odyssey is where imagination becomes something the world can see and feel.</p>
+    <div class="sec-hd">// Objectives</div>
+    <ul class="obj-list">
+      <li><span class="obj-dot"></span>Encourage creativity and innovation through visual expression.</li>
+      <li><span class="obj-dot"></span>Develop observation skills and the ability to capture meaningful moments.</li>
+      <li><span class="obj-dot"></span>Provide a platform for students to express ideas, emotions, and stories through photography.</li>
+      <li><span class="obj-dot"></span>Enhance technical knowledge of photography — framing, lighting, and composition.</li>
+      <li><span class="obj-dot"></span>Promote artistic thinking and unique perspective among participants.</li>
+      <li><span class="obj-dot"></span>Create a competitive environment that motivates students to showcase their talent.</li>
+    </ul>
   </div>
+
+  <!-- EVENT STRUCTURE -->
   <div class="sec-card reveal">
-    <div class="sec-hd">// Rules &amp; Regulations</div>
-    <ul class="rules"><li data-n="01">Register for one sub-event only: Photography, Digital Illustration, or Short Film. Cross-category submissions are disqualified.</li>
-<li data-n="02">Photography — Submit 3 original photographs (min 5MP). All must be taken within the past 30 days. Light color editing allowed; AI upscaling, heavy compositing, or generative fill is prohibited.</li>
-<li data-n="03">Digital Illustration — Submit 1 original artwork, PNG/JPEG, minimum 1920×1080px. Must be created from scratch by the participant. AI image generation tools are strictly prohibited.</li>
-<li data-n="04">Short Film — Duration 1–3 minutes. All footage must be original and self-captured. Must include a title card and closing credits. Format: MP4 H.264, 1080p minimum resolution.</li>
-<li data-n="05">All entries must respond to the announced theme, revealed 7 days before the event. Entries that don't address the theme receive a mandatory scoring penalty.</li>
-<li data-n="06">Plagiarism, stolen assets, or entries published anywhere else before the event results in disqualification. All work must be original and unpublished.</li>
-<li data-n="07">Judged on: Concept & Interpretation, Technical Execution, Composition, and Theme Relevance. Top 3 per format featured in the live PARICHAY gallery.</li></ul>
+    <div class="sec-hd">// Event Structure</div>
+
+    <div class="round-block round-1">
+      <div class="round-header">
+        <div class="round-badge">Round 1</div>
+        <div class="round-title">Theme-Based Photography</div>
+      </div>
+      <div class="round-body">
+        <div class="round-row">
+          <div class="round-icon">🎯</div>
+          <div>
+            <div class="round-sub">The Theme</div>
+            <p class="round-desc">A theme will be announced on the spot. Participants must capture photographs based on the given theme within the event duration.</p>
+          </div>
+        </div>
+        <div class="round-row">
+          <div class="round-icon">⏱</div>
+          <div>
+            <div class="round-sub">Time Limit</div>
+            <p class="round-desc">45–60 minutes. All photos must be taken within the campus premises only. Previously captured images are strictly prohibited.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="round-arrow">↓</div>
+
+    <div class="round-block round-2">
+      <div class="round-header">
+        <div class="round-badge r2">Round 2</div>
+        <div class="round-title">Creative Storytelling <span class="final-tag">Final Round</span></div>
+      </div>
+      <div class="round-body">
+        <div class="round-row">
+          <div class="round-icon">📸</div>
+          <div>
+            <div class="round-sub">Photo Submission</div>
+            <p class="round-desc">Shortlisted participants submit 3–5 photographs based on a given theme. Selection for this round is based on Round 1 performance.</p>
+          </div>
+        </div>
+        <div class="round-row">
+          <div class="round-icon">🗣</div>
+          <div>
+            <div class="round-sub">The Story</div>
+            <p class="round-desc">Participants must briefly explain the story or concept behind their photographs to the judges. Your narrative matters as much as your lens.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- RULES -->
+  <div class="sec-card reveal">
+    <div class="sec-hd">// Rules &amp; Instructions</div>
+    <ul class="rules">
+      <li data-n="01">Each participant must use their own device — mobile phone or dedicated camera. Borrowed devices are not permitted.</li>
+      <li data-n="02">Only basic editing is allowed: brightness, contrast, and cropping. Advanced filters, AI tools, or photo manipulation of any kind is strictly prohibited.</li>
+      <li data-n="03">All photographs must be captured during the event duration only. Use of previously taken or externally sourced images leads to immediate disqualification.</li>
+      <li data-n="04">Plagiarism or submission of images not taken by the participant during the event will result in disqualification.</li>
+      <li data-n="05">Participants must adhere to the given time limit strictly. Late entries will not be accepted under any circumstance.</li>
+      <li data-n="06">Participants are expected to maintain discipline throughout the event. Any violation of rules will result in disqualification.</li>
+      <li data-n="07">The decision of the judges is final and binding. No appeals or disputes will be entertained after judging is complete.</li>
+    </ul>
+  </div>
+
+  <!-- SUBMISSION GUIDELINES -->
+  <div class="sec-card reveal">
+    <div class="sec-hd">// Submission Guidelines</div>
+    <div class="sub-grid">
+      <div class="sub-item">
+        <div class="sub-icon">🖼</div>
+        <div class="sub-label">File Format</div>
+        <div class="sub-val">JPG / PNG</div>
+      </div>
+      <div class="sub-item">
+        <div class="sub-icon">📷</div>
+        <div class="sub-label">Number of Photos</div>
+        <div class="sub-val">3–5 per round</div>
+      </div>
+      <div class="sub-item">
+        <div class="sub-icon">📤</div>
+        <div class="sub-label">Submission Mode</div>
+        <div class="sub-val">Google Form / Email / WhatsApp<br/><span style="font-size:.75rem;color:rgba(68,136,255,.5);">(as decided by organisers)</span></div>
+      </div>
+      <div class="sub-item">
+        <div class="sub-icon">⏰</div>
+        <div class="sub-label">Late Submissions</div>
+        <div class="sub-val">Not accepted</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EVALUATION -->
+  <div class="sec-card reveal">
+    <div class="sec-hd">// Evaluation Criteria</div>
+    <div class="eval-list">
+      <div class="eval-row">
+        <div class="eval-label">Creativity</div>
+        <div class="eval-bar-wrap"><div class="eval-bar" style="width:25%"></div></div>
+        <div class="eval-marks">25</div>
+      </div>
+      <div class="eval-row">
+        <div class="eval-label">Composition</div>
+        <div class="eval-bar-wrap"><div class="eval-bar" style="width:25%"></div></div>
+        <div class="eval-marks">25</div>
+      </div>
+      <div class="eval-row">
+        <div class="eval-label">Relevance to Theme</div>
+        <div class="eval-bar-wrap"><div class="eval-bar" style="width:20%"></div></div>
+        <div class="eval-marks">20</div>
+      </div>
+      <div class="eval-row">
+        <div class="eval-label">Technical Quality</div>
+        <div class="eval-bar-wrap"><div class="eval-bar" style="width:15%"></div></div>
+        <div class="eval-marks">15</div>
+      </div>
+      <div class="eval-row">
+        <div class="eval-label">Storytelling</div>
+        <div class="eval-bar-wrap"><div class="eval-bar" style="width:15%"></div></div>
+        <div class="eval-marks">15</div>
+      </div>
+      <div class="eval-total">
+        <span>Total</span><span class="eval-total-num">100 marks</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTE -->
+  <div class="note-box reveal">
+    <div class="note-icon">📌</div>
+    <div>
+      <div class="note-title">Note</div>
+      <p class="note-text">Participants are expected to maintain discipline during the event. Any violation of rules will result in disqualification. T John Institute of Technology reserves the right to modify event guidelines if necessary.</p>
+    </div>
+  </div>
+
+  <!-- COORDINATOR -->
+  <div class="sec-card reveal">
+    <div class="sec-hd">// Event Coordinator</div>
+    <div class="coord-solo">
+      <div class="coord-avatar">📸</div>
+      <div class="coord-info">
+        <div class="coord-name">Sujay</div>
+        <div class="coord-role">Visual Odyssey — Photography Event Coordinator</div>
+        <a href="tel:9980965946" class="coord-phone">
+          <span>📞</span>&nbsp;99809 65946
+        </a>
+      </div>
+    </div>
+  </div>
+
 </main>
 
 <footer>
