@@ -103,6 +103,52 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
 .fl-links a:hover{color:#00f5ff;}
 .fl-copy{font-family:"Share Tech Mono",monospace;font-size:.6rem;color:#1a3040;letter-spacing:.12em;margin-top:.7rem;}
 
+/* ── PHASE GRID ── */
+.phase-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:1.2rem;align-items:start;position:relative;z-index:1;margin-bottom:1.8rem;}
+@media(max-width:680px){.phase-grid{grid-template-columns:1fr;}.phase-arrow{display:none;}}
+.phase-card{background:rgba(0,245,255,.03);border:1px solid rgba(0,245,255,.12);padding:1.6rem;position:relative;}
+.phase-card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;}
+.phase-1{border-color:rgba(0,245,255,.2);}
+.phase-1::before{background:linear-gradient(90deg,transparent,#00f5ff,transparent);}
+.phase-2{border-color:rgba(157,0,255,.2);}
+.phase-2::before{background:linear-gradient(90deg,transparent,#bb44ff,transparent);}
+.phase-label{font-family:"Share Tech Mono",monospace;font-size:.58rem;letter-spacing:.4em;text-transform:uppercase;margin-bottom:.5rem;}
+.phase-1 .phase-label{color:rgba(0,245,255,.6);}
+.phase-2 .phase-label{color:rgba(187,68,255,.6);}
+.phase-title{font-family:"Orbitron",monospace;font-size:.88rem;font-weight:700;letter-spacing:.1em;color:#cce4f8;margin-bottom:1.2rem;}
+.phase-time{font-family:"Share Tech Mono",monospace;font-size:.65rem;letter-spacing:.18em;color:rgba(0,245,255,.5);font-weight:400;}
+.phase-row{display:flex;gap:.9rem;margin-bottom:1rem;align-items:flex-start;}
+.phase-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:.35rem;}
+.phase-1 .phase-dot{background:#00f5ff;box-shadow:0 0 8px #00f5ff;}
+.phase-2 .phase-dot{background:#bb44ff;box-shadow:0 0 8px #bb44ff;}
+.phase-sub{font-family:"Orbitron",monospace;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.3rem;}
+.phase-1 .phase-sub{color:#00f5ff;}
+.phase-2 .phase-sub{color:#bb44ff;}
+.phase-desc{font-size:.83rem;font-weight:300;line-height:1.7;color:#3a6070;}
+.phase-arrow{font-family:"Orbitron",monospace;font-size:1.8rem;color:rgba(0,245,255,.25);align-self:center;text-align:center;padding-top:2rem;}
+
+/* ── THEME BANNER ── */
+.theme-banner{display:flex;align-items:center;gap:1.2rem;padding:1.2rem 1.6rem;background:rgba(0,245,255,.04);border:1px solid rgba(0,245,255,.2);position:relative;}
+.theme-banner::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#00f5ff,transparent);}
+.theme-icon{font-size:1.5rem;filter:drop-shadow(0 0 8px #00f5ff);}
+.theme-label{font-family:"Share Tech Mono",monospace;font-size:.58rem;letter-spacing:.35em;text-transform:uppercase;color:rgba(0,245,255,.55);margin-bottom:.3rem;}
+.theme-val{font-family:"Orbitron",monospace;font-size:.82rem;letter-spacing:.1em;color:#cce4f8;}
+
+/* ── COORDINATOR CARDS ── */
+.coord-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;position:relative;z-index:1;}
+@media(max-width:500px){.coord-grid{grid-template-columns:1fr;}}
+.coord-card{background:rgba(0,245,255,.03);border:1px solid rgba(0,245,255,.13);padding:1.6rem;text-align:center;transition:all .3s;position:relative;}
+.coord-card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#00f5ff,transparent);}
+.coord-card:hover{border-color:rgba(0,245,255,.35);background:rgba(0,245,255,.06);box-shadow:0 0 25px rgba(0,245,255,.08);}
+.coord-icon{font-size:1.8rem;margin-bottom:.7rem;filter:drop-shadow(0 0 8px rgba(0,245,255,.4));}
+.coord-name{font-family:"Orbitron",monospace;font-size:.88rem;font-weight:700;letter-spacing:.15em;color:#cce4f8;margin-bottom:.7rem;}
+.coord-phone{display:inline-flex;align-items:center;gap:.5rem;font-family:"Share Tech Mono",monospace;font-size:.82rem;letter-spacing:.12em;color:#00f5ff;text-decoration:none;padding:.5rem 1.2rem;border:1px solid rgba(0,245,255,.25);background:rgba(0,245,255,.05);transition:all .3s;}
+.coord-phone:hover{border-color:#00f5ff;background:rgba(0,245,255,.12);box-shadow:0 0 18px rgba(0,245,255,.2);}
+.coord-ph-icon{font-style:normal;}
+
+/* ── RULES LIST strong override ── */
+.rules li strong{color:#cce4f8;font-weight:600;}
+
 /* REGISTER BUTTON */
 .reg-btn{
   display:inline-flex;align-items:center;gap:.7rem;
@@ -212,21 +258,101 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
     <div class="reg-note">Secure payment via EaseBuzz &nbsp;·&nbsp; Seat confirmation on payment</div>
   </div>
 
+  <!-- ABOUT -->
   <div class="sec-card reveal">
     <div class="sec-hd">// About the Event</div>
-    <p>Hacksphere is PARICHAY 4.0's flagship 24-hour hackathon — an intense coding marathon where participants form teams to ideate, design, and build tech solutions to real-world problems.The hackathon will be divided into 2 phases of 12hrs each. Phase 1 will be online and Phase 2 will be on campus.</p>
+    <p>Hacksphere is PARICHAY 4.0's flagship 24-hour hackathon — a two-part endurance race designed to filter the best ideas before they reach the stage. Not just a build-athon: it's a structured gauntlet that tests your ability to ship fast, adapt under pressure, and pitch with clarity. The theme will be revealed at the start of the event. Every domain is welcome — web, mobile, AI, hardware.</p>
   </div>
+
+  <!-- FORMAT -->
   <div class="sec-card reveal">
-    <div class="sec-hd">// Rules &amp; Regulations</div>
-    <ul class="rules"><li data-n="01">Phase 1: Onlinssse (Hours 1–12) <span>The Build</span>: Teams work from home to build their core prototype.<span>The Cut</span>: At the 12-hour mark, teams submit their progress. Only the best-performing teams are selected to move to the campus.</li>
-<li data-n="02">Teams must consist of 2 to 4 members. Solo participation is not permitted under any circumstance.</li>
-<li data-n="03">All code must be written during the hackathon window. Pre-written codebases or plagiarised work leads to immediate disqualification.</li>
-<li data-n="04">Open source libraries and public APIs are allowed. All third-party assets must be properly credited in the submission.</li>
-<li data-n="05">Submit a working prototype plus a presentation deck (max 10 slides) before the deadline. Both are mandatory.</li>
-<li data-n="06">Judged on: Innovation, Technical Complexity, UI/UX Design, and Real-world Impact. All four criteria weighted equally.</li>
-<li data-n="07">All team members must be present during the final demo and Q&amp;A with judges. Absence = disqualification.</li>
-<li data-n="08">Organiser decisions on judging, eligibility, and disqualification are final and binding with no appeal.</li></ul>
+    <div class="sec-hd">// The Format</div>
+    <div class="phase-grid">
+
+      <div class="phase-card phase-1">
+        <div class="phase-label">Phase 1</div>
+        <div class="phase-title">Online &nbsp;<span class="phase-time">Hours 1 – 12</span></div>
+        <div class="phase-row">
+          <div class="phase-dot"></div>
+          <div>
+            <div class="phase-sub">The Build</div>
+            <p class="phase-desc">Teams work from home to build their core prototype. No setup time wasted — get straight to coding.</p>
+          </div>
+        </div>
+        <div class="phase-row">
+          <div class="phase-dot"></div>
+          <div>
+            <div class="phase-sub">The Cut</div>
+            <p class="phase-desc">At the 12-hour mark, teams submit their progress. Only the best-performing teams are selected to advance to campus.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-arrow">→</div>
+
+      <div class="phase-card phase-2">
+        <div class="phase-label">Phase 2</div>
+        <div class="phase-title">On-Campus &nbsp;<span class="phase-time">Hours 13 – 24</span></div>
+        <div class="phase-row">
+          <div class="phase-dot"></div>
+          <div>
+            <div class="phase-sub">The Polish</div>
+            <p class="phase-desc">Selected teams arrive on campus to finalize their project, fix bugs, and sharpen their presentation.</p>
+          </div>
+        </div>
+        <div class="phase-row">
+          <div class="phase-dot"></div>
+          <div>
+            <div class="phase-sub">The Pitch</div>
+            <p class="phase-desc">A final live demo in front of a panel of judges. Make it count.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="theme-banner reveal">
+      <span class="theme-icon">🎯</span>
+      <div>
+        <div class="theme-label">Event Theme</div>
+        <div class="theme-val">Revealed at the start of the event</div>
+      </div>
+    </div>
   </div>
+
+  <!-- RULES -->
+  <div class="sec-card reveal">
+    <div class="sec-hd">// Key Rules</div>
+    <ul class="rules">
+      <li data-n="⚡"><strong>Originality</strong> — No pre-built projects. All code must be written within the 24-hour window. Pre-existing codebases = instant disqualification.</li>
+      <li data-n="👥"><strong>Team Size</strong> — 2 to 4 members per team. Solo entries are not accepted.</li>
+      <li data-n="📋"><strong>The Check-In</strong> — Teams must submit a 12-hour milestone report (code + demo video) to be eligible for the campus round. No submission = no entry to Phase 2.</li>
+      <li data-n="🏛"><strong>Attendance</strong> — If selected, the entire team must be physically present for Phase 2. Missing members may lead to disqualification of the full team.</li>
+      <li data-n="🛠"><strong>Tools</strong> — Open-source libraries and AI assistants are allowed. However, you must be able to explain every line of your code to the judges.</li>
+    </ul>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="sec-card reveal">
+    <div class="sec-hd">// Event Coordinators</div>
+    <div class="coord-grid">
+      <div class="coord-card">
+        <div class="coord-icon">👩‍💻</div>
+        <div class="coord-name">Disha</div>
+        <a href="tel:7349384407" class="coord-phone">
+          <span class="coord-ph-icon">📞</span> 73493 84407
+        </a>
+      </div>
+      <div class="coord-card">
+        <div class="coord-icon">👩‍💻</div>
+        <div class="coord-name">Rithika</div>
+        <a href="tel:+919986802971" class="coord-phone">
+          <span class="coord-ph-icon">📞</span> +91 99868 02971
+        </a>
+      </div>
+    </div>
+  </div>
+
 </main>
 
 <footer>
