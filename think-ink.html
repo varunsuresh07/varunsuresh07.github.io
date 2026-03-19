@@ -103,6 +103,48 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
 .fl-links a:hover{color:#ff00c8;}
 .fl-copy{font-family:"Share Tech Mono",monospace;font-size:.6rem;color:#1a3040;letter-spacing:.12em;margin-top:.7rem;}
 
+/* ── THEMES GRID ── */
+.themes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.75rem;position:relative;z-index:1;}
+.theme-pill{display:flex;align-items:center;gap:.85rem;padding:.85rem 1.1rem;background:rgba(255,0,200,.03);border:1px solid rgba(255,0,200,.14);transition:all .3s;position:relative;overflow:hidden;}
+.theme-pill::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--m),var(--v));opacity:.5;}
+.theme-pill:hover{background:rgba(255,0,200,.07);border-color:rgba(255,0,200,.35);transform:translateX(4px);box-shadow:0 0 18px rgba(255,0,200,.08);}
+.theme-num{font-family:"Share Tech Mono",monospace;font-size:.6rem;letter-spacing:.2em;color:rgba(255,0,200,.5);flex-shrink:0;min-width:1.6rem;}
+.theme-pill span:last-child{font-size:.85rem;font-weight:300;color:#4a6070;line-height:1.4;}
+.theme-pill:hover span:last-child{color:#b8d4f0;}
+
+/* ── FORMAT STEPS ── */
+.format-steps{display:flex;flex-direction:column;gap:0;position:relative;z-index:1;}
+.format-step{display:flex;gap:1.4rem;align-items:flex-start;padding:1.2rem 0;}
+.step-num{font-family:"Orbitron",monospace;font-size:1.3rem;font-weight:900;line-height:1;flex-shrink:0;min-width:2.2rem;
+  background:linear-gradient(135deg,var(--m),var(--v));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 8px rgba(255,0,200,.4));}
+.step-title{font-family:"Orbitron",monospace;font-size:.82rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#cce4f8;margin-bottom:.4rem;}
+.step-desc{font-size:.87rem;font-weight:300;line-height:1.75;color:#3a6070;}
+.format-connector{width:1px;height:28px;background:linear-gradient(180deg,rgba(255,0,200,.4),rgba(157,0,255,.4));margin-left:1.1rem;}
+
+/* ── EVAL LIST ── */
+.eval-list{display:flex;flex-direction:column;gap:.8rem;position:relative;z-index:1;}
+.eval-row{display:flex;align-items:center;gap:1.2rem;}
+.eval-label{font-size:.83rem;font-weight:300;color:#3a6070;min-width:220px;flex-shrink:0;}
+@media(max-width:600px){.eval-label{min-width:140px;font-size:.76rem;}}
+.eval-bar-wrap{flex:1;height:4px;background:rgba(255,0,200,.08);border-radius:2px;overflow:hidden;}
+.eval-bar{height:100%;background:linear-gradient(90deg,var(--m),var(--v));border-radius:2px;
+  animation:barGrow .9s ease-out forwards;transform-origin:left;}
+@keyframes barGrow{from{width:0!important;}to{}}
+
+/* ── COORDINATOR SOLO ── */
+.coord-solo{display:flex;align-items:center;gap:1.8rem;padding:1.4rem 1.6rem;background:rgba(255,0,200,.04);border:1px solid rgba(255,0,200,.18);position:relative;overflow:hidden;}
+.coord-solo::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--m),var(--v),transparent);}
+.coord-avatar{font-size:2.5rem;filter:drop-shadow(0 0 14px rgba(255,0,200,.6));flex-shrink:0;}
+.coord-name{font-family:"Orbitron",monospace;font-size:1.05rem;font-weight:700;letter-spacing:.15em;color:#cce4f8;margin-bottom:.3rem;}
+.coord-role{font-family:"Share Tech Mono",monospace;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,0,200,.5);margin-bottom:.8rem;}
+.coord-phone{display:inline-flex;align-items:center;gap:.5rem;font-family:"Share Tech Mono",monospace;font-size:.88rem;letter-spacing:.12em;color:var(--m);text-decoration:none;padding:.5rem 1.2rem;border:1px solid rgba(255,0,200,.3);background:rgba(255,0,200,.05);transition:all .3s;}
+.coord-phone:hover{border-color:var(--m);background:rgba(255,0,200,.12);box-shadow:0 0 20px rgba(255,0,200,.22);}
+@media(max-width:480px){.coord-solo{flex-direction:column;text-align:center;}.coord-info{text-align:center;}}
+
+/* ── RULES STRONG ── */
+.rules li strong{color:#cce4f8;font-weight:600;}
+
 /* REGISTER BUTTON */
 .reg-btn{
   display:inline-flex;align-items:center;gap:.7rem;
@@ -193,15 +235,20 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
     <div class="ev-badge">[ EVENT_02 // CREATIVE ARTS — PARICHAY 4.0 ]</div>
     <div class="logo-outer"><svg viewBox="0 0 120 120" fill="none"><circle cx="60" cy="60" r="52" fill="none" stroke="#ff00c8" stroke-width="1.2" opacity=".18"/><circle cx="60" cy="60" r="42" fill="none" stroke="#ff00c8" stroke-width=".9" opacity=".35" stroke-dasharray="5,3"/><rect x="28" y="22" width="64" height="76" rx="5" fill="rgba(255,0,200,.07)" stroke="#ff00c8" stroke-width="1.8"/><rect x="36" y="30" width="48" height="60" rx="2" fill="none" stroke="#ff00c8" stroke-width=".9" opacity=".35"/><line x1="40" y1="42" x2="80" y2="42" stroke="#ff00c8" stroke-width="2" stroke-linecap="round"/><line x1="40" y1="52" x2="80" y2="52" stroke="#ff00c8" stroke-width="2" stroke-linecap="round"/><line x1="40" y1="62" x2="65" y2="62" stroke="#ff00c8" stroke-width="2" stroke-linecap="round"/><line x1="40" y1="72" x2="60" y2="72" stroke="#ff00c8" stroke-width="2" stroke-linecap="round" opacity=".6"/><path d="M68 80 L80 68 L87 75 L75 87 L68 80Z" fill="rgba(255,0,200,.15)" stroke="#ff00c8" stroke-width="2"/><line x1="87" y1="58" x2="96" y2="49" stroke="#ff00c8" stroke-width="3" stroke-linecap="round"/><circle cx="96" cy="46" r="3.5" fill="#ff00c8" opacity=".9"/><path d="M28 22 L36 22 M28 22 L28 30" stroke="#ff00c8" stroke-width="1" opacity=".4"/><path d="M92 22 L84 22 M92 22 L92 30" stroke="#ff00c8" stroke-width="1" opacity=".4"/><path d="M28 98 L36 98 M28 98 L28 90" stroke="#ff00c8" stroke-width="1" opacity=".4"/><path d="M92 98 L84 98 M92 98 L92 90" stroke="#ff00c8" stroke-width="1" opacity=".4"/></svg></div>
     <h1 class="ev-title">Think-Ink Expo</h1>
-    <p class="ev-tagline">Think Deeper. Write Bolder. Speak Louder.</p>
+    <p class="ev-tagline">Poster Presentation Event — Ideas. Design. Impact.</p>
     <div class="ev-rule"></div>
   </div>
 </div>
 
 <main>
   <a href="events.html" class="back-btn reveal"><span>← Back to All Events</span></a>
-  <div class="info-strip reveal"><div class="ic"><span class="v">4 Formats</span><span class="l">Sub-Events</span></div><div class="ic"><span class="v">Solo / Duo</span><span class="l">Participation</span></div><div class="ic"><span class="v">₹200</span><span class="l">Entry Fee</span></div><div class="ic"><span class="v">Apr 21</span><span class="l">Date</span></div></div>
-  
+  <div class="info-strip reveal">
+    <div class="ic"><span class="v">2–4</span><span class="l">Team Size</span></div>
+    <div class="ic"><span class="v">5–7 Min</span><span class="l">Presentation</span></div>
+    <div class="ic"><span class="v">10 Themes</span><span class="l">To Choose From</span></div>
+    <div class="ic"><span class="v">Apr 21</span><span class="l">Date</span></div>
+  </div>
+
   <div class="reg-wrap reveal">
     <div class="reg-title">// Registration Open</div>
     <a href="https://edu.easebuzz.in/sign-up/TJohnInstituteofTechn/techfest_parichay_paymentlink/?inst_name=TJohnInstituteofTechn&form_name=techfest_parichay_paymentlink&jsonData=1" target="_blank" rel="noopener noreferrer" class="reg-btn">
@@ -212,20 +259,115 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
     <div class="reg-note">Secure payment via EaseBuzz &nbsp;·&nbsp; Seat confirmation on payment</div>
   </div>
 
+  <!-- ABOUT -->
   <div class="sec-card reveal">
     <div class="sec-hd">// About the Event</div>
-    <p>Think-Ink Expo is a celebration of intellect and expression at PARICHAY 4.0. This multifaceted creative event gathers writers, debaters, poets, and visual thinkers under one roof. Compete in Poster Making, Essay Writing, Extempore Speaking, or the Grand Debate. Each discipline is a stage to showcase your voice, vision, and values. No compiler required — your sharpest weapon is your mind.</p>
+    <p>THINK-INK EXPO is a creative Poster Presentation event designed to provide students with a platform to showcase their ideas, research, and innovations through visually engaging posters. The event encourages participants to think critically, present creatively, and communicate their concepts effectively while sharing knowledge on meaningful and trending topics.</p>
   </div>
+
+  <!-- THEMES -->
+  <div class="sec-card reveal">
+    <div class="sec-hd">// Themes</div>
+    <div class="themes-grid">
+      <div class="theme-pill"><span class="theme-num">01</span><span>Innovation &amp; Technology</span></div>
+      <div class="theme-pill"><span class="theme-num">02</span><span>Artificial Intelligence &amp; Future Tech</span></div>
+      <div class="theme-pill"><span class="theme-num">03</span><span>Sustainable Development &amp; Environment</span></div>
+      <div class="theme-pill"><span class="theme-num">04</span><span>Smart Cities &amp; Digital India</span></div>
+      <div class="theme-pill"><span class="theme-num">05</span><span>Health &amp; Wellness</span></div>
+      <div class="theme-pill"><span class="theme-num">06</span><span>Climate Change &amp; Green Energy</span></div>
+      <div class="theme-pill"><span class="theme-num">07</span><span>Entrepreneurship &amp; Startups</span></div>
+      <div class="theme-pill"><span class="theme-num">08</span><span>Women Empowerment</span></div>
+      <div class="theme-pill"><span class="theme-num">09</span><span>Education &amp; Future Learning</span></div>
+      <div class="theme-pill"><span class="theme-num">10</span><span>Social Issues &amp; Solutions</span></div>
+    </div>
+  </div>
+
+  <!-- PRESENTATION FORMAT -->
+  <div class="sec-card reveal">
+    <div class="sec-hd">// Presentation Format</div>
+    <div class="format-steps">
+      <div class="format-step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <div class="step-title">Direct Presentation</div>
+          <p class="step-desc">All participating teams will present their posters directly in front of the panel of judges. No pre-screening round.</p>
+        </div>
+      </div>
+      <div class="format-connector"></div>
+      <div class="format-step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <div class="step-title">5–7 Minute Slot</div>
+          <p class="step-desc">Each team is allotted 5–7 minutes to present their poster, explain their concept, and walk the judges through their work.</p>
+        </div>
+      </div>
+      <div class="format-connector"></div>
+      <div class="format-step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <div class="step-title">Q&amp;A Session</div>
+          <p class="step-desc">A brief Q&amp;A session follows the presentation. Evaluation is done simultaneously by judges during your slot.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULES -->
   <div class="sec-card reveal">
     <div class="sec-hd">// Rules &amp; Regulations</div>
-    <ul class="rules"><li data-n="01">Register for one sub-event only: Poster Making, Essay Writing, Extempore, or Grand Debate. Multi-category entries are void.</li>
-<li data-n="02">Poster Making — All materials provided. Create original artwork within 90 minutes. No digital devices or reference material permitted.</li>
-<li data-n="03">Essay Writing — Topic revealed on the day of the event. Duration: 60 minutes. Must be handwritten on provided answer sheets only.</li>
-<li data-n="04">Extempore — Topics drawn by lottery. 2 minutes preparation, 3 minutes delivery. No notes allowed at the podium under any circumstance.</li>
-<li data-n="05">Grand Debate — Teams of 2. Topic announced 48 hours prior. 5 minutes per side for arguments, 2 minutes rebuttal each.</li>
-<li data-n="06">Plagiarism or use of pre-prepared material in Essay/Extempore events leads to immediate disqualification and forfeiture of prize.</li>
-<li data-n="07">Criteria: Content Quality, Originality, Clarity, and Delivery. Judges' verdicts are final with no appeals accepted.</li></ul>
+    <ul class="rules">
+      <li data-n="👥">Each team must consist of <strong>2–4 participants</strong>. Individual entries are not permitted.</li>
+      <li data-n="🎯">Posters must be relevant to the selected theme. Off-theme entries will be penalised in scoring.</li>
+      <li data-n="✍">Content must be <strong>entirely original</strong>. Plagiarism of any kind is strictly prohibited and will lead to disqualification.</li>
+      <li data-n="🗣">Participants must be able to clearly explain their poster to the judges. All team members may be questioned.</li>
+      <li data-n="📊">Use of charts, images, infographics, and diagrams is strongly encouraged to enhance visual impact.</li>
+      <li data-n="⚠">Any form of misconduct, disruption, or unsportsmanlike behaviour will lead to immediate disqualification.</li>
+      <li data-n="⚖">Judges' decision is final and binding. No appeals or disputes will be entertained post-evaluation.</li>
+    </ul>
   </div>
+
+  <!-- EVALUATION CRITERIA -->
+  <div class="sec-card reveal">
+    <div class="sec-hd">// Evaluation Criteria</div>
+    <div class="eval-list">
+      <div class="eval-row">
+        <div class="eval-label">Content Quality &amp; Relevance</div>
+        <div class="eval-bar-wrap"><div class="eval-bar" style="width:100%"></div></div>
+      </div>
+      <div class="eval-row">
+        <div class="eval-label">Creativity &amp; Innovation</div>
+        <div class="eval-bar-wrap"><div class="eval-bar" style="width:100%"></div></div>
+      </div>
+      <div class="eval-row">
+        <div class="eval-label">Poster Design &amp; Visual Appeal</div>
+        <div class="eval-bar-wrap"><div class="eval-bar" style="width:100%"></div></div>
+      </div>
+      <div class="eval-row">
+        <div class="eval-label">Presentation Skills</div>
+        <div class="eval-bar-wrap"><div class="eval-bar" style="width:100%"></div></div>
+      </div>
+      <div class="eval-row">
+        <div class="eval-label">Clarity of Explanation &amp; Q&amp;A</div>
+        <div class="eval-bar-wrap"><div class="eval-bar" style="width:100%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COORDINATOR -->
+  <div class="sec-card reveal">
+    <div class="sec-hd">// Event Coordinator</div>
+    <div class="coord-solo">
+      <div class="coord-avatar">🖋</div>
+      <div class="coord-info">
+        <div class="coord-name">Sree Harsha</div>
+        <div class="coord-role">Think-Ink Expo — Poster Presentation Coordinator</div>
+        <a href="tel:7899896106" class="coord-phone">
+          <span>📞</span>&nbsp;78998 96106
+        </a>
+      </div>
+    </div>
+  </div>
+
 </main>
 
 <footer>
