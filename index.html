@@ -41,6 +41,8 @@ nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(2,4,15,.88);bac
 .nav-brand{display:flex;align-items:center;gap:.9rem;text-decoration:none;}
 .college-logo{height:40px;width:auto;object-fit:contain;border-radius:3px;
   filter:drop-shadow(0 0 6px rgba(0,245,255,.2));transition:filter .3s,transform .3s;}
+.ai-minds-logo{height:40px;width:auto;object-fit:contain;border-radius:3px;
+  filter:drop-shadow(0 0 6px rgba(0,245,255,.2));transition:filter .3s,transform .3s;}
 .nav-brand:hover .college-logo{filter:drop-shadow(0 0 14px rgba(0,245,255,.55));transform:scale(1.03);}
 .nav-divider{width:1px;height:30px;background:linear-gradient(180deg,transparent,rgba(0,245,255,.4),transparent);flex-shrink:0;}
 .nav-logo{font-family:"Orbitron",monospace;font-weight:900;font-size:1rem;letter-spacing:.22em;
@@ -259,6 +261,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;
 <nav>
   <div class="nav-inner">
     <a href="index.html" class="nav-brand">
+      <img src="aiminds.png" alt="AI Minds" class="ai-minds-logo"/>
       <img src="tjohn-logo.png" alt="T. John Institute of Technology" class="college-logo"/>
       <div class="nav-divider"></div>
       <div class="nav-logo">PARICHAY <span>4.0</span></div>
