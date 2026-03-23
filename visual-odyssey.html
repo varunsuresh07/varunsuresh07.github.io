@@ -5,6 +5,66 @@
 <title>Visual Odyssey — PARICHAY 4.0</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
 <style>
+  .coord-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  position: relative;
+  z-index: 1;
+}
+@media(max-width: 500px) { .coord-grid { grid-template-columns: 1fr; } }
+.coord-card {
+  background: rgba(0,64,255,.03);
+  border: 1px solid rgba(0,64,255,.14);
+  padding: 1.6rem;
+  text-align: center;
+  transition: all .3s;
+  position: relative;
+}
+.coord-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #4488ff, transparent);
+}
+.coord-card:hover {
+  border-color: rgba(0,64,255,.4);
+  background: rgba(0,64,255,.07);
+  box-shadow: 0 0 25px rgba(0,64,255,.1);
+}
+.coord-icon {
+  font-size: 1.8rem;
+  margin-bottom: .7rem;
+  filter: drop-shadow(0 0 8px rgba(0,64,255,.5));
+}
+.coord-name {
+  font-family: "Orbitron", monospace;
+  font-size: .88rem;
+  font-weight: 700;
+  letter-spacing: .15em;
+  color: #cce4f8;
+  margin-bottom: .7rem;
+}
+.coord-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-family: "Share Tech Mono", monospace;
+  font-size: .82rem;
+  letter-spacing: .12em;
+  color: #4488ff;
+  text-decoration: none;
+  padding: .5rem 1.2rem;
+  border: 1px solid rgba(0,64,255,.28);
+  background: rgba(0,64,255,.05);
+  transition: all .3s;
+}
+.coord-phone:hover {
+  border-color: #4488ff;
+  background: rgba(0,64,255,.14);
+  box-shadow: 0 0 18px rgba(0,64,255,.22);
+}
   .nav-brand {
   display: flex;
   align-items: center;
