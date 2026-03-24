@@ -5,46 +5,7 @@
 <title>Contact — PARICHAY 4.0</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
-<style>
-  .nav-brand {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  text-decoration: none;
-}
-.college-logo {
-  height: 38px;
-  width: auto;
-  object-fit: contain;
-  border-radius: 3px;
-  filter: drop-shadow(0 0 6px rgba(0,245,255,0.25));
-  transition: filter 0.3s;
-}
-.nav-brand:hover .college-logo {
-  filter: drop-shadow(0 0 12px rgba(0,245,255,0.55));
-}
-.nav-divider {
-  width: 1px;
-  height: 28px;
-  background: linear-gradient(180deg, transparent, rgba(0,245,255,0.35), transparent);
-  flex-shrink: 0;
-}
-.nav-logo {
-  font-family: "Orbitron", monospace;
-  font-weight: 900;
-  font-size: 1rem;
-  letter-spacing: 0.22em;
-  background: linear-gradient(90deg, var(--c), var(--b));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  filter: drop-shadow(0 0 10px rgba(0,245,255,0.55));
-}
-.nav-logo span {
-  color: var(--m);
-  -webkit-text-fill-color: var(--m);
-}
-:root{
+<style>:root{
   --c:#00f5ff;--m:#ff00c8;--v:#9d00ff;--b:#0040ff;--g:#00ff88;
   --bg:#02040f;--bg2:#050a1a;--bg3:#080f20;
   --border:rgba(0,245,255,.13);
@@ -52,7 +13,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{background:var(--bg);color:#b8d4f0;font-family:"Exo 2",sans-serif;overflow-x:hidden;cursor:none;}
+body{background:var(--bg);color:#c8ddf5;font-family:"Exo 2",sans-serif;overflow-x:hidden;cursor:none;}
 
 /* CURSOR */
 #cursor{position:fixed;width:10px;height:10px;border-radius:50%;background:var(--c);pointer-events:none;z-index:99999;transform:translate(-50%,-50%);mix-blend-mode:screen;transition:transform .1s,background .2s;}
@@ -82,7 +43,7 @@ nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(2,4,15,.85);bac
 .nav-logo span{color:var(--m);-webkit-text-fill-color:var(--m);}
 .nav-links{display:flex;gap:0;list-style:none;}
 .nav-links a{font-family:"Share Tech Mono",monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
-  color:#3a6a84;text-decoration:none;padding:.45rem 1rem;transition:color .2s;position:relative;display:block;}
+  color:#7a9ab8;text-decoration:none;padding:.45rem 1rem;transition:color .2s;position:relative;display:block;}
 .nav-links a::after{content:"";position:absolute;bottom:0;left:15%;width:70%;height:1px;
   background:linear-gradient(90deg,transparent,var(--c),transparent);transform:scaleX(0);transition:transform .3s;}
 .nav-links a:hover,.nav-links a.active{color:var(--c);}
@@ -105,11 +66,11 @@ nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(2,4,15,.85);bac
 .page-hero-mesh{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(0,64,255,.2) 0%,transparent 65%),
   radial-gradient(ellipse 40% 30% at 80% 80%,rgba(157,0,255,.14) 0%,transparent 55%),var(--bg);}
 .page-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,245,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(0,245,255,.045) 1px,transparent 1px);background-size:50px 50px;mask-image:radial-gradient(ellipse 80% 80% at 50% 0%,black 30%,transparent 75%);}
-.page-eyebrow{font-family:"Share Tech Mono",monospace;font-size:.62rem;letter-spacing:.5em;text-transform:uppercase;color:var(--c);opacity:.6;margin-bottom:.6rem;position:relative;z-index:1;}
+.page-eyebrow{font-family:"Share Tech Mono",monospace;font-size:.62rem;letter-spacing:.5em;text-transform:uppercase;color:var(--c);opacity:1;margin-bottom:.6rem;position:relative;z-index:1;}
 .page-title{font-family:"Orbitron",monospace;font-weight:900;font-size:clamp(2rem,6vw,4rem);letter-spacing:.06em;text-transform:uppercase;position:relative;z-index:1;
   background:linear-gradient(135deg,#d0eaf8 0%,var(--c) 50%,var(--b) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   filter:drop-shadow(0 0 20px rgba(0,245,255,.3));}
-.page-sub{font-size:.88rem;font-weight:300;font-style:italic;color:#2a5068;letter-spacing:.12em;margin-top:.8rem;position:relative;z-index:1;}
+.page-sub{font-size:.88rem;font-weight:300;font-style:italic;color:#5a8090;letter-spacing:.12em;margin-top:.8rem;position:relative;z-index:1;}
 .cyber-divider{width:300px;max-width:100%;height:1px;margin:1.5rem auto 0;position:relative;
   background:linear-gradient(90deg,transparent,var(--c),var(--m),var(--c),transparent);opacity:.45;}
 
@@ -117,7 +78,7 @@ nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(2,4,15,.85);bac
 .page-content{max-width:1200px;margin:0 auto;padding:4rem 2rem 6rem;position:relative;z-index:3;}
 
 /* SECTION UTILS */
-.section-label{font-family:"Share Tech Mono",monospace;font-size:.62rem;letter-spacing:.45em;text-transform:uppercase;color:var(--c);opacity:.65;margin-bottom:.5rem;}
+.section-label{font-family:"Share Tech Mono",monospace;font-size:.62rem;letter-spacing:.45em;text-transform:uppercase;color:var(--c);opacity:1;margin-bottom:.5rem;}
 .section-heading{font-family:"Orbitron",monospace;font-weight:900;font-size:clamp(1.2rem,3vw,1.9rem);letter-spacing:.08em;text-transform:uppercase;
   background:linear-gradient(90deg,#d0eaf8,var(--c));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1rem;}
 
@@ -125,7 +86,7 @@ nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(2,4,15,.85);bac
 .glass-card{background:rgba(8,15,32,.92);border:1px solid rgba(0,245,255,.12);position:relative;overflow:hidden;transition:border-color .3s,box-shadow .3s;}
 .glass-card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--c),transparent);}
 .glass-card::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,245,255,.028) 0%,transparent 55%);pointer-events:none;}
-.glass-card:hover{border-color:rgba(0,245,255,.3);box-shadow:0 0 40px rgba(0,245,255,.08);}
+.glass-card:hover{border-color:rgba(0,245,255,.55);box-shadow:0 0 40px rgba(0,245,255,.08);}
 
 /* CORNER BRACKETS */
 .corners::before,.corners::after,
@@ -137,13 +98,13 @@ nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(2,4,15,.85);bac
 
 /* FOOTER */
 footer{position:relative;z-index:3;background:var(--bg2);border-top:1px solid rgba(0,245,255,.07);text-align:center;padding:2.5rem 1.5rem 2rem;}
-footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--c),var(--m),var(--v),transparent);opacity:.35;}
+footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent 0%,var(--c) 20%,var(--m) 50%,var(--v) 80%,transparent 100%);background-size:200% 100%;animation:footerWave 3s linear infinite;opacity:.7;}
 .footer-logo{font-family:"Orbitron",monospace;font-weight:900;font-size:1rem;letter-spacing:.25em;
   background:linear-gradient(90deg,var(--c),var(--b),var(--m));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem;}
-.footer-links a{font-family:"Share Tech Mono",monospace;font-size:.6rem;letter-spacing:.2em;color:rgba(0,245,255,.3);text-decoration:none;text-transform:uppercase;transition:color .2s;}
+.footer-links a{font-family:"Share Tech Mono",monospace;font-size:.6rem;letter-spacing:.2em;color:rgba(0,245,255,.55);text-decoration:none;text-transform:uppercase;transition:color .2s;}
 .footer-links a:hover{color:var(--c);}
-.footer-copy{font-family:"Share Tech Mono",monospace;font-size:.6rem;color:#1a3040;letter-spacing:.12em;margin-top:.8rem;}
+.footer-copy{font-family:"Share Tech Mono",monospace;font-size:.6rem;color:#3a5a6a;letter-spacing:.12em;margin-top:.8rem;}
 
 /* REVEAL ANIMATIONS */
 .reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease;}
@@ -159,7 +120,7 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:3rem;}
 @media(max-width:640px){.contact-grid{grid-template-columns:1fr;}}
 .contact-card{padding:2rem 2.2rem;transition:all .3s;}
-.contact-card:hover{border-color:rgba(0,245,255,.3);box-shadow:0 0 30px rgba(0,245,255,.07);transform:translateY(-3px);}
+.contact-card:hover{border-color:rgba(0,245,255,.55);box-shadow:0 0 30px rgba(0,245,255,.07);transform:translateY(-3px);}
 .contact-icon{font-size:1.8rem;margin-bottom:.9rem;filter:drop-shadow(0 0 10px rgba(0,245,255,.4));}
 .contact-lbl{font-family:"Share Tech Mono",monospace;font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;color:var(--c);opacity:.7;margin-bottom:.4rem;}
 .contact-val{font-size:.92rem;font-weight:400;color:#4a7090;}
@@ -171,6 +132,106 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
 .team-avatar{width:56px;height:56px;border-radius:50%;margin:0 auto .9rem;background:linear-gradient(135deg,rgba(0,245,255,.15),rgba(157,0,255,.15));border:1px solid rgba(0,245,255,.2);display:flex;align-items:center;justify-content:center;font-family:"Orbitron",monospace;font-size:1.1rem;color:var(--c);}
 .team-name{font-family:"Orbitron",monospace;font-size:.78rem;letter-spacing:.15em;color:#c0daf0;margin-bottom:.3rem;}
 .team-role{font-family:"Share Tech Mono",monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,245,255,.4);}
+
+/* ══ READABILITY & VISUAL UPGRADE ══ */
+body { color: #c8ddf5; }
+.nav-links a { color: #7a9ab8; }
+.nav-links a:hover, .nav-links a.active { color: var(--c, #00f5ff); }
+.page-sub { color: #5a8090; }
+.page-eyebrow { color: rgba(0,245,255,.85); opacity: 1; }
+.page-title { filter: drop-shadow(0 0 25px rgba(0,245,255,.35)); }
+.sec-card p, .section-card p { color: #7a9aaa; }
+.sec-hd, .section-card h2 { opacity: 1; }
+.rules li { color: #7a9aaa; }
+.rules li strong { color: #c8ddf5; font-weight: 600; }
+.rules li::before { opacity: 1; }
+.ic .v { font-weight: 700; }
+.ic .l { color: rgba(0,245,255,.55); }
+.ev-sys, .card-sys { opacity: 1; }
+.ev-desc, .card-desc { color: #6a8898; }
+.ev-name, .card-title, .ev-name { color: #d0eaf8; }
+.ev-tagline { color: rgba(255,255,255,.5); text-shadow: 0 2px 20px rgba(0,0,0,.7); }
+.phase-desc, .step-desc, .round-desc { color: #7a9aaa; }
+.phase-sub, .step-title { color: #d0eaf8; }
+.phase-label { opacity: 1; }
+.detail-val { color: #7a9aaa; }
+.detail-val strong { color: #c8ddf5; }
+.theme-pill span:last-child { color: #7a9aaa; }
+.theme-pill:hover span:last-child { color: #d0eaf8; }
+.theme-num { opacity: 1; }
+.eval-label { color: #7a9aaa; }
+.pts-row { color: #7a9aaa; }
+.pts-row:hover { color: #c8ddf5; }
+.pts-kill-lbl { opacity: 1; }
+.sub-val { color: #8ab0c0; }
+.sub-label { opacity: 1; }
+.coord-role { opacity: 1; }
+.coord-name { color: #d0eaf8; }
+.about-lead, .about-text p { color: #8ab0c0; }
+.about-lead strong { color: var(--c, #00f5ff); }
+.tl-item p { color: #8ab0c0; }
+.contact-val { color: #7a9aaa; }
+.contact-val a { color: #7a9aaa; }
+.contact-val a:hover { color: var(--c, #00f5ff); }
+.contact-lbl { opacity: 1; }
+.team-role { opacity: 1; }
+.note-text { color: #7a9aaa; }
+.note-title { opacity: 1; }
+.tier-label { opacity: 1; }
+.sponsor-slot span { opacity: 1; }
+.perk p { color: #7a9aaa; }
+.footer-links a { color: rgba(0,245,255,.5); }
+.footer-copy { color: #3a5a6a; }
+.fl-links a { color: rgba(0,245,255,.45); }
+.fl-copy { color: #3a5a6a; }
+.cd-lbl { color: #4a8090; }
+.cd-eyebrow { opacity: 1; }
+.section-label { opacity: 1; }
+.back-btn { opacity: 1; }
+.round-desc { color: #7a9aaa; }
+.obj-list li { color: #7a9aaa; }
+.obj-list li:hover { color: #8ab0c0; }
+.cta-box p { color: #7a9aaa; }
+.cta-box h3 { color: #d0eaf8; }
+.info-card p { color: #8ab0c0; font-weight: 400; }
+.info-card h3 { color: var(--c, #00f5ff); text-shadow: 0 0 12px rgba(0,245,255,.25); }
+/* ══ END READABILITY ══ */
+
+/* ══ HERO MESH UPGRADE ══ */
+.page-hero-mesh {
+  animation: meshP 9s ease-in-out infinite alternate;
+}
+.page-hero-mesh::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: conic-gradient(from 200deg at 50% 120%,
+    rgba(0,245,255,.04) 0deg, rgba(157,0,255,.06) 60deg,
+    rgba(255,0,200,.04) 120deg, transparent 180deg);
+  animation: auroraR 20s linear infinite;
+}
+@keyframes meshP { 0% { opacity: .7; } 100% { opacity: 1; } }
+@keyframes auroraR { from { transform: rotate(0deg) scale(1.6); } to { transform: rotate(360deg) scale(1.6); } }
+/* ══ END HERO MESH ══ */
+
+/* ══ FOOTER WAVE UPGRADE ══ */
+footer::before {
+  top: -1px !important;
+  height: 2px !important;
+  background-size: 200% 100% !important;
+  animation: footerWave 3s linear infinite !important;
+  opacity: .7 !important;
+}
+@keyframes footerWave { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
+footer { box-shadow: 0 -20px 60px rgba(0,245,255,.04); }
+.footer-logo, .fl { filter: drop-shadow(0 0 10px rgba(0,245,255,.25)); }
+/* ══ END FOOTER ══ */
+
+/* ══ PAGE HERO TEXT ANIMATIONS ══ */
+.page-hero .page-eyebrow { opacity: 0; animation: fadeUp .7s .1s forwards; }
+.page-hero .page-title { opacity: 0; animation: fadeUp .8s .25s forwards; }
+.page-hero .page-sub { opacity: 0; animation: fadeUp .8s .4s forwards; }
+.page-hero .cyber-divider { opacity: 0; animation: fadeUp .8s .5s forwards; }
+/* ══ END ══ */
 </style>
 </head>
 <body>
@@ -183,11 +244,7 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
 <div class="scanlines"></div>
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="nav-brand">
-  <img src="tjohn-logo.png" alt="T. John Institute of Technology" class="college-logo"/>
-  <div class="nav-divider"></div>
-  <div class="nav-logo">PARICHAY <span>4.0</span></div>
-</a>
+    <a href="index.html" class="nav-logo">PARICHAY <span>4.0</span></a>
     <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html" data-page="index">Home</a></li>
@@ -217,7 +274,7 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
     <div class="contact-card glass-card corners reveal"><div class="c-bl"></div><div class="c-br"></div>
       <div class="contact-icon">📡</div>
       <div class="contact-lbl">Email</div>
-      <div class="contact-val"><a href="mailto:contact@parichay4.edu">contact@parichay4.edu</a></div>
+      <div class="contact-val"><a href="/cdn-cgi/l/email-protection#c9aaa6a7bda8aabd89b9a8bba0aaa1a8b0fde7acadbc"><span class="__cf_email__" data-cfemail="5c3f3332283d3f281c2c3d2e353f343d256872393829">[email&#160;protected]</span></a></div>
     </div>
     <div class="contact-card glass-card corners reveal"><div class="c-bl"></div><div class="c-br"></div>
       <div class="contact-icon">📍</div>
@@ -272,7 +329,7 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
 </footer>
 
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* CURSOR */
 const cur=document.getElementById("cursor"),ring=document.getElementById("cursor-ring");
 let mx=0,my=0,rx=0,ry=0,ptT=0;
@@ -328,9 +385,4 @@ const ro=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isInter
 document.querySelectorAll(".reveal,.reveal-left,.reveal-right").forEach(el=>ro.observe(el));
 
 /* NAV HAMBURGER */
-function toggleNav(){document.getElementById("navLinks").classList.toggle("open");}
-document.querySelectorAll(".nav-links a").forEach(a=>a.addEventListener("click",()=>document.getElementById("navLinks").classList.remove("open")));
-</script>
-
-</body>
-</html>
+function tog
