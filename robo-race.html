@@ -5,109 +5,11 @@
 <title>Robo Race — PARICHAY 4.0</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
 <style>
-  .coord-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.2rem;
-  position: relative;
-  z-index: 1;
-}
-@media(max-width: 500px) { .coord-grid { grid-template-columns: 1fr; } }
-.coord-card {
-  background: rgba(157,0,255,.03);
-  border: 1px solid rgba(157,0,255,.14);
-  padding: 1.6rem;
-  text-align: center;
-  transition: all .3s;
-  position: relative;
-}
-.coord-card::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #bb44ff, transparent);
-}
-.coord-card:hover {
-  border-color: rgba(157,0,255,.4);
-  background: rgba(157,0,255,.07);
-  box-shadow: 0 0 25px rgba(157,0,255,.1);
-}
-.coord-icon {
-  font-size: 1.8rem;
-  margin-bottom: .7rem;
-  filter: drop-shadow(0 0 8px rgba(157,0,255,.5));
-}
-.coord-name {
-  font-family: "Orbitron", monospace;
-  font-size: .88rem;
-  font-weight: 700;
-  letter-spacing: .15em;
-  color: #cce4f8;
-  margin-bottom: .7rem;
-}
-.coord-phone {
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  font-family: "Share Tech Mono", monospace;
-  font-size: .82rem;
-  letter-spacing: .12em;
-  color: #bb44ff;
-  text-decoration: none;
-  padding: .5rem 1.2rem;
-  border: 1px solid rgba(157,0,255,.28);
-  background: rgba(157,0,255,.05);
-  transition: all .3s;
-}
-.coord-phone:hover {
-  border-color: #bb44ff;
-  background: rgba(157,0,255,.14);
-  box-shadow: 0 0 18px rgba(157,0,255,.22);
-}
-  .nav-brand {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  text-decoration: none;
-}
-.college-logo {
-  height: 38px;
-  width: auto;
-  object-fit: contain;
-  border-radius: 3px;
-  filter: drop-shadow(0 0 6px rgba(0,245,255,0.25));
-  transition: filter 0.3s;
-}
-.nav-brand:hover .college-logo {
-  filter: drop-shadow(0 0 12px rgba(0,245,255,0.55));
-}
-.nav-divider {
-  width: 1px;
-  height: 28px;
-  background: linear-gradient(180deg, transparent, rgba(0,245,255,0.35), transparent);
-  flex-shrink: 0;
-}
-.nav-logo {
-  font-family: "Orbitron", monospace;
-  font-weight: 900;
-  font-size: 1rem;
-  letter-spacing: 0.22em;
-  background: linear-gradient(90deg, var(--c), var(--b));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  filter: drop-shadow(0 0 10px rgba(0,245,255,0.55));
-}
-.nav-logo span {
-  color: var(--m);
-  -webkit-text-fill-color: var(--m);
-}
 :root{--ac:#bb44ff;--acg:#ff00c8;--bg:#02040f;--bg2:#050a1a;--bg3:#080f20;
   --c:#00f5ff;--m:#ff00c8;--v:#9d00ff;--g:#00ff88;--border:rgba(0,245,255,.13);}
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{background:var(--bg);color:#b8d4f0;font-family:"Exo 2",sans-serif;overflow-x:hidden;cursor:none;}
+body{background:var(--bg);color:#c8ddf5;font-family:"Exo 2",sans-serif;overflow-x:hidden;cursor:none;}
 #cursor{position:fixed;width:10px;height:10px;border-radius:50%;background:#bb44ff;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);mix-blend-mode:screen;transition:transform .1s;}
 #cursor-ring{position:fixed;width:32px;height:32px;border-radius:50%;border:1px solid rgba(157,0,255,.38);pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:left .1s ease,top .1s ease;mix-blend-mode:screen;}
 .cursor-particle{position:fixed;pointer-events:none;z-index:99997;border-radius:50%;transform:translate(-50%,-50%);animation:ptF .5s ease-out forwards;}
@@ -157,7 +59,7 @@ nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(2,4,15,.88);bac
 .ev-title::after{animation:gl2 7s infinite;}
 @keyframes gl1{0%,88%,100%{clip-path:inset(0 0 100% 0);transform:translate(0)}90%{clip-path:inset(30% 0 50% 0);transform:translate(-4px,2px)}93%{clip-path:inset(60% 0 15% 0);transform:translate(4px,-2px)}}
 @keyframes gl2{0%,85%,100%{clip-path:inset(0 0 100% 0)}87%{clip-path:inset(50% 0 30% 0);transform:translate(4px,-2px)}90%{clip-path:inset(15% 0 65% 0);transform:translate(-3px,2px)}}
-.ev-tagline{font-family:"Exo 2",sans-serif;font-size:.9rem;font-weight:300;font-style:italic;color:rgba(157,0,255,.45);letter-spacing:.2em;text-transform:uppercase;margin-top:.8rem;opacity:0;animation:fU .8s .6s forwards;}
+.ev-tagline{font-family:"Exo 2",sans-serif;font-size:.9rem;font-weight:300;font-style:italic;color:rgba(187,68,255,.65);letter-spacing:.2em;text-transform:uppercase;margin-top:.8rem;opacity:0;animation:fU .8s .6s forwards;}
 .ev-rule{width:260px;max-width:100%;height:1px;background:linear-gradient(90deg,transparent,#bb44ff,#ff00c8,transparent);opacity:.5;margin:1.5rem auto;opacity:0;animation:fU .8s .7s forwards;}
 
 /* BACK BTN */
@@ -174,17 +76,17 @@ main{max-width:880px;margin:0 auto;padding:2rem 1.5rem 5rem;position:relative;z-
 .ic::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#bb44ff,transparent);}
 .ic:hover{background:rgba(157,0,255,.08);border-color:#bb44ff;transform:translateY(-2px);}
 .ic .v{font-family:"Orbitron",monospace;font-size:.92rem;color:#bb44ff;display:block;margin-bottom:.3rem;}
-.ic .l{font-family:"Share Tech Mono",monospace;font-size:.57rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(157,0,255,.3);}
+.ic .l{font-family:"Share Tech Mono",monospace;font-size:.57rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(187,68,255,.55);}
 
 .sec-card{background:rgba(8,15,32,.94);border:1px solid rgba(157,0,255,.13);padding:2.4rem 2.6rem;margin-bottom:1.8rem;position:relative;overflow:hidden;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px));}
 .sec-card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#bb44ff,#ff00c8,transparent);}
 .sec-card::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(157,0,255,.03),transparent 50%);pointer-events:none;}
 .sec-hd{font-family:"Share Tech Mono",monospace;font-size:.7rem;letter-spacing:.42em;text-transform:uppercase;color:#bb44ff;margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;opacity:.9;}
 .sec-hd::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(157,0,255,.3),transparent);}
-.sec-card p{font-size:.9rem;font-weight:300;line-height:1.92;color:#3a6070;position:relative;z-index:1;}
+.sec-card p{font-size:.9rem;font-weight:300;line-height:1.92;color:#8ab0c0;position:relative;z-index:1;}
 
 .rules{list-style:none;display:flex;flex-direction:column;gap:.9rem;position:relative;z-index:1;}
-.rules li{display:flex;gap:1rem;font-size:.87rem;font-weight:300;line-height:1.78;color:#3a6070;padding:.9rem 1.1rem;background:rgba(157,0,255,.025);border-left:2px solid rgba(157,0,255,.3);transition:background .25s,border-color .25s;}
+.rules li{display:flex;gap:1rem;font-size:.87rem;font-weight:300;line-height:1.78;color:#8ab0c0;padding:.9rem 1.1rem;background:rgba(157,0,255,.025);border-left:2px solid rgba(157,0,255,.3);transition:background .25s,border-color .25s;}
 .rules li:hover{background:rgba(157,0,255,.055);border-left-color:#bb44ff;}
 .rules li::before{content:attr(data-n);font-family:"Share Tech Mono",monospace;color:#bb44ff;font-size:.7rem;min-width:1.6rem;margin-top:.18rem;flex-shrink:0;opacity:.8;}
 
@@ -197,9 +99,9 @@ footer{position:relative;z-index:3;background:var(--bg2);border-top:1px solid rg
 footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#bb44ff,transparent);opacity:.35;}
 .fl{font-family:"Orbitron",monospace;font-weight:900;font-size:1rem;letter-spacing:.25em;background:linear-gradient(90deg,#bb44ff,#ff00c8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .fl-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-top:1.1rem;}
-.fl-links a{font-family:"Share Tech Mono",monospace;font-size:.6rem;letter-spacing:.2em;color:rgba(157,0,255,.3);text-decoration:none;text-transform:uppercase;transition:color .2s;}
+.fl-links a{font-family:"Share Tech Mono",monospace;font-size:.6rem;letter-spacing:.2em;color:rgba(187,68,255,.55);text-decoration:none;text-transform:uppercase;transition:color .2s;}
 .fl-links a:hover{color:#bb44ff;}
-.fl-copy{font-family:"Share Tech Mono",monospace;font-size:.6rem;color:#1a3040;letter-spacing:.12em;margin-top:.7rem;}
+.fl-copy{font-family:"Share Tech Mono",monospace;font-size:.6rem;color:#3a5a6a;letter-spacing:.12em;margin-top:.7rem;}
 
 /* REGISTER BUTTON */
 .reg-btn{
@@ -262,6 +164,56 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
   color:rgba(157,0,255,.4);text-transform:uppercase;
 }
 
+
+/* ══ READABILITY & VISUAL UPGRADE ══ */
+body { color: #c8ddf5; }
+.sec-card p { color: #8ab0c0; font-size: .92rem; font-weight: 400; line-height: 1.9; }
+.sec-hd { opacity: 1; }
+.rules li { color: #8ab0c0; }
+.rules li strong { color: #d0eaf8; font-weight: 600; }
+.rules li::before { opacity: 1; }
+.ic .v { font-weight: 700; }
+.ic .l { opacity: 1; color: rgba(255,255,255,.45); }
+.ev-tagline { color: rgba(255,255,255,.55); text-shadow: 0 2px 20px rgba(0,0,0,.75); }
+.phase-desc, .step-desc { color: #8ab0c0; }
+.phase-sub, .step-title, .phase-title { color: #d0eaf8; }
+.phase-label { opacity: 1; }
+.phase-time { color: rgba(0,245,255,.65); }
+.theme-banner .theme-val { color: #d0eaf8; }
+.theme-banner .theme-label { opacity: 1; }
+.detail-val { color: #8ab0c0; }
+.detail-val strong { color: #d0eaf8; }
+.theme-pill span:last-child { color: #8ab0c0; }
+.theme-pill:hover span:last-child { color: #d0eaf8; }
+.theme-num { opacity: 1; }
+.eval-label { color: #8ab0c0; }
+.pts-row { color: #8ab0c0; }
+.pts-row:hover { color: #d0eaf8; }
+.pts-head { opacity: 1; }
+.pts-kill-lbl { opacity: 1; }
+.sub-val { color: #8ab0c0; }
+.sub-label { opacity: 1; }
+.coord-name { color: #d0eaf8; }
+.coord-role { opacity: 1; }
+.coord-phone { opacity: 1; }
+.note-text { color: #8ab0c0; }
+.note-title { opacity: 1; }
+.reg-title { opacity: 1; }
+.reg-note { opacity: 1; color: rgba(255,255,255,.45); }
+.round-desc { color: #8ab0c0; }
+.round-sub { opacity: 1; }
+.round-title { color: #d0eaf8; }
+.obj-list li { color: #8ab0c0; }
+.fl-links a { color: rgba(255,255,255,.4); }
+.fl-copy { color: #3a5a6a; }
+.nav-links a { color: #7a9ab8; }
+.back-btn { opacity: 1; }
+/* ══ END READABILITY ══ */
+
+/* ══ FOOTER WAVE ══ */
+footer { box-shadow: 0 -20px 60px rgba(0,0,0,.3); }
+.fl { filter: drop-shadow(0 0 8px rgba(255,255,255,.15)); font-size: 1.05rem; }
+/* ══ END ══ */
 </style>
 </head>
 <body>
@@ -271,11 +223,7 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
 
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="nav-brand">
-  <img src="tjohn-logo.png" alt="T. John Institute of Technology" class="college-logo"/>
-  <div class="nav-divider"></div>
-  <div class="nav-logo">PARICHAY <span>4.0</span></div>
-</a>
+    <a href="index.html" class="nav-logo">PARICHAY <span>4.0</span></a>
     <div class="hamburger" onclick="document.getElementById('nL').classList.toggle('open')"><span></span><span></span><span></span></div>
     <ul class="nav-links" id="nL">
       <li><a href="index.html">Home</a></li>
@@ -328,29 +276,6 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
 <li data-n="06">Intentional interference with other bots — ramming, signal jamming, or physical blocking — results in immediate disqualification.</li>
 <li data-n="07">One 15-minute pit stop allowed per round for minor repairs only. Full structural rebuilds or major component swaps are not permitted mid-contest.</li></ul>
   </div>
-
-  <!-- COORDINATORS — this must be the LAST thing before </main> -->
-  <div class="sec-card reveal">
-    <div class="sec-hd">// Event Coordinators</div>
-    <div class="coord-grid">
-      <div class="coord-card">
-        <div class="coord-icon">🤖</div>
-        <div class="coord-name">Poojitha</div>
-        <a href="tel:7338213319" class="coord-phone">
-          <span>📞</span>&nbsp;73382 13319
-        </a>
-      </div>
-      <div class="coord-card">
-        <div class="coord-icon">🤖</div>
-        <div class="coord-name">Chandana</div>
-        <a href="tel:3531160934" class="coord-phone">
-          <span>📞</span>&nbsp;35311 60934
-        </a>
-      </div>
-    </div>
-  </div>
-
-</main>   <!-- ← </main> must come RIGHT AFTER, nothing else between -->
 </main>
 
 <footer>
