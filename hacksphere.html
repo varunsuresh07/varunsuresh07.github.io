@@ -211,6 +211,55 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
 }
 
 
+/* ── ACTION ROW (register + brochure) ── */
+.action-row{display:flex;gap:1.2rem;align-items:center;justify-content:center;flex-wrap:wrap;margin:2rem 0 .8rem;}
+.action-note{text-align:center;font-family:"Share Tech Mono",monospace;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(0,245,255,.4);margin-bottom:2rem;}
+
+/* Brochure button */
+.brochure-btn{display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 2rem;font-family:"Orbitron",monospace;font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;position:relative;overflow:hidden;border:1px solid rgba(0,245,255,.4);color:#00f5ff;background:rgba(0,245,255,.05);transition:all .35s;clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px);}
+.brochure-btn::before{content:"";position:absolute;inset:0;background:rgba(0,245,255,.1);transform:translateX(-100%);transition:transform .35s;}
+.brochure-btn:hover{color:#02040f;background:rgba(0,245,255,.9);border-color:#00f5ff;box-shadow:0 0 35px rgba(0,245,255,.4);}
+.brochure-btn:hover::before{transform:translateX(0);}
+.brochure-icon,.brochure-btn span{position:relative;z-index:1;}
+
+/* ── TIMELINE ── */
+.timeline-list{display:flex;flex-direction:column;gap:0;position:relative;z-index:1;}
+.timeline-list::before{content:"";position:absolute;left:110px;top:0;bottom:0;width:1px;background:linear-gradient(180deg,#00f5ff,rgba(0,64,255,.3),transparent);}
+@media(max-width:500px){.timeline-list::before{left:80px;}}
+.tl-entry{display:grid;grid-template-columns:110px 20px 1fr;align-items:center;gap:.8rem;padding:.9rem 0;position:relative;}
+@media(max-width:500px){.tl-entry{grid-template-columns:80px 20px 1fr;}}
+.tl-date{font-family:"Share Tech Mono",monospace;font-size:.7rem;letter-spacing:.1em;color:rgba(0,245,255,.6);text-align:right;line-height:1.4;}
+.tl-dot{width:10px;height:10px;border-radius:50%;background:#0040ff;border:2px solid #00f5ff;box-shadow:0 0 10px #00f5ff;flex-shrink:0;justify-self:center;}
+.tl-dot.tl-active{background:#00f5ff;box-shadow:0 0 16px #00f5ff,0 0 30px rgba(0,245,255,.4);}
+.tl-dot.tl-final{background:#ff00c8;border-color:#ff00c8;box-shadow:0 0 16px #ff00c8,0 0 30px rgba(255,0,200,.4);}
+.tl-text{font-size:.88rem;font-weight:400;color:#8ab0c0;line-height:1.5;}
+.tl-text strong{color:#d0eaf8;font-weight:600;}
+
+/* ── DOMAINS GRID ── */
+.domains-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem;position:relative;z-index:1;}
+.domain-pill{display:flex;align-items:center;gap:.85rem;padding:.9rem 1.1rem;background:rgba(0,245,255,.03);border:1px solid rgba(0,245,255,.14);transition:all .3s;position:relative;overflow:hidden;}
+.domain-pill::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,#00f5ff,#0040ff);opacity:.6;}
+.domain-pill:hover{background:rgba(0,245,255,.07);border-color:rgba(0,245,255,.35);transform:translateX(4px);box-shadow:0 0 16px rgba(0,245,255,.07);}
+.domain-icon{font-size:1.2rem;filter:drop-shadow(0 0 6px rgba(0,245,255,.4));flex-shrink:0;}
+.domain-pill span:last-child{font-size:.87rem;font-weight:400;color:#8ab0c0;line-height:1.4;}
+.domain-pill:hover span:last-child{color:#d0eaf8;}
+
+/* ── CRITERIA GRID ── */
+.criteria-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem;position:relative;z-index:1;}
+.criteria-item{background:rgba(0,245,255,.04);border:1px solid rgba(0,245,255,.15);padding:1.4rem;text-align:center;transition:all .3s;position:relative;}
+.criteria-item::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#00f5ff,transparent);}
+.criteria-item:hover{border-color:rgba(0,245,255,.4);background:rgba(0,245,255,.08);transform:translateY(-3px);}
+.criteria-icon{font-size:1.6rem;margin-bottom:.6rem;filter:drop-shadow(0 0 8px rgba(0,245,255,.4));}
+.criteria-label{font-family:"Orbitron",monospace;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#00f5ff;line-height:1.4;}
+
+/* ── SLIDE LIST ── */
+.slide-list{display:flex;flex-direction:column;gap:.85rem;position:relative;z-index:1;}
+.slide-item{display:flex;gap:1.2rem;align-items:flex-start;padding:1rem 1.2rem;background:rgba(0,245,255,.025);border:1px solid rgba(0,245,255,.1);border-left:3px solid rgba(0,245,255,.5);transition:all .3s;}
+.slide-item:hover{background:rgba(0,245,255,.055);border-left-color:#00f5ff;transform:translateX(4px);}
+.slide-num{font-family:"Orbitron",monospace;font-size:1rem;font-weight:900;color:rgba(0,245,255,.4);flex-shrink:0;min-width:2rem;line-height:1.3;}
+.slide-title{font-family:"Orbitron",monospace;font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#00f5ff;margin-bottom:.3rem;}
+.slide-desc{font-size:.84rem;font-weight:300;color:#7a9aaa;line-height:1.65;}
+
 /* ══ READABILITY & VISUAL UPGRADE ══ */
 body { color: #c8ddf5; }
 .sec-card p { color: #8ab0c0; font-size: .92rem; font-weight: 400; line-height: 1.9; }
@@ -296,44 +345,51 @@ footer { box-shadow: 0 -20px 60px rgba(0,0,0,.3); }
 
 <main>
   <a href="events.html" class="back-btn reveal"><span>← Back to All Events</span></a>
-  <div class="info-strip reveal"><div class="ic"><span class="v">24 Hours</span><span class="l">Duration</span></div><div class="ic"><span class="v">2–4</span><span class="l">Team Size</span></div><div class="ic"><span class="v">₹500</span><span class="l">Entry / Team</span></div><div class="ic"><span class="v">Apr 21</span><span class="l">Date</span></div></div>
-  
-  <div class="reg-wrap reveal">
-    <div class="reg-title">// Registration Open</div>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSd6OvK9zALyt7pbzc5xGJn5gQTGAm172jpbz38ysclGX7SGcg/viewform" target="_blank" rel="noopener noreferrer" class="reg-btn">
-      <span class="reg-icon">⚡</span>
-      <span>Register Now</span>
-      <span class="reg-icon">→</span>
-    </a>
-    <div class="reg-note">Secure payment via EaseBuzz &nbsp;·&nbsp; Seat confirmation on payment</div>
+  <!-- INFO STRIP -->
+  <div class="info-strip reveal">
+    <div class="ic"><span class="v">24 Hours</span><span class="l">Duration</span></div>
+    <div class="ic"><span class="v">2–4</span><span class="l">Team Size</span></div>
+    <div class="ic"><span class="v">Apr 20–21</span><span class="l">Dates</span></div>
+    <div class="ic"><span class="v">Pool Prize</span><span class="l">Awarded</span></div>
   </div>
+
+  <!-- BROCHURE + REGISTER ROW -->
+  <div class="action-row reveal">
+    <a href="https://edu.easebuzz.in/sign-up/TJohnInstituteofTechn/techfest_parichay_paymentlink/?inst_name=TJohnInstituteofTechn&form_name=techfest_parichay_paymentlink&jsonData=1" target="_blank" rel="noopener noreferrer" class="reg-btn">
+      <span class="reg-icon">⚡</span><span>Register Now</span><span class="reg-icon">→</span>
+    </a>
+    <a href="hacksphere-brochure.pdf" target="_blank" rel="noopener noreferrer" class="brochure-btn">
+      <span class="brochure-icon">📄</span><span>View Brochure</span>
+    </a>
+  </div>
+  <p class="action-note reveal">Secure payment via EaseBuzz &nbsp;·&nbsp; Seat confirmation on payment &nbsp;·&nbsp; Pool Prize Awarded</p>
 
   <!-- ABOUT -->
   <div class="sec-card reveal">
     <div class="sec-hd">// About the Event</div>
-    <p>Hacksphere is PARICHAY 4.0's flagship 24-hour hackathon — a two-part endurance race designed to filter the best ideas before they reach the stage. Not just a build-athon: it's a structured gauntlet that tests your ability to ship fast, adapt under pressure, and pitch with clarity. The theme will be revealed at the start of the event. Every domain is welcome — web, mobile, AI, hardware.</p>
+    <p>Hacksphere is the main 24-hour hackathon of PARICHAY 4.0 — a fast-paced, two-part event designed to bring out the best ideas. It's not just about building something; it's about how quickly you can think, create, and improve your idea under pressure.</p>
+    <p style="margin-top:1rem;">The event is structured to test your skills step by step — from coming up with an idea to building it and finally presenting it clearly. The theme will be announced at the start, so everyone begins on the same level and has to think on the spot. Everyone is welcome. It's all about teamwork, creativity, and turning ideas into something real within 24 hours.</p>
   </div>
 
   <!-- FORMAT -->
   <div class="sec-card reveal">
-    <div class="sec-hd">// The Format</div>
+    <div class="sec-hd">// Two-Stage Format</div>
     <div class="phase-grid">
-
       <div class="phase-card phase-1">
-        <div class="phase-label">Phase 1</div>
-        <div class="phase-title">Online &nbsp;<span class="phase-time">Hours 1 – 12</span></div>
+        <div class="phase-label">Phase 1 — Preliminary Round</div>
+        <div class="phase-title">Online &nbsp;<span class="phase-time">20th April · Hours 1–12</span></div>
         <div class="phase-row">
           <div class="phase-dot"></div>
           <div>
             <div class="phase-sub">The Build</div>
-            <p class="phase-desc">Teams work from home to build their core prototype. No setup time wasted — get straight to coding.</p>
+            <p class="phase-desc">Teams work remotely to build their core prototype from scratch once the theme is announced. No pre-built solutions.</p>
           </div>
         </div>
         <div class="phase-row">
           <div class="phase-dot"></div>
           <div>
-            <div class="phase-sub">The Cut</div>
-            <p class="phase-desc">At the 12-hour mark, teams submit their progress. Only the best-performing teams are selected to advance to campus.</p>
+            <div class="phase-sub">The Submission</div>
+            <p class="phase-desc">At the 12-hour mark, teams must submit their progress (Idea Presentation). Only the best projects are selected to move forward. Late submissions are not accepted.</p>
           </div>
         </div>
       </div>
@@ -341,64 +397,155 @@ footer { box-shadow: 0 -20px 60px rgba(0,0,0,.3); }
       <div class="phase-arrow">→</div>
 
       <div class="phase-card phase-2">
-        <div class="phase-label">Phase 2</div>
-        <div class="phase-title">On-Campus &nbsp;<span class="phase-time">Hours 13 – 24</span></div>
+        <div class="phase-label">Phase 2 — Final Round</div>
+        <div class="phase-title">On-Campus &nbsp;<span class="phase-time">21st April · Hours 13–24</span></div>
         <div class="phase-row">
           <div class="phase-dot"></div>
           <div>
             <div class="phase-sub">The Polish</div>
-            <p class="phase-desc">Selected teams arrive on campus to finalize their project, fix bugs, and sharpen their presentation.</p>
+            <p class="phase-desc">Selected teams continue work on campus — improving their project, fixing bugs, and preparing their presentation. Major idea changes are not allowed, only improvements.</p>
           </div>
         </div>
         <div class="phase-row">
           <div class="phase-dot"></div>
           <div>
             <div class="phase-sub">The Pitch</div>
-            <p class="phase-desc">A final live demo in front of a panel of judges. Make it count.</p>
+            <p class="phase-desc">The event ends with a live demo and final pitch in front of judges. Teams must bring their own laptops and required hardware.</p>
           </div>
         </div>
       </div>
-
     </div>
 
-    <div class="theme-banner reveal">
+    <div class="theme-banner" style="margin-top:1.5rem;">
       <span class="theme-icon">🎯</span>
       <div>
         <div class="theme-label">Event Theme</div>
-        <div class="theme-val">Revealed at the start of the event</div>
+        <div class="theme-val">Announced at the start of the event — everyone on equal footing</div>
       </div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="sec-card reveal">
+    <div class="sec-hd">// Timeline</div>
+    <div class="timeline-list">
+      <div class="tl-entry">
+        <div class="tl-date">31st March</div>
+        <div class="tl-dot"></div>
+        <div class="tl-text">Registration Opens</div>
+      </div>
+      <div class="tl-entry">
+        <div class="tl-date">15th April</div>
+        <div class="tl-dot"></div>
+        <div class="tl-text">Registration Closes</div>
+      </div>
+      <div class="tl-entry">
+        <div class="tl-date">18th April</div>
+        <div class="tl-dot"></div>
+        <div class="tl-text">Registration Confirmation sent to teams</div>
+      </div>
+      <div class="tl-entry">
+        <div class="tl-date">20th April</div>
+        <div class="tl-dot tl-active"></div>
+        <div class="tl-text"><strong>Preliminary Round — Phase 1</strong> (Online, 12 hours)</div>
+      </div>
+      <div class="tl-entry">
+        <div class="tl-date">21st April</div>
+        <div class="tl-dot tl-final"></div>
+        <div class="tl-text"><strong>Final Round — Phase 2</strong> (On-Campus, 12 hours)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DOMAINS -->
+  <div class="sec-card reveal">
+    <div class="sec-hd">// Domains</div>
+    <div class="domains-grid">
+      <div class="domain-pill"><span class="domain-icon">🌐</span><span>Web Development</span></div>
+      <div class="domain-pill"><span class="domain-icon">📱</span><span>Mobile App Development</span></div>
+      <div class="domain-pill"><span class="domain-icon">🤖</span><span>Artificial Intelligence &amp; Machine Learning</span></div>
+      <div class="domain-pill"><span class="domain-icon">📡</span><span>Internet of Things (IoT)</span></div>
+      <div class="domain-pill"><span class="domain-icon">🔐</span><span>Cybersecurity</span></div>
     </div>
   </div>
 
   <!-- RULES -->
   <div class="sec-card reveal">
-    <div class="sec-hd">// Key Rules</div>
+    <div class="sec-hd">// Rules &amp; Regulations</div>
+    <p style="margin-bottom:1.2rem;font-family:'Orbitron',monospace;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,245,255,.6);">General Rules</p>
+    <ul class="rules" style="margin-bottom:1.8rem;">
+      <li data-n="👥"><strong>Team Size</strong> — Each team must have 2–4 members. All participants must register before the event starts.</li>
+      <li data-n="✍"><strong>Originality</strong> — Teams must use only their own original ideas. Any form of plagiarism or cheating will lead to disqualification.</li>
+      <li data-n="🎯"><strong>Theme</strong> — The theme will be revealed at the start. All projects must follow the announced theme.</li>
+    </ul>
+    <p style="margin-bottom:1.2rem;font-family:'Orbitron',monospace;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,245,255,.6);">Phase 1 Rules</p>
+    <ul class="rules" style="margin-bottom:1.8rem;">
+      <li data-n="🏠">Teams must work remotely from their own location during Phase 1.</li>
+      <li data-n="🛠">Open-source tools, APIs, and libraries are allowed but must be clearly mentioned in the submission.</li>
+      <li data-n="🚫">The project must be started during the hackathon only. No pre-built solutions.</li>
+      <li data-n="📋">At the 12-hour mark, teams must submit their Idea Presentation. Late submissions will not be accepted.</li>
+    </ul>
+    <p style="margin-bottom:1.2rem;font-family:'Orbitron',monospace;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,245,255,.6);">Final Round Rules</p>
     <ul class="rules">
-      <li data-n="⚡"><strong>Originality</strong> — No pre-built projects. All code must be written within the 24-hour window. Pre-existing codebases = instant disqualification.</li>
-      <li data-n="👥"><strong>Team Size</strong> — 2 to 4 members per team. Solo entries are not accepted.</li>
-      <li data-n="📋"><strong>The Check-In</strong> — Teams must submit a 12-hour milestone report (code + demo video) to be eligible for the campus round. No submission = no entry to Phase 2.</li>
-      <li data-n="🏛"><strong>Attendance</strong> — If selected, the entire team must be physically present for Phase 2. Missing members may lead to disqualification of the full team.</li>
-      <li data-n="🛠"><strong>Tools</strong> — Open-source libraries and AI assistants are allowed. However, you must be able to explain every line of your code to the judges.</li>
+      <li data-n="🏛">Selected teams must report to the venue on time. Be early.</li>
+      <li data-n="🔧">Teams can improve, debug, and enhance their existing project — major idea changes are not allowed.</li>
+      <li data-n="💻">Teams must bring their own laptops and any required hardware.</li>
     </ul>
   </div>
 
-  <!-- CONTACT -->
+  <!-- SELECTION CRITERIA -->
+  <div class="sec-card reveal">
+    <div class="sec-hd">// Selection Criteria</div>
+    <p style="margin-bottom:1.4rem;">Projects will be judged on the following criteria to determine which teams advance to Phase 2:</p>
+    <div class="criteria-grid">
+      <div class="criteria-item"><div class="criteria-icon">💡</div><div class="criteria-label">Innovation &amp; Creativity</div></div>
+      <div class="criteria-item"><div class="criteria-icon">⚙</div><div class="criteria-label">Functionality</div></div>
+      <div class="criteria-item"><div class="criteria-icon">🎯</div><div class="criteria-label">Relevance to Theme</div></div>
+    </div>
+    <p style="margin-top:1.2rem;font-size:.85rem;color:rgba(0,245,255,.6);font-family:'Share Tech Mono',monospace;letter-spacing:.1em;">Only selected teams will move to Phase 2 (On-Campus).</p>
+  </div>
+
+  <!-- SUBMISSION FORMAT -->
+  <div class="sec-card reveal">
+    <div class="sec-hd">// Submission Format — Phase 1</div>
+    <p style="margin-bottom:1.4rem;">Each team must submit a <strong>5-slide presentation</strong> that clearly explains their approach to solving the chosen problem. Keep it well-organized, concise, and easy to understand.</p>
+    <div class="slide-list">
+      <div class="slide-item">
+        <div class="slide-num">01</div>
+        <div><div class="slide-title">Problem Understanding</div><p class="slide-desc">Clearly explain the problem and its context.</p></div>
+      </div>
+      <div class="slide-item">
+        <div class="slide-num">02</div>
+        <div><div class="slide-title">Proposed Approach</div><p class="slide-desc">Outline your approach and its effectiveness in solving the issue.</p></div>
+      </div>
+      <div class="slide-item">
+        <div class="slide-num">03</div>
+        <div><div class="slide-title">System Design / Architecture</div><p class="slide-desc">Present the system design and the flow between components.</p></div>
+      </div>
+      <div class="slide-item">
+        <div class="slide-num">04</div>
+        <div><div class="slide-title">Tools &amp; Frameworks</div><p class="slide-desc">Provide a list of the tools and frameworks used for your solution.</p></div>
+      </div>
+      <div class="slide-item">
+        <div class="slide-num">05</div>
+        <div><div class="slide-title">Implementation Strategy</div><p class="slide-desc">Explain how your solution can be expanded for real-world deployment.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COORDINATORS -->
   <div class="sec-card reveal">
     <div class="sec-hd">// Event Coordinators</div>
     <div class="coord-grid">
       <div class="coord-card">
         <div class="coord-icon">👩‍💻</div>
         <div class="coord-name">Disha</div>
-        <a href="tel:7349384407" class="coord-phone">
-          <span class="coord-ph-icon">📞</span> 73493 84407
-        </a>
+        <a href="tel:7349384407" class="coord-phone"><span class="coord-ph-icon">📞</span> 73493 84407</a>
       </div>
       <div class="coord-card">
         <div class="coord-icon">👩‍💻</div>
         <div class="coord-name">Rithika</div>
-        <a href="tel:+919986802971" class="coord-phone">
-          <span class="coord-ph-icon">📞</span> +91 99868 02971
-        </a>
+        <a href="tel:+919986802971" class="coord-phone"><span class="coord-ph-icon">📞</span> +91 99868 02971</a>
       </div>
     </div>
   </div>
