@@ -208,6 +208,27 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
 }
 
 
+/* ── BATTLE FLOW ── */
+.battle-flow{display:flex;flex-direction:column;gap:0;position:relative;z-index:1;align-items:center;}
+.bf-round{width:100%;max-width:480px;padding:1.2rem 1.6rem;border:1px solid;position:relative;transition:all .3s;}
+.bf-r1{border-color:rgba(255,0,200,.4);background:rgba(255,0,200,.05);}
+.bf-r1::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#ff00c8,transparent);}
+.bf-r2{border-color:rgba(0,245,255,.35);background:rgba(0,245,255,.04);}
+.bf-r2::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#00f5ff,transparent);}
+.bf-r3{border-color:rgba(255,120,0,.4);background:rgba(255,120,0,.04);}
+.bf-r3::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#ff7800,transparent);}
+.bf-r4{border-color:rgba(0,255,136,.5);background:rgba(0,255,136,.06);box-shadow:0 0 20px rgba(0,255,136,.1);}
+.bf-r4::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#00ff88,transparent);}
+.bf-round:hover{transform:scale(1.02);}
+.bf-label{font-family:"Share Tech Mono",monospace;font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;color:rgba(0,255,136,.6);margin-bottom:.4rem;}
+.bf-r1 .bf-label{color:rgba(255,0,200,.65);}
+.bf-r2 .bf-label{color:rgba(0,245,255,.65);}
+.bf-r3 .bf-label{color:rgba(255,120,0,.65);}
+.bf-r4 .bf-label{color:rgba(0,255,136,.8);}
+.bf-title{font-family:"Orbitron",monospace;font-size:.88rem;font-weight:700;letter-spacing:.12em;color:#d0eaf8;margin-bottom:.5rem;}
+.bf-desc{font-size:.84rem;color:#7a9aaa;line-height:1.65;}
+.bf-arrow{font-family:"Orbitron",monospace;font-size:1.3rem;color:rgba(0,255,136,.35);padding:.3rem 0;text-align:center;}
+/* ── END BATTLE FLOW ── */
 /* ══ READABILITY & VISUAL UPGRADE ══ */
 body { color: #c8ddf5; }
 .sec-card p { color: #8ab0c0; font-size: .92rem; font-weight: 400; line-height: 1.9; }
@@ -257,6 +278,23 @@ body { color: #c8ddf5; }
 footer { box-shadow: 0 -20px 60px rgba(0,0,0,.3); }
 .fl { filter: drop-shadow(0 0 8px rgba(255,255,255,.15)); font-size: 1.05rem; }
 /* ══ END ══ */
+/* ── NAV BRAND LOGOS ── */
+.nav-brand{display:flex;align-items:center;gap:.9rem;text-decoration:none;}
+.college-logo,.ai-minds-logo{height:40px;width:auto;object-fit:contain;border-radius:3px;
+  filter:drop-shadow(0 0 6px rgba(0,245,255,.18));transition:filter .3s,transform .3s;}
+.nav-brand:hover .college-logo,.nav-brand:hover .ai-minds-logo{
+  filter:drop-shadow(0 0 14px rgba(0,245,255,.55));transform:scale(1.03);}
+.nav-divider{width:1px;height:30px;background:linear-gradient(180deg,transparent,rgba(0,245,255,.4),transparent);flex-shrink:0;}
+/* ── END NAV BRAND ── */
+/* ── ACTION ROW ── */
+.action-row{display:flex;gap:1.2rem;align-items:center;justify-content:center;flex-wrap:wrap;margin:2rem 0 .8rem;}
+.action-note{text-align:center;font-family:"Share Tech Mono",monospace;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:2rem;}
+.brochure-btn{display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 2rem;font-family:"Orbitron",monospace;font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;position:relative;overflow:hidden;border:1px solid;color:var(--ac);background:rgba(0,0,0,.1);transition:all .35s;clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px);}
+.brochure-btn::before{content:"";position:absolute;inset:0;background:rgba(255,255,255,.08);transform:translateX(-100%);transition:transform .35s;}
+.brochure-btn:hover::before{transform:translateX(0);}
+.brochure-btn:hover{box-shadow:0 0 30px rgba(255,255,255,.2);color:#fff;}
+.brochure-icon,.brochure-btn span{position:relative;z-index:1;}
+/* ── END ACTION ROW ── */
 </style>
 </head>
 <body>
@@ -293,65 +331,83 @@ footer { box-shadow: 0 -20px 60px rgba(0,0,0,.3); }
 
 <main>
   <a href="events.html" class="back-btn reveal"><span>← Back to All Events</span></a>
+
   <div class="info-strip reveal">
     <div class="ic"><span class="v">Free Fire</span><span class="l">Game</span></div>
     <div class="ic"><span class="v">4 Players</span><span class="l">Squad Size</span></div>
-    <div class="ic"><span class="v">Android / iOS</span><span class="l">Devices</span></div>
-    <div class="ic"><span class="v">BR / CS</span><span class="l">Round Format</span></div>
+    <div class="ic"><span class="v">Android / iOS</span><span class="l">Devices Only</span></div>
+    <div class="ic"><span class="v">4 Rounds</span><span class="l">Battle Format</span></div>
     <div class="ic"><span class="v">Apr 21</span><span class="l">Date</span></div>
   </div>
-  
-  <div class="reg-wrap reveal">
-    <div class="reg-title">// Registration Open</div>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSd6OvK9zALyt7pbzc5xGJn5gQTGAm172jpbz38ysclGX7SGcg/viewform" target="_blank" rel="noopener noreferrer" class="reg-btn">
-      <span class="reg-icon">⚡</span>
-      <span>Register Now</span>
-      <span class="reg-icon">→</span>
+
+  <div class="action-row reveal">
+    <a href="https://edu.easebuzz.in/sign-up/TJohnInstituteofTechn/techfest_parichay_paymentlink/?inst_name=TJohnInstituteofTechn&form_name=techfest_parichay_paymentlink&jsonData=1" target="_blank" rel="noopener noreferrer" class="reg-btn">
+      <span class="reg-icon">⚡</span><span>Register Now</span><span class="reg-icon">→</span>
     </a>
-    <div class="reg-note">Secure payment via EaseBuzz &nbsp;·&nbsp; Seat confirmation on payment</div>
+    <a href="gaming-brochure.pdf" target="_blank" rel="noopener noreferrer" class="brochure-btn" style="border-color:rgba(0,255,136,.45);color:#00ff88;">
+      <span class="brochure-icon">📄</span><span>View Brochure</span>
+    </a>
   </div>
+  <p class="action-note reveal">Secure payment via EaseBuzz &nbsp;·&nbsp; Seat confirmation on payment</p>
 
   <!-- ABOUT -->
   <div class="sec-card reveal">
     <div class="sec-hd">// About the Event</div>
-    <p>The Free Fire battleground is calling! Step into the arena where only the strongest survive. This isn't just a tournament — it's a war of skill, strategy, and nerves. Drop in, gear up, and eliminate your enemies in a ruthless fight for survival.</p>
-    <p style="margin-top:1rem;">Experience heart-pounding action, intense battles, and unstoppable competition as players clash to prove who truly dominates the battlefield. Only the sharpest minds and fastest hands will survive the chaos.</p>
-    <p style="margin-top:1rem;">This is your moment to rise, conquer, and claim glory. Squad up, stay sharp, and get ready — because only one will emerge as the ultimate survivor. 🎮🔥</p>
+    <p>Inferno Clash: Free Fire Tournament — No mercy. No second chances. The Free Fire battleground is calling! Step into the arena where only the strongest survive. This isn't just a tournament — it's a war of skill, strategy, and nerves. Drop in, gear up, and eliminate your enemies in a ruthless fight for survival.</p>
+    <p style="margin-top:1rem;">Experience heart-pounding action, intense battles, and unstoppable competition as players clash to prove who truly dominates the battlefield. Only the sharpest minds and fastest hands will survive the chaos. This is your moment to rise, conquer, and claim glory. Squad up, stay sharp, and get ready — because only one will emerge as the ultimate survivor! 🎮🔥</p>
   </div>
 
   <!-- TEAM & FORMAT -->
   <div class="sec-card reveal">
     <div class="sec-hd">// Team &amp; Format</div>
     <ul class="rules">
-      <li data-n="👥">Each team consists of <strong>4 players only</strong>. No substitutes are permitted under any circumstance.</li>
+      <li data-n="👥">Each team consists of <strong>4 players only</strong>. No substitutes are permitted.</li>
       <li data-n="📱">Only <strong>Android and iOS</strong> mobile devices are allowed for gameplay.</li>
       <li data-n="🚫">Emulators and iPads are <strong>strictly prohibited</strong>. Violations lead to immediate disqualification.</li>
     </ul>
+  </div>
+
+  <!-- BATTLE FLOW -->
+  <div class="sec-card reveal">
+    <div class="sec-hd">// Battle Flow</div>
+    <div class="battle-flow">
+      <div class="bf-round bf-r1">
+        <div class="bf-label">Round 1</div>
+        <div class="bf-title">BR Match</div>
+        <div class="bf-desc">Battle Royale — All teams drop in. Survival and kills determine advancement.</div>
+      </div>
+      <div class="bf-arrow">↓</div>
+      <div class="bf-round bf-r2">
+        <div class="bf-label">Round 2</div>
+        <div class="bf-title">BR / CS Match</div>
+        <div class="bf-desc">Format decided on the day — Battle Royale or Clash Squad based on bracket.</div>
+      </div>
+      <div class="bf-arrow">↓</div>
+      <div class="bf-round bf-r3">
+        <div class="bf-label">Round 3 — Semi-Final</div>
+        <div class="bf-title">CS Match</div>
+        <div class="bf-desc">Clash Squad format. Best squads battle for a spot in the Final.</div>
+      </div>
+      <div class="bf-arrow">↓</div>
+      <div class="bf-round bf-r4">
+        <div class="bf-label">Round 4 — Final 🏆</div>
+        <div class="bf-title">CS Match</div>
+        <div class="bf-desc">The ultimate Clash Squad showdown. One squad takes the glory.</div>
+      </div>
+    </div>
   </div>
 
   <!-- GAMEPLAY RULES -->
   <div class="sec-card reveal">
     <div class="sec-hd">// Gameplay Rules</div>
     <ul class="rules">
-      <li data-n="🔧">Any use of game-modifying tools or third-party software will lead to <strong>immediate disqualification</strong>.</li>
-      <li data-n="🎙">In-game voice chat is <strong>mandatory</strong> for proper team coordination throughout all rounds.</li>
-      <li data-n="⚠">Use of unfair means — <strong>aimbot, trigger bot, or ESP</strong> — results in instant disqualification and ban.</li>
-      <li data-n="🐛">Bug exploitation or any act that hinders fair play will lead to disqualification of the entire team.</li>
-      <li data-n="⏰">Players must <strong>join 15 minutes before</strong> match start. Late teams forfeit their slot — no exceptions.</li>
+      <li data-n="🔧">Any use of game-modifying tools will lead to <strong>immediate disqualification</strong>.</li>
+      <li data-n="🎙">In-game voice chat is <strong>mandatory</strong> for proper team coordination.</li>
+      <li data-n="⚠">Use of unfair means — <strong>aimbot, trigger bot, or ESP</strong> — results in instant disqualification.</li>
+      <li data-n="🐛">Bug exploitation or any act that hinders fair play will lead to disqualification.</li>
+      <li data-n="⏰">Players must <strong>join 15 minutes before</strong> each match starts.</li>
       <li data-n="🏆">In case of a tie, the number of <strong>Booyahs (wins)</strong> will decide the champion.</li>
     </ul>
-  </div>
-
-  <!-- EVENT DETAILS -->
-  <div class="sec-card reveal">
-    <div class="sec-hd">// Event Details</div>
-    <div class="detail-banner">
-      <span class="detail-icon">🎯</span>
-      <div>
-        <div class="detail-label">Round Format</div>
-        <div class="detail-val">Number of rounds revealed on the day of action.<br/>Format will be either <strong>Battle Royale (BR)</strong> or <strong>Clash Squad (CS)</strong>.</div>
-      </div>
-    </div>
   </div>
 
   <!-- POINT SYSTEM -->
@@ -364,10 +420,7 @@ footer { box-shadow: 0 -20px 60px rgba(0,0,0,.3); }
       </div>
     </div>
     <div class="pts-table">
-      <div class="pts-head">
-        <span>Placement</span>
-        <span>Points</span>
-      </div>
+      <div class="pts-head"><span>Placement</span><span>Points</span></div>
       <div class="pts-row gold-row"><span><span class="pts-pos">🥇</span> 1st Place</span><span class="pts-val">12</span></div>
       <div class="pts-row silver-row"><span><span class="pts-pos">🥈</span> 2nd Place</span><span class="pts-val">9</span></div>
       <div class="pts-row bronze-row"><span><span class="pts-pos">🥉</span> 3rd Place</span><span class="pts-val">8</span></div>
@@ -377,6 +430,7 @@ footer { box-shadow: 0 -20px 60px rgba(0,0,0,.3); }
       <div class="pts-row"><span><span class="pts-pos">7️⃣</span> 7th Place</span><span class="pts-val">4</span></div>
       <div class="pts-row"><span><span class="pts-pos">8️⃣</span> 8th Place</span><span class="pts-val">3</span></div>
       <div class="pts-row"><span><span class="pts-pos">9️⃣</span> 9th Place</span><span class="pts-val">2</span></div>
+      <div class="pts-row"><span><span class="pts-pos">🔟</span> 10th Place</span><span class="pts-val">1</span></div>
     </div>
   </div>
 
@@ -387,16 +441,12 @@ footer { box-shadow: 0 -20px 60px rgba(0,0,0,.3); }
       <div class="coord-card">
         <div class="coord-icon">🎮</div>
         <div class="coord-name">Dhyan</div>
-        <a href="tel:9731637732" class="coord-phone">
-          <span>📞</span>&nbsp;97316 37732
-        </a>
+        <a href="tel:9731637732" class="coord-phone"><span>📞</span>&nbsp;97316 37732</a>
       </div>
       <div class="coord-card">
         <div class="coord-icon">🎮</div>
         <div class="coord-name">Sri Harsha</div>
-        <a href="tel:+917899896106" class="coord-phone">
-          <span>📞</span>&nbsp;78998 96106
-        </a>
+        <a href="tel:+917899896106" class="coord-phone"><span>📞</span>&nbsp;78998 96106</a>
       </div>
     </div>
   </div>
