@@ -53,7 +53,6 @@ nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(2,4,15,.85);bac
   background:linear-gradient(90deg,transparent,var(--c),transparent);transform:scaleX(0);transition:transform .3s;}
 .nav-links a:hover,.nav-links a.active{color:var(--c);}
 .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
-.nav-links a.active{color:var(--c);}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
 .hamburger span{display:block;width:24px;height:2px;border-radius:1px;transition:all .3s;}
 .hamburger span:nth-child(1){background:var(--c);}
@@ -132,110 +131,56 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
 .contact-val a{color:inherit;text-decoration:none;transition:color .2s;}
 .contact-val a:hover{color:var(--c);}
 
-.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.2rem;margin-bottom:3rem;}
-.team-card{padding:1.6rem;text-align:center;}
-.team-avatar{width:56px;height:56px;border-radius:50%;margin:0 auto .9rem;background:linear-gradient(135deg,rgba(0,245,255,.15),rgba(157,0,255,.15));border:1px solid rgba(0,245,255,.2);display:flex;align-items:center;justify-content:center;font-family:"Orbitron",monospace;font-size:1.1rem;color:var(--c);}
-.team-name{font-family:"Orbitron",monospace;font-size:.78rem;letter-spacing:.15em;color:#c0daf0;margin-bottom:.3rem;}
-.team-role{font-family:"Share Tech Mono",monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,245,255,.4);}
+/* TEAM GRID */
+.team-section-block{margin-bottom:2rem;}
+.team-sub-label{font-family:"Share Tech Mono",monospace;font-size:.6rem;letter-spacing:.4em;text-transform:uppercase;color:rgba(0,245,255,.6);margin-bottom:1rem;padding-left:.2rem;}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.2rem;margin-bottom:2rem;}
+.team-grid-single{display:grid;grid-template-columns:1fr;max-width:280px;gap:1.2rem;margin-bottom:2rem;}
+.team-card{padding:1.6rem 1.8rem;text-align:center;transition:all .3s;}
+.team-card:hover{border-color:rgba(0,245,255,.45);box-shadow:0 0 28px rgba(0,245,255,.07);transform:translateY(-3px);}
+.team-avatar{width:56px;height:56px;border-radius:50%;margin:0 auto .9rem;
+  background:linear-gradient(135deg,rgba(0,245,255,.15),rgba(157,0,255,.15));
+  border:1px solid rgba(0,245,255,.2);display:flex;align-items:center;justify-content:center;
+  font-family:"Orbitron",monospace;font-size:1.1rem;color:var(--c);}
+.team-name{font-family:"Orbitron",monospace;font-size:.8rem;letter-spacing:.12em;color:#d0eaf8;margin-bottom:.4rem;}
+.team-role{font-family:"Share Tech Mono",monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,245,255,.5);margin-bottom:.8rem;}
+.team-phone{display:inline-flex;align-items:center;gap:.4rem;font-family:"Share Tech Mono",monospace;font-size:.75rem;letter-spacing:.1em;
+  color:var(--c);text-decoration:none;padding:.35rem .9rem;border:1px solid rgba(0,245,255,.22);
+  background:rgba(0,245,255,.04);transition:all .3s;}
+.team-phone:hover{border-color:var(--c);background:rgba(0,245,255,.1);box-shadow:0 0 14px rgba(0,245,255,.2);}
 
-/* ══ READABILITY & VISUAL UPGRADE ══ */
-body { color: #c8ddf5; }
-.nav-links a { color: #7a9ab8; }
-.nav-links a:hover, .nav-links a.active { color: var(--c, #00f5ff); }
-.page-sub { color: #5a8090; }
-.page-eyebrow { color: rgba(0,245,255,.85); opacity: 1; }
-.page-title { filter: drop-shadow(0 0 25px rgba(0,245,255,.35)); }
-.sec-card p, .section-card p { color: #7a9aaa; }
-.sec-hd, .section-card h2 { opacity: 1; }
-.rules li { color: #7a9aaa; }
-.rules li strong { color: #c8ddf5; font-weight: 600; }
-.rules li::before { opacity: 1; }
-.ic .v { font-weight: 700; }
-.ic .l { color: rgba(0,245,255,.55); }
-.ev-sys, .card-sys { opacity: 1; }
-.ev-desc, .card-desc { color: #6a8898; }
-.ev-name, .card-title, .ev-name { color: #d0eaf8; }
-.ev-tagline { color: rgba(255,255,255,.5); text-shadow: 0 2px 20px rgba(0,0,0,.7); }
-.phase-desc, .step-desc, .round-desc { color: #7a9aaa; }
-.phase-sub, .step-title { color: #d0eaf8; }
-.phase-label { opacity: 1; }
-.detail-val { color: #7a9aaa; }
-.detail-val strong { color: #c8ddf5; }
-.theme-pill span:last-child { color: #7a9aaa; }
-.theme-pill:hover span:last-child { color: #d0eaf8; }
-.theme-num { opacity: 1; }
-.eval-label { color: #7a9aaa; }
-.pts-row { color: #7a9aaa; }
-.pts-row:hover { color: #c8ddf5; }
-.pts-kill-lbl { opacity: 1; }
-.sub-val { color: #8ab0c0; }
-.sub-label { opacity: 1; }
-.coord-role { opacity: 1; }
-.coord-name { color: #d0eaf8; }
-.about-lead, .about-text p { color: #8ab0c0; }
-.about-lead strong { color: var(--c, #00f5ff); }
-.tl-item p { color: #8ab0c0; }
-.contact-val { color: #7a9aaa; }
-.contact-val a { color: #7a9aaa; }
-.contact-val a:hover { color: var(--c, #00f5ff); }
-.contact-lbl { opacity: 1; }
-.team-role { opacity: 1; }
-.note-text { color: #7a9aaa; }
-.note-title { opacity: 1; }
-.tier-label { opacity: 1; }
-.sponsor-slot span { opacity: 1; }
-.perk p { color: #7a9aaa; }
-.footer-links a { color: rgba(0,245,255,.5); }
-.footer-copy { color: #3a5a6a; }
-.fl-links a { color: rgba(0,245,255,.45); }
-.fl-copy { color: #3a5a6a; }
-.cd-lbl { color: #4a8090; }
-.cd-eyebrow { opacity: 1; }
-.section-label { opacity: 1; }
-.back-btn { opacity: 1; }
-.round-desc { color: #7a9aaa; }
-.obj-list li { color: #7a9aaa; }
-.obj-list li:hover { color: #8ab0c0; }
-.cta-box p { color: #7a9aaa; }
-.cta-box h3 { color: #d0eaf8; }
-.info-card p { color: #8ab0c0; font-weight: 400; }
-.info-card h3 { color: var(--c, #00f5ff); text-shadow: 0 0 12px rgba(0,245,255,.25); }
-/* ══ END READABILITY ══ */
+/* ══ READABILITY ══ */
+body{color:#c8ddf5;}
+.nav-links a{color:#7a9ab8;}
+.nav-links a:hover,.nav-links a.active{color:var(--c);}
+.page-sub{color:#5a8090;}
+.page-eyebrow{opacity:1;}
+.contact-val{color:#7a9aaa;}
+.contact-val a{color:#7a9aaa;}
+.contact-val a:hover{color:var(--c);}
+.contact-lbl{opacity:1;}
+.team-role{opacity:1;}
+.footer-links a{color:rgba(0,245,255,.5);}
+.footer-copy{color:#3a5a6a;}
+.section-label{opacity:1;}
+/* ══ END ══ */
 
-/* ══ HERO MESH UPGRADE ══ */
-.page-hero-mesh {
-  animation: meshP 9s ease-in-out infinite alternate;
-}
-.page-hero-mesh::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: conic-gradient(from 200deg at 50% 120%,
-    rgba(0,245,255,.04) 0deg, rgba(157,0,255,.06) 60deg,
-    rgba(255,0,200,.04) 120deg, transparent 180deg);
-  animation: auroraR 20s linear infinite;
-}
-@keyframes meshP { 0% { opacity: .7; } 100% { opacity: 1; } }
-@keyframes auroraR { from { transform: rotate(0deg) scale(1.6); } to { transform: rotate(360deg) scale(1.6); } }
-/* ══ END HERO MESH ══ */
+/* ══ HERO MESH ══ */
+.page-hero-mesh{animation:meshP 9s ease-in-out infinite alternate;}
+@keyframes meshP{0%{opacity:.7;}100%{opacity:1;}}
+/* ══ END ══ */
 
-/* ══ FOOTER WAVE UPGRADE ══ */
-footer::before {
-  top: -1px !important;
-  height: 2px !important;
-  background-size: 200% 100% !important;
-  animation: footerWave 3s linear infinite !important;
-  opacity: .7 !important;
-}
-@keyframes footerWave { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
-footer { box-shadow: 0 -20px 60px rgba(0,245,255,.04); }
-.footer-logo, .fl { filter: drop-shadow(0 0 10px rgba(0,245,255,.25)); }
-/* ══ END FOOTER ══ */
+/* ══ FOOTER WAVE ══ */
+@keyframes footerWave{0%{background-position:100% 0;}100%{background-position:-100% 0;}}
+footer{box-shadow:0 -20px 60px rgba(0,245,255,.04);}
+.footer-logo{filter:drop-shadow(0 0 10px rgba(0,245,255,.25));}
+/* ══ END ══ */
 
 /* ══ PAGE HERO TEXT ANIMATIONS ══ */
-.page-hero .page-eyebrow { opacity: 0; animation: fadeUp .7s .1s forwards; }
-.page-hero .page-title { opacity: 0; animation: fadeUp .8s .25s forwards; }
-.page-hero .page-sub { opacity: 0; animation: fadeUp .8s .4s forwards; }
-.page-hero .cyber-divider { opacity: 0; animation: fadeUp .8s .5s forwards; }
+.page-hero .page-eyebrow{opacity:0;animation:fadeUp .7s .1s forwards;}
+.page-hero .page-title{opacity:0;animation:fadeUp .8s .25s forwards;}
+.page-hero .page-sub{opacity:0;animation:fadeUp .8s .4s forwards;}
+.page-hero .cyber-divider{opacity:0;animation:fadeUp .8s .5s forwards;}
 /* ══ END ══ */
 </style>
 </head>
@@ -247,6 +192,7 @@ footer { box-shadow: 0 -20px 60px rgba(0,245,255,.04); }
 <div class="hex-bg"></div>
 <div class="noise"></div>
 <div class="scanlines"></div>
+
 <nav>
   <div class="nav-inner">
     <a href="index.html" class="nav-brand">
@@ -280,27 +226,31 @@ footer { box-shadow: 0 -20px 60px rgba(0,245,255,.04); }
 
 <div class="page-content">
 
-  <div style="margin-bottom:1.5rem;" class="reveal"><div class="section-label">// Reach Us</div><div class="section-heading">Contact Details</div></div>
+  <!-- CONTACT DETAILS -->
+  <div style="margin-bottom:1.5rem;" class="reveal">
+    <div class="section-label">// Reach Us</div>
+    <div class="section-heading">Contact Details</div>
+  </div>
   <div class="contact-grid">
     <div class="contact-card glass-card corners reveal"><div class="c-bl"></div><div class="c-br"></div>
       <div class="contact-icon">📡</div>
       <div class="contact-lbl">Email</div>
-      <div class="contact-val"><a href="/cdn-cgi/l/email-protection#c9aaa6a7bda8aabd89b9a8bba0aaa1a8b0fde7acadbc"><span class="__cf_email__" data-cfemail="5c3f3332283d3f281c2c3d2e353f343d256872393829">[email&#160;protected]</span></a></div>
+      <div class="contact-val"><a href="mailto:aimlhod@tjohngroup.com">aimlhod@tjohngroup.com</a></div>
+    </div>
+    <div class="contact-card glass-card corners reveal"><div class="c-bl"></div><div class="c-br"></div>
+      <div class="contact-icon">🌐</div>
+      <div class="contact-lbl">Website</div>
+      <div class="contact-val"><a href="http://www.tjohngroup.com" target="_blank">www.tjohngroup.com</a></div>
     </div>
     <div class="contact-card glass-card corners reveal"><div class="c-bl"></div><div class="c-br"></div>
       <div class="contact-icon">📍</div>
       <div class="contact-lbl">Venue</div>
-      <div class="contact-val">Main Auditorium &amp; Tech Block,<br/>College Campus</div>
-    </div>
-    <div class="contact-card glass-card corners reveal"><div class="c-bl"></div><div class="c-br"></div>
-      <div class="contact-icon">📞</div>
-      <div class="contact-lbl">Phone</div>
-      <div class="contact-val"><a href="tel:+919876543210">+91 98765 43210</a><br/><span style="font-size:.8rem;color:#2a4a5a;">+91 91234 56789</span></div>
+      <div class="contact-val">T. John Institute of Technology,<br/>Bangalore</div>
     </div>
     <div class="contact-card glass-card corners reveal"><div class="c-bl"></div><div class="c-br"></div>
       <div class="contact-icon">📅</div>
       <div class="contact-lbl">Date &amp; Time</div>
-      <div class="contact-val">April 21, 2026<br/>10:00 AM — onwards</div>
+      <div class="contact-val">April 21, 2026<br/>8:30 AM onwards</div>
     </div>
     <div class="contact-card glass-card corners reveal"><div class="c-bl"></div><div class="c-br"></div>
       <div class="contact-icon">📸</div>
@@ -314,18 +264,58 @@ footer { box-shadow: 0 -20px 60px rgba(0,245,255,.04); }
     </div>
   </div>
 
-  <div style="margin-bottom:1.5rem;" class="reveal"><div class="section-label">// Fest Committee</div><div class="section-heading">Core Team</div></div>
-  <div class="team-grid">
-    <div class="team-card glass-card reveal"><div class="team-avatar">F</div><div class="team-name">Fest Head</div><div class="team-role">Overall Coordinator</div></div>
-    <div class="team-card glass-card reveal"><div class="team-avatar">T</div><div class="team-name">Tech Lead</div><div class="team-role">Hacksphere / Robo Race</div></div>
-    <div class="team-card glass-card reveal"><div class="team-avatar">D</div><div class="team-name">Design Lead</div><div class="team-role">Visual Odyssey</div></div>
-    <div class="team-card glass-card reveal"><div class="team-avatar">E</div><div class="team-name">Events Lead</div><div class="team-role">Gaming / Think-Ink</div></div>
-    <div class="team-card glass-card reveal"><div class="team-avatar">S</div><div class="team-name">Sponsor Head</div><div class="team-role">Partnerships &amp; PR</div></div>
-    <div class="team-card glass-card reveal"><div class="team-avatar">O</div><div class="team-name">Ops Lead</div><div class="team-role">Logistics &amp; Venue</div></div>
+  <!-- CORE TEAM -->
+  <div style="margin-bottom:1.5rem;" class="reveal">
+    <div class="section-label">// Fest Committee</div>
+    <div class="section-heading">Core Team</div>
+  </div>
+
+  <!-- Main Coordinators -->
+  <div class="team-section-block reveal">
+    <div class="team-sub-label">Main Coordinators</div>
+    <div class="team-grid">
+      <div class="team-card glass-card">
+        <div class="team-avatar">D</div>
+        <div class="team-name">Disha Prakasha</div>
+        <div class="team-role">Main Coordinator</div>
+        <a href="tel:7349384407" class="team-phone">📞 73493 84407</a>
+      </div>
+      <div class="team-card glass-card">
+        <div class="team-avatar">R</div>
+        <div class="team-name">Ryan Jacob</div>
+        <div class="team-role">Main Coordinator</div>
+        <a href="tel:9495190543" class="team-phone">📞 94951 90543</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Faculty Coordinator -->
+  <div class="team-section-block reveal">
+    <div class="team-sub-label">Faculty Coordinator</div>
+    <div class="team-grid-single">
+      <div class="team-card glass-card">
+        <div class="team-avatar">K</div>
+        <div class="team-name">Ms. Kanika Chalana</div>
+        <div class="team-role">Faculty Coordinator</div>
+        <a href="tel:9413019995" class="team-phone">📞 94130 19995</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Department Head -->
+  <div class="team-section-block reveal">
+    <div class="team-sub-label">Department Head</div>
+    <div class="team-grid-single">
+      <div class="team-card glass-card">
+        <div class="team-avatar">A</div>
+        <div class="team-name">Dr. Asha S Manek</div>
+        <div class="team-role">Department Head — AI &amp; ML</div>
+        <a href="tel:9945825923" class="team-phone">📞 99458 25923</a>
+      </div>
+    </div>
   </div>
 
 </div>
-
 
 <footer>
   <div class="footer-logo">PARICHAY 4.0</div>
@@ -339,8 +329,7 @@ footer { box-shadow: 0 -20px 60px rgba(0,245,255,.04); }
   <p class="footer-copy">© 2026 PARICHAY 4.0 — College Fest. All Rights Reserved.</p>
 </footer>
 
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* CURSOR */
 const cur=document.getElementById("cursor"),ring=document.getElementById("cursor-ring");
 let mx=0,my=0,rx=0,ry=0,ptT=0;
@@ -396,4 +385,7 @@ const ro=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isInter
 document.querySelectorAll(".reveal,.reveal-left,.reveal-right").forEach(el=>ro.observe(el));
 
 /* NAV HAMBURGER */
-function tog
+function toggleNav(){document.getElementById("navLinks").classList.toggle("open");}
+</script>
+</body>
+</html>
