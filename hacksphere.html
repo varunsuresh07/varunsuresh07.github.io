@@ -23,6 +23,13 @@ body{background:var(--bg);color:#c8ddf5;font-family:"Exo 2",sans-serif;overflow-
 /* NAV */
 nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(2,4,15,.88);backdrop-filter:blur(22px);border-bottom:1px solid rgba(0,245,255,.1);}
 .nav-bar{position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#00f5ff,transparent);opacity:.5;}
+@keyframes navLine{from{background-position:0 0}to{background-position:200% 0}}
+.nav-inner{max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;}
+.nav-brand{display:flex;align-items:center;gap:.9rem;text-decoration:none;}
+.college-logo,.ai-minds-logo{height:40px;width:auto;object-fit:contain;border-radius:3px;
+  filter:drop-shadow(0 0 6px rgba(0,245,255,.2));transition:filter .3s,transform .3s;}
+.nav-brand:hover .college-logo,.nav-brand:hover .ai-minds-logo{filter:drop-shadow(0 0 14px rgba(0,245,255,.55));transform:scale(1.03);}
+.nav-divider{width:1px;height:30px;background:linear-gradient(180deg,transparent,rgba(0,245,255,.4),transparent);flex-shrink:0;}
 .nav-inner{max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;}
 .nav-logo{font-family:"Orbitron",monospace;font-weight:900;font-size:1rem;letter-spacing:.22em;background:linear-gradient(90deg,#00f5ff,#0040ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none;filter:drop-shadow(0 0 8px rgba(0,245,255,.3));}
 .nav-logo span{color:var(--m);-webkit-text-fill-color:var(--m);}
@@ -318,14 +325,20 @@ footer { box-shadow: 0 -20px 60px rgba(0,0,0,.3); }
 
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">PARICHAY <span>4.0</span></a>
-    <div class="hamburger" onclick="document.getElementById('nL').classList.toggle('open')"><span></span><span></span><span></span></div>
-    <ul class="nav-links" id="nL">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="events.html" style="color:#00f5ff">Events</a></li>
-      <li><a href="sponsors.html">Sponsors</a></li>
-      <li><a href="contact.html">Contact</a></li>
+    <a href="index.html" class="nav-brand">
+      <img src="aiminds.png" alt="AI Minds" class="ai-minds-logo"/>
+      <div class="nav-divider"></div>
+      <img src="tjohn-logo.png" alt="T. John Institute of Technology" class="college-logo"/>
+      <div class="nav-divider"></div>
+      <div class="nav-logo">PARICHAY <span>4.0</span></div>
+    </a>
+    <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" data-page="index">Home</a></li>
+      <li><a href="about.html" data-page="about">About</a></li>
+      <li><a href="events.html" data-page="events">Events</a></li>
+      <li><a href="sponsors.html" data-page="sponsors">Sponsors</a></li>
+      <li><a href="contact.html" data-page="contact">Contact</a></li>
     </ul>
   </div>
   <div class="nav-bar"></div>
