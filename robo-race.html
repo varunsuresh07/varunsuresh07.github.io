@@ -347,7 +347,8 @@ footer { box-shadow: 0 -20px 60px rgba(0,0,0,.3); }
 <script>
 const aboutDD=document.getElementById("aboutDropdown");
 aboutDD.querySelector("a").addEventListener("click",function(e){
-  if(window.innerWidth<=900){e.preventDefault();aboutDD.classList.toggle("open");}
+  e.preventDefault();
+  if(window.innerWidth<=900){aboutDD.classList.toggle("open");}
 });
 const cur=document.getElementById("cursor"),ring=document.getElementById("cursor-ring");
 let mx=0,my=0,rx=0,ry=0,ptT=0;
