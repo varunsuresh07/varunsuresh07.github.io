@@ -123,12 +123,10 @@ nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(2,4,15,.88);bac
 
 /* TEAM GRID — centred */
 .team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.4rem;margin-bottom:2.8rem;justify-items:center;}
-.team-grid-pair{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;max-width:520px;margin:0 auto 2.8rem;justify-items:center;}
-.team-grid-single{display:grid;grid-template-columns:1fr;max-width:260px;gap:1.4rem;margin:0 auto 2.8rem;justify-items:center;}
-@media(max-width:600px){
+.team-grid-three{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;max-width:820px;margin:0 auto 2.8rem;}
+@media(max-width:700px){
   .team-grid{grid-template-columns:1fr;}
-  .team-grid-pair{grid-template-columns:1fr;max-width:100%;}
-  .team-grid-single{max-width:100%;}
+  .team-grid-three{grid-template-columns:1fr;max-width:100%;}
 }
 
 /* TEAM CARD — bigger text */
@@ -222,12 +220,13 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
 
 <div class="page-content">
 
-  <!-- CHAIRMAN -->
+  <!-- LEADERSHIP ROW: Chairman + Principal + HoD -->
   <div class="section-intro reveal">
-    <div class="section-label">// Institution</div>
-    <div class="section-heading">Chairman</div>
+    <div class="section-label">// Leadership</div>
+    <div class="section-heading">Institution &amp; Department</div>
   </div>
-  <div class="team-grid-single reveal">
+  <div class="team-grid-three reveal">
+    <!-- Chairman -->
     <div class="team-card glass-card corners"><div class="c-bl"></div><div class="c-br"></div>
       <div class="team-avatar-img-wrap">
         <img src="chairman.jpg" alt="Dr. Thomas John" class="team-avatar-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
@@ -236,14 +235,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
       <div class="team-name">Dr. Thomas John</div>
       <div class="team-role">Chairman, T. John Group of Institutions, Bengaluru</div>
     </div>
-  </div>
-
-  <!-- PRINCIPAL -->
-  <div class="section-intro reveal" style="margin-top:2rem;">
-    <div class="section-label">// Administration</div>
-    <div class="section-heading">Principal</div>
-  </div>
-  <div class="team-grid-single reveal">
+    <!-- Principal -->
     <div class="team-card glass-card corners"><div class="c-bl"></div><div class="c-br"></div>
       <div class="team-avatar-img-wrap">
         <img src="principal.jpg" alt="Dr. H. P. Srinivasa" class="team-avatar-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
@@ -252,18 +244,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
       <div class="team-name">Dr. H. P. Srinivasa</div>
       <div class="team-role">Principal, T. John Institute of Technology, Bengaluru</div>
     </div>
-  </div>
-
-  <!-- FACULTY -->
-  <div class="section-intro reveal" style="margin-top:2rem;">
-    <div class="section-label">// Department of AI &amp; ML</div>
-    <div class="section-heading">Faculty</div>
-  </div>
-
-  <div style="margin-bottom:.8rem;" class="reveal">
-    <div class="team-sub-label">Head of Department</div>
-  </div>
-  <div class="team-grid-single reveal">
+    <!-- HoD -->
     <div class="team-card glass-card corners"><div class="c-bl"></div><div class="c-br"></div>
       <div class="team-avatar-img-wrap">
         <img src="asha-manek.jpg" alt="Dr. Asha S Manek" class="team-avatar-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
@@ -275,10 +256,16 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
     </div>
   </div>
 
+  <!-- FACULTY MEMBERS -->
+  <div class="section-intro reveal" style="margin-top:2rem;">
+    <div class="section-label">// Department of AI &amp; ML</div>
+    <div class="section-heading">Faculty</div>
+  </div>
+
   <div style="margin-bottom:.8rem;margin-top:1.5rem;" class="reveal">
     <div class="team-sub-label">Faculty Members</div>
   </div>
-  <div class="team-grid reveal">
+  <div class="team-grid reveal" style="justify-items:center;">
     <div class="team-card glass-card corners"><div class="c-bl"></div><div class="c-br"></div>
       <div class="team-avatar-img-wrap">
         <img src="chaya-ravindra.jpg" alt="Dr. Chaya Ravindra" class="team-avatar-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
