@@ -158,6 +158,12 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
 .reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease;}
 .reveal.active{opacity:1;transform:none;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:none;}}
+
+/* PHOTO */
+.team-avatar-img-wrap{width:80px;height:80px;border-radius:50%;margin:0 auto 1rem;overflow:hidden;border:2px solid rgba(0,245,255,.3);box-shadow:0 0 18px rgba(0,245,255,.15);transition:box-shadow .3s;}
+.team-card:hover .team-avatar-img-wrap{box-shadow:0 0 30px rgba(0,245,255,.3);}
+.team-avatar-img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;}
+.team-qual{font-family:"Share Tech Mono",monospace;font-size:.6rem;letter-spacing:.15em;color:rgba(0,245,255,.35);margin-top:.2rem;}
 </style>
 </head>
 <body>
@@ -212,67 +218,100 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
 
 <div class="page-content">
 
-  <!-- FACULTY LEADERSHIP -->
+  <!-- CHAIRMAN -->
   <div style="margin-bottom:1.5rem;" class="reveal">
-    <div class="section-label">// Leadership</div>
-    <div class="section-heading">Faculty &amp; Heads</div>
-  </div>
-
-  <div style="margin-bottom:.8rem;" class="reveal">
-    <div class="team-sub-label">Department Head</div>
+    <div class="section-label">// Institution</div>
+    <div class="section-heading">Chairman</div>
   </div>
   <div class="team-grid-single reveal">
     <div class="team-card glass-card corners"><div class="c-bl"></div><div class="c-br"></div>
-      <div class="team-avatar">A</div>
+      <div class="team-avatar-img-wrap">
+        <img src="chairman.jpg" alt="Dr. Thomas John" class="team-avatar-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="team-avatar" style="display:none;">T</div>
+      </div>
+      <div class="team-name">Dr. Thomas John</div>
+      <div class="team-role">Chairman, T. John Group of Institutions, Bengaluru</div>
+    </div>
+  </div>
+
+  <!-- PRINCIPAL -->
+  <div style="margin-bottom:1.5rem;margin-top:2rem;" class="reveal">
+    <div class="section-label">// Administration</div>
+    <div class="section-heading">Principal</div>
+  </div>
+  <div class="team-grid-single reveal">
+    <div class="team-card glass-card corners"><div class="c-bl"></div><div class="c-br"></div>
+      <div class="team-avatar-img-wrap">
+        <img src="principal.jpg" alt="Dr. H. P. Srinivasa" class="team-avatar-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="team-avatar" style="display:none;">S</div>
+      </div>
+      <div class="team-name">Dr. H. P. Srinivasa</div>
+      <div class="team-role">Principal, T. John Institute of Technology, Bengaluru</div>
+    </div>
+  </div>
+
+  <!-- FACULTY -->
+  <div style="margin-bottom:1.5rem;margin-top:2rem;" class="reveal">
+    <div class="section-label">// Department of AI &amp; ML</div>
+    <div class="section-heading">Faculty</div>
+  </div>
+
+  <div style="margin-bottom:.8rem;" class="reveal">
+    <div class="team-sub-label">Head of Department</div>
+  </div>
+  <div class="team-grid-single reveal">
+    <div class="team-card glass-card corners"><div class="c-bl"></div><div class="c-br"></div>
+      <div class="team-avatar-img-wrap">
+        <img src="asha-manek.jpg" alt="Dr. Asha S Manek" class="team-avatar-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="team-avatar" style="display:none;">A</div>
+      </div>
       <div class="team-name">Dr. Asha S Manek</div>
-      <div class="team-role">Department Head — AI &amp; ML</div>
-      <a href="tel:9945825923" class="team-phone">📞 99458 25923</a>
+      <div class="team-role">Professor &amp; HoD (AIML) · R&amp;D Cell Coordinator</div>
+      <div class="team-qual">BE, ME, Ph.D</div>
     </div>
   </div>
 
-  <div style="margin-bottom:.8rem;" class="reveal">
-    <div class="team-sub-label">Faculty Coordinator</div>
+  <div style="margin-bottom:.8rem;margin-top:1.5rem;" class="reveal">
+    <div class="team-sub-label">Faculty Members</div>
   </div>
-  <div class="team-grid-single reveal">
+  <div class="team-grid reveal">
     <div class="team-card glass-card corners"><div class="c-bl"></div><div class="c-br"></div>
-      <div class="team-avatar">K</div>
+      <div class="team-avatar-img-wrap">
+        <img src="chaya-ravindra.jpg" alt="Dr. Chaya Ravindra" class="team-avatar-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="team-avatar" style="display:none;">C</div>
+      </div>
+      <div class="team-name">Dr. Chaya Ravindra</div>
+      <div class="team-role">Associate Professor</div>
+      <div class="team-qual">B.E, M.E, Ph.D</div>
+    </div>
+    <div class="team-card glass-card corners"><div class="c-bl"></div><div class="c-br"></div>
+      <div class="team-avatar-img-wrap">
+        <img src="madhavi-dixit.jpg" alt="Ms. Madhavi Dixit" class="team-avatar-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="team-avatar" style="display:none;">M</div>
+      </div>
+      <div class="team-name">Ms. Madhavi Dixit</div>
+      <div class="team-role">Assistant Professor</div>
+      <div class="team-qual">B.E., M.E.</div>
+    </div>
+    <div class="team-card glass-card corners"><div class="c-bl"></div><div class="c-br"></div>
+      <div class="team-avatar-img-wrap">
+        <img src="kanika-chalana.jpg" alt="Ms. Kanika Chalana" class="team-avatar-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="team-avatar" style="display:none;">K</div>
+      </div>
       <div class="team-name">Ms. Kanika Chalana</div>
-      <div class="team-role">Faculty Coordinator</div>
-      <a href="tel:9413019995" class="team-phone">📞 94130 19995</a>
-    </div>
-  </div>
-
-  <!-- STUDENT COORDINATORS -->
-  <div style="margin-bottom:1.5rem;margin-top:1rem;" class="reveal">
-    <div class="section-label">// Core Committee</div>
-    <div class="section-heading">Student Coordinators</div>
-  </div>
-
-  <div style="margin-bottom:.8rem;" class="reveal">
-    <div class="team-sub-label">Main Coordinators</div>
-  </div>
-  <div class="team-grid-pair reveal">
-    <div class="team-card glass-card corners"><div class="c-bl"></div><div class="c-br"></div>
-      <div class="team-avatar">D</div>
-      <div class="team-name">Disha Prakasha</div>
-      <div class="team-role">Main Coordinator</div>
-      <a href="tel:7349384407" class="team-phone">📞 73493 84407</a>
+      <div class="team-role">Assistant Professor · Faculty Coordinator</div>
+      <div class="team-qual">B.E., M.E., (Ph.D)</div>
+      <a href="tel:9413019995" class="team-phone" style="margin-top:.6rem;">📞 94130 19995</a>
     </div>
     <div class="team-card glass-card corners"><div class="c-bl"></div><div class="c-br"></div>
-      <div class="team-avatar">R</div>
-      <div class="team-name">Ryan Jacob</div>
-      <div class="team-role">Main Coordinator</div>
-      <a href="tel:9495190543" class="team-phone">📞 94951 90543</a>
+      <div class="team-avatar-img-wrap">
+        <img src="kv-shalini.jpg" alt="Ms. K V Shalini" class="team-avatar-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="team-avatar" style="display:none;">S</div>
+      </div>
+      <div class="team-name">Ms. K V Shalini</div>
+      <div class="team-role">Assistant Professor</div>
+      <div class="team-qual">M.E.</div>
     </div>
-  </div>
-
-  <!-- PLACEHOLDER: More team members coming -->
-  <div style="margin-bottom:.8rem;" class="reveal">
-    <div class="team-sub-label">Event Leads &amp; Committee</div>
-  </div>
-  <div class="placeholder-block reveal">
-    <div class="ph-icon">👥</div>
-    <p>Team details coming soon — check back shortly</p>
   </div>
 
 </div>
