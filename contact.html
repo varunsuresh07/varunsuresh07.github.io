@@ -377,7 +377,8 @@ function spawnPt(x,y){
 
 const aboutDD=document.getElementById("aboutDropdown");
 aboutDD.querySelector("a").addEventListener("click",function(e){
-  if(window.innerWidth<=900){e.preventDefault();aboutDD.classList.toggle("open");}
+  e.preventDefault();
+  if(window.innerWidth<=900){aboutDD.classList.toggle("open");}
 });
 /* PARTICLE CANVAS */
 const cv=document.getElementById("bg-canvas"),ctx=cv.getContext("2d");
