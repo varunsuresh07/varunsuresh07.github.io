@@ -49,42 +49,219 @@ body{background:var(--bg);color:#c8ddf5;font-family:"Exo 2",sans-serif;overflow-
   background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,245,255,.012) 2px,rgba(0,245,255,.012) 4px);}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(2,4,15,.88);backdrop-filter:blur(22px) saturate(200%);border-bottom:1px solid rgba(0,245,255,.08);}
-.nav-bar{position:absolute;bottom:0;left:0;right:0;height:1px;
+/* ── NAV ── */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+  background:rgba(2,4,15,.88);
+  backdrop-filter:blur(22px) saturate(200%);
+  border-bottom:1px solid rgba(0,245,255,.08);
+}
+
+.nav-bar{
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  height:1px;
   background:linear-gradient(90deg,transparent,var(--c),var(--m),var(--v),var(--c),transparent);
-  background-size:200% 100%;animation:navLine 4s linear infinite;}
-@keyframes navLine{from{background-position:0 0}to{background-position:200% 0}}
-.nav-inner{max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:68px;}
-.nav-brand{display:flex;align-items:center;gap:.9rem;text-decoration:none;}
-.college-logo,.ai-minds-logo{height:40px;width:auto;object-fit:contain;border-radius:3px;
-  filter:drop-shadow(0 0 6px rgba(0,245,255,.2));transition:filter .3s,transform .3s;}
-.nav-brand:hover .college-logo,.nav-brand:hover .ai-minds-logo{
-  filter:drop-shadow(0 0 14px rgba(0,245,255,.55));transform:scale(1.03);}
-.nav-divider{width:1px;height:30px;background:linear-gradient(180deg,transparent,rgba(0,245,255,.4),transparent);flex-shrink:0;}
-.nav-logo{font-family:"Orbitron",monospace;font-weight:900;font-size:1rem;letter-spacing:.22em;
-  background:linear-gradient(90deg,var(--c),var(--b));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  filter:drop-shadow(0 0 10px rgba(0,245,255,.5));}
-.nav-logo span{color:var(--m);-webkit-text-fill-color:var(--m);}
-.nav-links{display:flex;gap:0;list-style:none;}
-.nav-links a{font-family:"Share Tech Mono",monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
-  color:#7a9ab8;text-decoration:none;padding:.5rem 1rem;transition:color .2s;position:relative;display:block;}
-.nav-links a::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,245,255,.06),transparent);
-  opacity:0;transition:opacity .25s;}
-.nav-links a::after{content:"";position:absolute;bottom:0;left:15%;width:70%;height:1px;
-  background:linear-gradient(90deg,transparent,var(--c),transparent);transform:scaleX(0);transition:transform .3s;}
-.nav-links a:hover,.nav-links a.active{color:var(--c);}
-.nav-links a:hover::before,.nav-links a.active::before{opacity:1;}
-.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
-.hamburger span{display:block;width:24px;height:2px;border-radius:1px;transition:all .3s;}
+  background-size:200% 100%;
+  animation:navLine 4s linear infinite;
+}
+
+@keyframes navLine{
+  from{background-position:0 0}
+  to{background-position:200% 0}
+}
+
+.nav-inner{
+  max-width:1300px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 2rem;
+  height:68px;
+}
+
+/* BRAND AREA */
+.nav-brand{
+  display:flex;
+  align-items:center;
+  gap:.9rem;
+  text-decoration:none;
+}
+
+/* ALL LOGOS */
+.college-logo,
+.ai-minds-logo,
+.iic-logo{
+  height:40px;
+  width:auto;
+  object-fit:contain;
+  border-radius:3px;
+  filter:drop-shadow(0 0 6px rgba(0,245,255,.2));
+  transition:filter .3s,transform .3s;
+}
+
+.nav-brand:hover .college-logo,
+.nav-brand:hover .ai-minds-logo,
+.nav-brand:hover .iic-logo{
+  filter:drop-shadow(0 0 14px rgba(0,245,255,.55));
+  transform:scale(1.03);
+}
+
+/* DIVIDER */
+.nav-divider{
+  width:1px;
+  height:30px;
+  background:linear-gradient(180deg,transparent,rgba(0,245,255,.4),transparent);
+  flex-shrink:0;
+}
+
+/* TEXT LOGO */
+.nav-logo{
+  font-family:"Orbitron",monospace;
+  font-weight:900;
+  font-size:1rem;
+  letter-spacing:.22em;
+  background:linear-gradient(90deg,var(--c),var(--b));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  filter:drop-shadow(0 0 10px rgba(0,245,255,.5));
+}
+
+.nav-logo span{
+  color:var(--m);
+  -webkit-text-fill-color:var(--m);
+}
+
+/* LINKS */
+.nav-links{
+  display:flex;
+  gap:0;
+  list-style:none;
+}
+
+.nav-links a{
+  font-family:"Share Tech Mono",monospace;
+  font-size:.7rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#7a9ab8;
+  text-decoration:none;
+  padding:.5rem 1rem;
+  transition:color .2s;
+  position:relative;
+  display:block;
+}
+
+.nav-links a::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(0,245,255,.06),transparent);
+  opacity:0;
+  transition:opacity .25s;
+}
+
+.nav-links a::after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:15%;
+  width:70%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--c),transparent);
+  transform:scaleX(0);
+  transition:transform .3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+  color:var(--c);
+}
+
+.nav-links a:hover::before,
+.nav-links a.active::before{
+  opacity:1;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after{
+  transform:scaleX(1);
+}
+
+/* HAMBURGER */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+  padding:4px;
+}
+
+.hamburger span{
+  display:block;
+  width:24px;
+  height:2px;
+  border-radius:1px;
+  transition:all .3s;
+}
+
 .hamburger span:nth-child(1){background:var(--c);}
 .hamburger span:nth-child(2){background:var(--v);}
 .hamburger span:nth-child(3){background:var(--m);}
+
+/* MOBILE */
 @media(max-width:900px){
-  .hamburger{display:flex;}
-  .nav-links{display:none;position:absolute;top:68px;left:0;width:100%;background:rgba(2,4,15,.98);flex-direction:column;border-bottom:1px solid var(--border);}
-  .nav-links.open{display:flex;}
-  .nav-links a{padding:1rem 2rem;border-bottom:1px solid rgba(0,245,255,.05);}
+
+  .nav-inner{
+    padding:0 1rem;
+  }
+
+  /* slightly smaller logos */
+  .college-logo,
+  .ai-minds-logo,
+  .iic-logo{
+    height:32px;
+  }
+
+  .nav-divider{
+    height:22px;
+  }
+
+  .nav-logo{
+    font-size:.8rem;
+    letter-spacing:.15em;
+  }
+
+  .hamburger{
+    display:flex;
+  }
+
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:68px;
+    left:0;
+    width:100%;
+    background:rgba(2,4,15,.98);
+    flex-direction:column;
+    border-bottom:1px solid var(--border);
+  }
+
+  .nav-links.open{
+    display:flex;
+  }
+
+  .nav-links a{
+    padding:1rem 2rem;
+    border-bottom:1px solid rgba(0,245,255,.05);
+  }
 }
 
 /* ── HERO ── */
@@ -297,6 +474,8 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;
 <nav>
   <div class="nav-inner">
     <a href="index.html" class="nav-brand">
+      <img src="iic-logo.png" alt="AI Minds" class="iic-logo"/>
+      <div class="nav-divider"></div>
       <img src="aiminds.png" alt="AI Minds" class="ai-minds-logo"/>
       <div class="nav-divider"></div>
       <img src="tjohn-logo.png" alt="T. John Institute of Technology" class="college-logo"/>
