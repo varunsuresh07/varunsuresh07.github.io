@@ -41,7 +41,6 @@ nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(2,4,15,.88);bac
 .nav-links a::after{content:"";position:absolute;bottom:0;left:15%;width:70%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(0);transition:transform .3s;}
 .nav-links a:hover,.nav-links a.active{color:var(--gold);}
 .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
-/* DROPDOWN */
 .has-dropdown>a{display:flex;align-items:center;gap:.35rem;}
 .dropdown-arrow{font-size:.5rem;opacity:.6;transition:transform .3s;display:inline-block;line-height:1;}
 .has-dropdown:hover .dropdown-arrow,.has-dropdown.open .dropdown-arrow{transform:rotate(180deg);}
@@ -126,15 +125,14 @@ nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(2,4,15,.88);bac
 .pstat .pl{font-family:"Share Tech Mono",monospace;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,215,0,.5);margin-top:.3rem;}
 
 /* TOPPER CARDS */
-.topper-section{margin-bottom:3rem;}
-.sem-label{font-family:"Orbitron",monospace;font-size:.75rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,215,0,.6);margin-bottom:1.2rem;display:flex;align-items:center;gap:1rem;}
+.topper-section{margin-bottom:3.5rem;}
+.sem-label{font-family:"Orbitron",monospace;font-size:.75rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,215,0,.6);margin-bottom:1.4rem;display:flex;align-items:center;gap:1rem;}
 .sem-label::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(255,215,0,.2),transparent);}
-.toppers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.2rem;}
+.toppers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1.2rem;}
 .topper-card{background:rgba(8,15,32,.96);border:1px solid rgba(255,215,0,.15);padding:1.6rem;text-align:center;position:relative;overflow:hidden;transition:all .3s;}
 .topper-card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
 .topper-card::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,215,0,.03),transparent 55%);pointer-events:none;}
 .topper-card:hover{border-color:rgba(255,215,0,.4);box-shadow:0 0 40px rgba(255,215,0,.08),0 8px 30px rgba(0,0,0,.4);transform:translateY(-4px);}
-/* Rank badges */
 .topper-card.rank-1{border-color:rgba(255,215,0,.35);background:rgba(255,215,0,.04);}
 .topper-card.rank-2{border-color:rgba(192,192,192,.3);background:rgba(192,192,192,.03);}
 .topper-card.rank-3{border-color:rgba(205,127,50,.3);background:rgba(205,127,50,.03);}
@@ -142,6 +140,8 @@ nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(2,4,15,.88);bac
 .rank-1 .rank-badge{background:rgba(255,215,0,.15);color:var(--gold);border:1px solid rgba(255,215,0,.4);}
 .rank-2 .rank-badge{background:rgba(192,192,192,.12);color:var(--silver);border:1px solid rgba(192,192,192,.35);}
 .rank-3 .rank-badge{background:rgba(205,127,50,.12);color:var(--bronze);border:1px solid rgba(205,127,50,.35);}
+/* Tie badge */
+.rank-badge.tie{font-size:.45rem;letter-spacing:.05em;}
 .topper-photo-wrap{width:80px;height:80px;border-radius:50%;margin:0 auto 1rem;overflow:hidden;border:2px solid rgba(255,215,0,.3);box-shadow:0 0 18px rgba(255,215,0,.12);transition:box-shadow .3s,transform .3s;}
 .topper-card.rank-1 .topper-photo-wrap{border-color:rgba(255,215,0,.55);box-shadow:0 0 25px rgba(255,215,0,.2);}
 .topper-card.rank-2 .topper-photo-wrap{border-color:rgba(192,192,192,.45);}
@@ -149,15 +149,16 @@ nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(2,4,15,.88);bac
 .topper-card:hover .topper-photo-wrap{box-shadow:0 0 30px rgba(255,215,0,.3);transform:scale(1.06);}
 .topper-photo{width:100%;height:100%;object-fit:cover;object-position:top;display:block;}
 .topper-fallback{width:80px;height:80px;border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-family:"Orbitron",monospace;font-size:1.3rem;font-weight:700;color:var(--gold);background:rgba(255,215,0,.08);border:2px solid rgba(255,215,0,.25);}
-.topper-name{font-family:"Orbitron",monospace;font-size:.82rem;letter-spacing:.1em;color:#d0eaf8;margin-bottom:.35rem;font-weight:700;line-height:1.3;}
-.topper-usn{font-family:"Share Tech Mono",monospace;font-size:.62rem;letter-spacing:.1em;color:rgba(0,245,255,.45);margin-bottom:.4rem;}
-.topper-score{font-family:"Orbitron",monospace;font-size:1.1rem;font-weight:900;letter-spacing:.05em;margin-bottom:.2rem;}
+.topper-name{font-family:"Orbitron",monospace;font-size:.82rem;letter-spacing:.08em;color:#d0eaf8;margin-bottom:.35rem;font-weight:700;line-height:1.3;}
+.topper-score{font-family:"Orbitron",monospace;font-size:1.2rem;font-weight:900;letter-spacing:.05em;margin-bottom:.2rem;margin-top:.5rem;}
 .rank-1 .topper-score{color:var(--gold);}
 .rank-2 .topper-score{color:var(--silver);}
 .rank-3 .topper-score{color:var(--bronze);}
 .topper-score-label{font-family:"Share Tech Mono",monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,215,0,.4);}
+/* Tie pill */
+.tie-pill{display:inline-block;font-family:"Share Tech Mono",monospace;font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;padding:.15rem .55rem;border:1px solid rgba(255,215,0,.25);color:rgba(255,215,0,.5);background:rgba(255,215,0,.04);margin-bottom:.35rem;}
 
-/* PLACEMENT CARD GRID (alternative view) */
+/* PLACEMENT CARD GRID */
 .placed-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.2rem;margin-top:2rem;}
 .placed-card{background:rgba(8,15,32,.96);border:1px solid rgba(255,215,0,.13);padding:1.5rem;text-align:center;position:relative;overflow:hidden;transition:all .3s;}
 .placed-card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
@@ -185,7 +186,6 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
 .footer-links a:hover{color:var(--gold);}
 .footer-copy{font-family:"Share Tech Mono",monospace;font-size:.62rem;color:#3a5a6a;letter-spacing:.12em;margin-top:.8rem;}
 
-/* REVEAL */
 .reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease;}
 .reveal.active{opacity:1;transform:none;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:none;}}
@@ -246,27 +246,20 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
 
   <!-- ══ PLACEMENTS TAB ══ -->
   <div class="tab-panel active" id="tab-placements">
-
     <div class="reveal">
       <div class="section-label">// Placed Students</div>
       <div class="section-heading">Campus Placements — 2022 Batch</div>
     </div>
-
-    <!-- STATS -->
     <div class="placement-stat-row reveal">
       <div class="pstat"><div class="pn">21+</div><div class="pl">Students Placed</div></div>
       <div class="pstat"><div class="pn">10+</div><div class="pl">Companies</div></div>
       <div class="pstat"><div class="pn">AI &amp; ML</div><div class="pl">Department</div></div>
       <div class="pstat"><div class="pn">2026</div><div class="pl">Batch Year</div></div>
     </div>
-
-    <!-- VIEW TOGGLE -->
     <div class="view-toggle reveal">
       <button class="view-btn active" onclick="switchView('table',this)">☰ Table View</button>
       <button class="view-btn" onclick="switchView('cards',this)">⊞ Card View</button>
     </div>
-
-    <!-- TABLE VIEW -->
     <div id="view-table" class="reveal">
       <div class="placement-filters">
         <button class="filter-btn active" onclick="filterCompany('all',this)">All Companies</button>
@@ -278,14 +271,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
       </div>
       <div class="placement-table-wrap">
         <table class="placement-table" id="placementTable">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>USN</th>
-              <th>Name</th>
-              <th>Company</th>
-            </tr>
-          </thead>
+          <thead><tr><th>#</th><th>USN</th><th>Name</th><th>Company</th></tr></thead>
           <tbody>
             <tr data-company="E2E ROSH"><td>1</td><td>1TJ22AI001</td><td>Abshiek T</td><td><span class="company-badge">E2E Rosh</span></td></tr>
             <tr data-company="TAP ACADEMY"><td>2</td><td>1TJ22AI002</td><td>Altaf Ali</td><td><span class="company-badge">TAP Academy</span></td></tr>
@@ -312,14 +298,9 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
         </table>
       </div>
     </div>
-
-    <!-- CARD VIEW -->
     <div id="view-cards" style="display:none;" class="reveal">
-      <div class="placed-grid" id="placedCardGrid">
-        <!-- Cards generated by JS -->
-      </div>
+      <div class="placed-grid" id="placedCardGrid"></div>
     </div>
-
   </div>
 
   <!-- ══ TOPPERS TAB ══ -->
@@ -330,144 +311,177 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
       <div class="section-heading">Semester Toppers</div>
     </div>
 
-    <!-- SEM 1 -->
-    <div class="topper-section reveal">
-      <div class="sem-label">Semester 1</div>
-      <div class="toppers-grid">
-        <div class="topper-card rank-1">
-          <div class="rank-badge">1</div>
-          <div class="topper-photo-wrap">
-            <img src="topper-s1-1.jpg" alt="Topper" class="topper-photo" onerror="this.parentNode.style.display='none';this.parentNode.nextElementSibling.style.display='flex'"/>
-          </div>
-          <div class="topper-fallback" style="display:none;">—</div>
-          <div class="topper-name">Name</div>
-          <div class="topper-usn">USN</div>
-          <div class="topper-score">—</div>
-          <div class="topper-score-label">SGPA</div>
-        </div>
-        <div class="topper-card rank-2">
-          <div class="rank-badge">2</div>
-          <div class="topper-photo-wrap">
-            <img src="topper-s1-2.jpg" alt="Topper" class="topper-photo" onerror="this.parentNode.style.display='none';this.parentNode.nextElementSibling.style.display='flex'"/>
-          </div>
-          <div class="topper-fallback" style="display:none;">—</div>
-          <div class="topper-name">Name</div>
-          <div class="topper-usn">USN</div>
-          <div class="topper-score">—</div>
-          <div class="topper-score-label">SGPA</div>
-        </div>
-        <div class="topper-card rank-3">
-          <div class="rank-badge">3</div>
-          <div class="topper-photo-wrap">
-            <img src="topper-s1-3.jpg" alt="Topper" class="topper-photo" onerror="this.parentNode.style.display='none';this.parentNode.nextElementSibling.style.display='flex'"/>
-          </div>
-          <div class="topper-fallback" style="display:none;">—</div>
-          <div class="topper-name">Name</div>
-          <div class="topper-usn">USN</div>
-          <div class="topper-score">—</div>
-          <div class="topper-score-label">SGPA</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SEM 2 -->
-    <div class="topper-section reveal">
-      <div class="sem-label">Semester 2</div>
-      <div class="toppers-grid">
-        <div class="topper-card rank-1">
-          <div class="rank-badge">1</div>
-          <div class="topper-fallback">—</div>
-          <div class="topper-name">Name</div>
-          <div class="topper-usn">USN</div>
-          <div class="topper-score">—</div>
-          <div class="topper-score-label">SGPA</div>
-        </div>
-        <div class="topper-card rank-2">
-          <div class="rank-badge">2</div>
-          <div class="topper-fallback">—</div>
-          <div class="topper-name">Name</div>
-          <div class="topper-usn">USN</div>
-          <div class="topper-score">—</div>
-          <div class="topper-score-label">SGPA</div>
-        </div>
-        <div class="topper-card rank-3">
-          <div class="rank-badge">3</div>
-          <div class="topper-fallback">—</div>
-          <div class="topper-name">Name</div>
-          <div class="topper-usn">USN</div>
-          <div class="topper-score">—</div>
-          <div class="topper-score-label">SGPA</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SEM 3 -->
+    <!-- ── SEM 3 ── -->
     <div class="topper-section reveal">
       <div class="sem-label">Semester 3</div>
       <div class="toppers-grid">
+
         <div class="topper-card rank-1">
           <div class="rank-badge">1</div>
-          <div class="topper-fallback">—</div>
-          <div class="topper-name">Name</div>
-          <div class="topper-usn">USN</div>
-          <div class="topper-score">—</div>
+          <div class="topper-photo-wrap">
+            <img src="topper-s3-1.jpg" alt="Abdul Rahaman" class="topper-photo" onerror="this.parentNode.style.display='none';this.parentNode.nextElementSibling.style.display='flex'"/>
+          </div>
+          <div class="topper-fallback" style="display:none;">AR</div>
+          <div class="topper-name">Abdul Rahaman</div>
+          <div class="topper-score">9.14</div>
           <div class="topper-score-label">SGPA</div>
         </div>
+
         <div class="topper-card rank-2">
           <div class="rank-badge">2</div>
-          <div class="topper-fallback">—</div>
-          <div class="topper-name">Name</div>
-          <div class="topper-usn">USN</div>
-          <div class="topper-score">—</div>
+          <div class="topper-photo-wrap">
+            <img src="topper-s3-2.jpg" alt="Beeresh Gowda" class="topper-photo" onerror="this.parentNode.style.display='none';this.parentNode.nextElementSibling.style.display='flex'"/>
+          </div>
+          <div class="topper-fallback" style="display:none;">BG</div>
+          <div class="topper-name">Beeresh Gowda</div>
+          <div class="topper-score">8.86</div>
           <div class="topper-score-label">SGPA</div>
         </div>
+
         <div class="topper-card rank-3">
           <div class="rank-badge">3</div>
-          <div class="topper-fallback">—</div>
-          <div class="topper-name">Name</div>
-          <div class="topper-usn">USN</div>
-          <div class="topper-score">—</div>
+          <div class="topper-photo-wrap">
+            <img src="topper-s3-3.jpg" alt="Nousheen P" class="topper-photo" onerror="this.parentNode.style.display='none';this.parentNode.nextElementSibling.style.display='flex'"/>
+          </div>
+          <div class="topper-fallback" style="display:none;">NP</div>
+          <div class="topper-name">Nousheen P.</div>
+          <div class="topper-score">8.81</div>
           <div class="topper-score-label">SGPA</div>
         </div>
+
       </div>
     </div>
 
-    <!-- SEM 4 -->
+    <!-- ── SEM 5 ── -->
     <div class="topper-section reveal">
-      <div class="sem-label">Semester 4</div>
+      <div class="sem-label">Semester 5</div>
       <div class="toppers-grid">
+
         <div class="topper-card rank-1">
           <div class="rank-badge">1</div>
-          <div class="topper-fallback">—</div>
-          <div class="topper-name">Name</div>
-          <div class="topper-usn">USN</div>
-          <div class="topper-score">—</div>
+          <div class="topper-photo-wrap">
+            <img src="topper-s5-1.jpg" alt="Avinash H" class="topper-photo" onerror="this.parentNode.style.display='none';this.parentNode.nextElementSibling.style.display='flex'"/>
+          </div>
+          <div class="topper-fallback" style="display:none;">AH</div>
+          <div class="topper-name">Avinash H</div>
+          <div class="topper-score">8.86</div>
           <div class="topper-score-label">SGPA</div>
         </div>
+
+        <!-- Tied rank 2: Chinmayi -->
         <div class="topper-card rank-2">
-          <div class="rank-badge">2</div>
-          <div class="topper-fallback">—</div>
-          <div class="topper-name">Name</div>
-          <div class="topper-usn">USN</div>
-          <div class="topper-score">—</div>
+          <div class="rank-badge tie">2=</div>
+          <div class="topper-photo-wrap">
+            <img src="topper-s5-2a.jpg" alt="Chinmayi" class="topper-photo" onerror="this.parentNode.style.display='none';this.parentNode.nextElementSibling.style.display='flex'"/>
+          </div>
+          <div class="topper-fallback" style="display:none;">C</div>
+          <div class="tie-pill">Tied 2nd</div>
+          <div class="topper-name">Chinmayi</div>
+          <div class="topper-score">8.77</div>
           <div class="topper-score-label">SGPA</div>
         </div>
+
+        <!-- Tied rank 2: Rithwik -->
+        <div class="topper-card rank-2">
+          <div class="rank-badge tie">2=</div>
+          <div class="topper-photo-wrap">
+            <img src="topper-s5-2b.jpg" alt="Rithwik" class="topper-photo" onerror="this.parentNode.style.display='none';this.parentNode.nextElementSibling.style.display='flex'"/>
+          </div>
+          <div class="topper-fallback" style="display:none;">R</div>
+          <div class="tie-pill">Tied 2nd</div>
+          <div class="topper-name">Rithwik</div>
+          <div class="topper-score">8.77</div>
+          <div class="topper-score-label">SGPA</div>
+        </div>
+
         <div class="topper-card rank-3">
           <div class="rank-badge">3</div>
-          <div class="topper-fallback">—</div>
-          <div class="topper-name">Name</div>
-          <div class="topper-usn">USN</div>
-          <div class="topper-score">—</div>
+          <div class="topper-photo-wrap">
+            <img src="topper-s5-3.jpg" alt="Chendu" class="topper-photo" onerror="this.parentNode.style.display='none';this.parentNode.nextElementSibling.style.display='flex'"/>
+          </div>
+          <div class="topper-fallback" style="display:none;">C</div>
+          <div class="topper-name">Chendu</div>
+          <div class="topper-score">8.68</div>
           <div class="topper-score-label">SGPA</div>
         </div>
+
       </div>
     </div>
 
-    <p style="text-align:center;font-family:'Share Tech Mono',monospace;font-size:.65rem;letter-spacing:.2em;color:rgba(255,215,0,.3);margin-top:1rem;">More semesters will be added as data is provided</p>
+    <!-- ── SEM 7 ── -->
+    <div class="topper-section reveal">
+      <div class="sem-label">Semester 7</div>
+      <div class="toppers-grid">
 
-  </div>
+        <!-- Tied rank 1: Mohamad Harshad -->
+        <div class="topper-card rank-1">
+          <div class="rank-badge tie">1=</div>
+          <div class="topper-photo-wrap">
+            <img src="topper-s7-1a.jpg" alt="Mohamad Harshad S" class="topper-photo" onerror="this.parentNode.style.display='none';this.parentNode.nextElementSibling.style.display='flex'"/>
+          </div>
+          <div class="topper-fallback" style="display:none;">MH</div>
+          <div class="tie-pill">Tied 1st</div>
+          <div class="topper-name">Mohamad Harshad S</div>
+          <div class="topper-score">8.96</div>
+          <div class="topper-score-label">SGPA</div>
+        </div>
 
-</div>
+        <!-- Tied rank 1: Dheekshita -->
+        <div class="topper-card rank-1">
+          <div class="rank-badge tie">1=</div>
+          <div class="topper-photo-wrap">
+            <img src="topper-s7-1b.jpg" alt="Dheekshita L" class="topper-photo" onerror="this.parentNode.style.display='none';this.parentNode.nextElementSibling.style.display='flex'"/>
+          </div>
+          <div class="topper-fallback" style="display:none;">DL</div>
+          <div class="tie-pill">Tied 1st</div>
+          <div class="topper-name">Dheekshita L</div>
+          <div class="topper-score">8.96</div>
+          <div class="topper-score-label">SGPA</div>
+        </div>
+
+        <div class="topper-card rank-2">
+          <div class="rank-badge">2</div>
+          <div class="topper-photo-wrap">
+            <img src="topper-s7-2.jpg" alt="Punya Shree R" class="topper-photo" onerror="this.parentNode.style.display='none';this.parentNode.nextElementSibling.style.display='flex'"/>
+          </div>
+          <div class="topper-fallback" style="display:none;">PS</div>
+          <div class="topper-name">Punya Shree R</div>
+          <div class="topper-score">8.92</div>
+          <div class="topper-score-label">SGPA</div>
+        </div>
+
+        <!-- Tied rank 3: Nandini -->
+        <div class="topper-card rank-3">
+          <div class="rank-badge tie">3=</div>
+          <div class="topper-photo-wrap">
+            <img src="topper-s7-3a.jpg" alt="Nandini K" class="topper-photo" onerror="this.parentNode.style.display='none';this.parentNode.nextElementSibling.style.display='flex'"/>
+          </div>
+          <div class="topper-fallback" style="display:none;">NK</div>
+          <div class="tie-pill">Tied 3rd</div>
+          <div class="topper-name">Nandini K</div>
+          <div class="topper-score">8.79</div>
+          <div class="topper-score-label">SGPA</div>
+        </div>
+
+        <!-- Tied rank 3: Kashvi -->
+        <div class="topper-card rank-3">
+          <div class="rank-badge tie">3=</div>
+          <div class="topper-photo-wrap">
+            <img src="topper-s7-3b.jpg" alt="Kashvi Ramesh Babu" class="topper-photo" onerror="this.parentNode.style.display='none';this.parentNode.nextElementSibling.style.display='flex'"/>
+          </div>
+          <div class="topper-fallback" style="display:none;">KR</div>
+          <div class="tie-pill">Tied 3rd</div>
+          <div class="topper-name">Kashvi Ramesh Babu</div>
+          <div class="topper-score">8.79</div>
+          <div class="topper-score-label">SGPA</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- end toppers tab -->
+
+</div><!-- end page-content -->
 
 <footer>
   <div class="footer-logo">PARICHAY 4.0</div>
@@ -483,7 +497,6 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
 </footer>
 
 <script>
-/* ── CURSOR ── */
 const cur=document.getElementById("cursor"),ring=document.getElementById("cursor-ring");
 let mx=0,my=0,rx=0,ry=0,ptT=0;
 document.addEventListener("mousemove",e=>{
@@ -501,8 +514,6 @@ function spawnPt(x,y){
   p.style.cssText=`background:${cols[Math.floor(Math.random()*4)]};left:${x}px;top:${y}px;width:${s};height:${s};`;
   document.body.appendChild(p);setTimeout(()=>p.remove(),500);
 }
-
-/* ── PARTICLE CANVAS ── */
 const cv=document.getElementById("bg-canvas"),ctx=cv.getContext("2d");
 let W,H,pts=[];
 function resize(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;}
@@ -530,35 +541,25 @@ function drawPts(){
   requestAnimationFrame(drawPts);
 }
 drawPts();
-
-/* ── SCROLL REVEAL ── */
 const ro=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add("active"),i*60);ro.unobserve(e.target);}});},{threshold:.08});
 document.querySelectorAll(".reveal").forEach(el=>ro.observe(el));
-
-/* ── NAV ── */
 function toggleNav(){document.getElementById("navLinks").classList.toggle("open");}
 document.querySelectorAll(".nav-links>li>a:not(.has-dropdown a)").forEach(a=>a.addEventListener("click",()=>document.getElementById("navLinks").classList.remove("open")));
 const aboutDD=document.getElementById("aboutDropdown");
 aboutDD.querySelector(":scope>a").addEventListener("click",function(e){e.preventDefault();if(window.innerWidth<=900){aboutDD.classList.toggle("open");}});
-
-/* ── TAB SWITCHING ── */
 function switchTab(id,btn){
   document.querySelectorAll(".tab-panel").forEach(p=>p.classList.remove("active"));
   document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
   document.getElementById("tab-"+id).classList.add("active");
   btn.classList.add("active");
 }
-
-/* ── VIEW SWITCHING ── */
 function switchView(view,btn){
   document.querySelectorAll(".view-btn").forEach(b=>b.classList.remove("active"));
   btn.classList.add("active");
-  document.getElementById("view-table").style.display = view==="table" ? "block" : "none";
-  document.getElementById("view-cards").style.display = view==="cards" ? "block" : "none";
+  document.getElementById("view-table").style.display=view==="table"?"block":"none";
+  document.getElementById("view-cards").style.display=view==="cards"?"block":"none";
   if(view==="cards") buildCards();
 }
-
-/* ── PLACEMENT DATA ── */
 const placements=[
   {n:1,usn:"1TJ22AI001",name:"Abshiek T",company:"E2E Rosh"},
   {n:2,usn:"1TJ22AI002",name:"Altaf Ali",company:"TAP Academy"},
@@ -582,18 +583,14 @@ const placements=[
   {n:20,usn:"1TJ23AI401",name:"Mohammed Abuzar",company:"Techvolt Pvt Ltd"},
   {n:21,usn:"1TJ23AI402",name:"Mohammed Maaz Sheikh K",company:"Techvolt Pvt Ltd"},
 ];
-
 function buildCards(){
   const grid=document.getElementById("placedCardGrid");
   if(grid.children.length) return;
   placements.forEach(s=>{
     const initials=s.name.split(" ").map(w=>w[0]).join("").slice(0,2).toUpperCase();
     const slug=s.name.toLowerCase().replace(/\s+/g,"-");
-    grid.innerHTML+=`
-    <div class="placed-card">
-      <div class="placed-photo-wrap">
-        <img src="placed-${slug}.jpg" alt="${s.name}" class="placed-photo" onerror="this.parentNode.style.display='none';this.parentNode.nextElementSibling.style.display='flex'"/>
-      </div>
+    grid.innerHTML+=`<div class="placed-card">
+      <div class="placed-photo-wrap"><img src="placed-${slug}.jpg" alt="${s.name}" class="placed-photo" onerror="this.parentNode.style.display='none';this.parentNode.nextElementSibling.style.display='flex'"/></div>
       <div class="placed-fallback" style="display:none;">${initials}</div>
       <div class="placed-name">${s.name}</div>
       <div class="placed-usn">${s.usn}</div>
@@ -601,8 +598,6 @@ function buildCards(){
     </div>`;
   });
 }
-
-/* ── COMPANY FILTER ── */
 function filterCompany(co,btn){
   document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
   btn.classList.add("active");
