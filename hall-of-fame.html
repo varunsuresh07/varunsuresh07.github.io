@@ -105,6 +105,12 @@ nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(2,4,15,.88);bac
 .section-label{font-family:"Share Tech Mono",monospace;font-size:.65rem;letter-spacing:.45em;text-transform:uppercase;color:rgba(255,215,0,.8);margin-bottom:.5rem;}
 .section-heading{font-family:"Orbitron",monospace;font-weight:900;font-size:clamp(1.3rem,3vw,2rem);letter-spacing:.08em;text-transform:uppercase;background:linear-gradient(90deg,#fff8dc,var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1.8rem;filter:drop-shadow(0 0 10px rgba(255,215,0,.2));}
 
+/* BATCH DIVIDER */
+.batch-divider{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem;}
+.batch-divider::before{content:"";flex:0 0 3px;height:18px;background:linear-gradient(180deg,var(--gold),#ff9500);border-radius:2px;}
+.batch-divider::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(255,215,0,.35),transparent);}
+.batch-label{font-family:"Orbitron",monospace;font-size:.75rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,215,0,.85);white-space:nowrap;}
+
 /* PLACEMENT TABLE */
 .placement-filters{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:1.8rem;}
 .filter-btn{font-family:"Share Tech Mono",monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;padding:.4rem 1rem;border:1px solid rgba(255,215,0,.2);background:rgba(255,215,0,.03);color:rgba(255,215,0,.5);cursor:pointer;transition:all .25s;}
@@ -248,57 +254,32 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
   <div class="tab-panel active" id="tab-placements">
     <div class="reveal">
       <div class="section-label">// Placed Students</div>
-      <div class="section-heading">Campus Placements — 2022 Batch</div>
+      <div class="section-heading">Campus Placements — AIML Department</div>
     </div>
     <div class="placement-stat-row reveal">
-      <div class="pstat"><div class="pn">21+</div><div class="pl">Students Placed</div></div>
+      <div class="pstat"><div class="pn">24+</div><div class="pl">Students Placed</div></div>
       <div class="pstat"><div class="pn">10+</div><div class="pl">Companies</div></div>
       <div class="pstat"><div class="pn">AI &amp; ML</div><div class="pl">Department</div></div>
-      <div class="pstat"><div class="pn">2026</div><div class="pl">Batch Year</div></div>
+      <div class="pstat"><div class="pn">S6 &amp; S8</div><div class="pl">Batches</div></div>
     </div>
-    <div class="view-toggle reveal">
-      <button class="view-btn active" onclick="switchView('table',this)">☰ Table View</button>
-      <button class="view-btn" onclick="switchView('cards',this)">⊞ Card View</button>
-    </div>
-    <div id="view-table" class="reveal">
-      <div class="placement-filters">
-        <button class="filter-btn active" onclick="filterCompany('all',this)">All Companies</button>
-        <button class="filter-btn" onclick="filterCompany('TAP ACADEMY',this)">TAP Academy</button>
-        <button class="filter-btn" onclick="filterCompany('E2E ROSH',this)">E2E Rosh</button>
-        <button class="filter-btn" onclick="filterCompany('DHEE CODING',this)">Dhee Coding</button>
-        <button class="filter-btn" onclick="filterCompany('TECHVOLT',this)">TechVolt</button>
-        <button class="filter-btn" onclick="filterCompany('ROBOMANTHAN',this)">Robomanthan</button>
-      </div>
-      <div class="placement-table-wrap">
-        <table class="placement-table" id="placementTable">
-          <thead><tr><th>#</th><th>USN</th><th>Name</th><th>Company</th></tr></thead>
-          <tbody>
-            <tr data-company="E2E ROSH"><td>1</td><td>1TJ22AI001</td><td>Abshiek T</td><td><span class="company-badge">E2E Rosh</span></td></tr>
-            <tr data-company="TAP ACADEMY"><td>2</td><td>1TJ22AI002</td><td>Altaf Ali</td><td><span class="company-badge">TAP Academy</span></td></tr>
-            <tr data-company="ROBOMANTHAN"><td>3</td><td>1TJ22AI004</td><td>Anthonaiah C</td><td><span class="company-badge">Robomanthan</span></td></tr>
-            <tr data-company="TAP ACADEMY"><td>4</td><td>1TJ22AI008</td><td>Deekshita L</td><td><span class="company-badge">TAP Academy</span></td></tr>
-            <tr data-company="TAP ACADEMY"><td>5</td><td>1TJ22AI009</td><td>Dimple H</td><td><span class="company-badge">TAP Academy</span></td></tr>
-            <tr data-company="DHEE CODING"><td>6</td><td>1TJ22AI012</td><td>Shakthi Ganesh K</td><td><span class="company-badge">Dhee Coding Labs</span></td></tr>
-            <tr data-company="Q SPIDERS"><td>7</td><td>1TJ22AI014</td><td>Karthik K A</td><td><span class="company-badge">Q Spiders</span></td></tr>
-            <tr data-company="PIE INFOTECH"><td>8</td><td>1TJ22AI015</td><td>Kashvi Ramesh Babu</td><td><span class="company-badge">Pie Infotech</span></td></tr>
-            <tr data-company="DHEE CODING"><td>9</td><td>1TJ22AI016</td><td>Mohamad Harshad S</td><td><span class="company-badge">Dhee Coding Lab</span></td></tr>
-            <tr data-company="DHEE CODING"><td>10</td><td>1TJ22AI018</td><td>Mohammed Salman</td><td><span class="company-badge">Dhee Coding Lab</span></td></tr>
-            <tr data-company="EDUQUEST"><td>11</td><td>1TJ22AI020</td><td>Nandini K</td><td><span class="company-badge">Eduquest</span></td></tr>
-            <tr data-company="ROBOMANTHAN"><td>12</td><td>1TJ22AI022</td><td>Pavithra N</td><td><span class="company-badge">Robomanthan</span></td></tr>
-            <tr data-company="NETPY"><td>13</td><td>1TJ22AI023</td><td>Prathibha P</td><td><span class="company-badge">Netpy</span></td></tr>
-            <tr data-company="CONTRIVER"><td>14</td><td>1TJ22AI024</td><td>Punyashree R</td><td><span class="company-badge">Contriver</span></td></tr>
-            <tr data-company="E2E ROSH"><td>15</td><td>1TJ22AI025</td><td>Rohan Sarkar</td><td><span class="company-badge">E2E Rosh</span></td></tr>
-            <tr data-company="EDUBRICZ"><td>16</td><td>1TJ22AI027</td><td>Shivani Shrikant Sail</td><td><span class="company-badge">Edubricz</span></td></tr>
-            <tr data-company="CONTRIVER"><td>17</td><td>1TJ22AI028</td><td>Sudarshan S</td><td><span class="company-badge">Contriver</span></td></tr>
-            <tr data-company="TECHVOLT"><td>18</td><td>1TJ22AI030</td><td>Syed Mohammed Tahir</td><td><span class="company-badge">Techvolt Pvt Ltd</span></td></tr>
-            <tr data-company="E2E ROSH"><td>19</td><td>1TJ22AI031</td><td>Syed Usman</td><td><span class="company-badge">E2E Rosh</span></td></tr>
-            <tr data-company="TECHVOLT"><td>20</td><td>1TJ23AI401</td><td>Mohammed Abuzar</td><td><span class="company-badge">Techvolt Pvt Ltd</span></td></tr>
-            <tr data-company="TECHVOLT"><td>21</td><td>1TJ23AI402</td><td>Mohammed Maaz Sheikh K</td><td><span class="company-badge">Techvolt Pvt Ltd</span></td></tr>
-          </tbody>
-        </table>
+
+    <!-- ── S6 BATCH ── -->
+    <div class="reveal" style="margin-bottom:1rem;">
+      <div class="batch-divider">
+        <span class="batch-label">6th Semester — 2024 Batch</span>
       </div>
     </div>
-    <div id="view-cards" style="display:none;" class="reveal">
+    <div class="placement-table-wrap reveal">
+      <div class="placed-grid" id="s6CardGrid"></div>
+    </div>
+
+    <!-- ── S8 BATCH ── -->
+    <div class="reveal" style="margin-bottom:1rem;margin-top:2rem;">
+      <div class="batch-divider">
+        <span class="batch-label">8th Semester — 2022 Batch</span>
+      </div>
+    </div>
+    <div class="reveal">
       <div class="placed-grid" id="placedCardGrid"></div>
     </div>
   </div>
@@ -553,59 +534,51 @@ function switchTab(id,btn){
   document.getElementById("tab-"+id).classList.add("active");
   btn.classList.add("active");
 }
-function switchView(view,btn){
-  document.querySelectorAll(".view-btn").forEach(b=>b.classList.remove("active"));
-  btn.classList.add("active");
-  document.getElementById("view-table").style.display=view==="table"?"block":"none";
-  document.getElementById("view-cards").style.display=view==="cards"?"block":"none";
-  if(view==="cards") buildCards();
-}
-const placements=[
-  {n:1,usn:"1TJ22AI001",name:"Abshiek T",company:"E2E Rosh"},
-  {n:2,usn:"1TJ22AI002",name:"Altaf Ali",company:"TAP Academy"},
-  {n:3,usn:"1TJ22AI004",name:"Anthonaiah C",company:"Robomanthan"},
-  {n:4,usn:"1TJ22AI008",name:"Deekshita L",company:"TAP Academy"},
-  {n:5,usn:"1TJ22AI009",name:"Dimple H",company:"TAP Academy"},
-  {n:6,usn:"1TJ22AI012",name:"Shakthi Ganesh K",company:"Dhee Coding Labs"},
-  {n:7,usn:"1TJ22AI014",name:"Karthik K A",company:"Q Spiders"},
-  {n:8,usn:"1TJ22AI015",name:"Kashvi Ramesh Babu",company:"Pie Infotech"},
-  {n:9,usn:"1TJ22AI016",name:"Mohamad Harshad S",company:"Dhee Coding Lab"},
-  {n:10,usn:"1TJ22AI018",name:"Mohammed Salman",company:"Dhee Coding Lab"},
-  {n:11,usn:"1TJ22AI020",name:"Nandini K",company:"Eduquest"},
-  {n:12,usn:"1TJ22AI022",name:"Pavithra N",company:"Robomanthan"},
-  {n:13,usn:"1TJ22AI023",name:"Prathibha P",company:"Netpy"},
-  {n:14,usn:"1TJ22AI024",name:"Punyashree R",company:"Contriver"},
-  {n:15,usn:"1TJ22AI025",name:"Rohan Sarkar",company:"E2E Rosh"},
-  {n:16,usn:"1TJ22AI027",name:"Shivani Shrikant Sail",company:"Edubricz"},
-  {n:17,usn:"1TJ22AI028",name:"Sudarshan S",company:"Contriver"},
-  {n:18,usn:"1TJ22AI030",name:"Syed Mohammed Tahir",company:"Techvolt Pvt Ltd"},
-  {n:19,usn:"1TJ22AI031",name:"Syed Usman",company:"E2E Rosh"},
-  {n:20,usn:"1TJ23AI401",name:"Mohammed Abuzar",company:"Techvolt Pvt Ltd"},
-  {n:21,usn:"1TJ23AI402",name:"Mohammed Maaz Sheikh K",company:"Techvolt Pvt Ltd"},
+const s6=[
+  {name:"Disha Prakasha",company:"Soozha Technologies"},
+  {name:"Poojitha",company:"Soozha Technologies"},
+  {name:"Rithika",company:"Soozha Technologies"},
 ];
-function buildCards(){
-  const grid=document.getElementById("placedCardGrid");
-  if(grid.children.length) return;
-  placements.forEach(s=>{
-    const initials=s.name.split(" ").map(w=>w[0]).join("").slice(0,2).toUpperCase();
-    const slug=s.name.toLowerCase().replace(/\s+/g,"-");
-    grid.innerHTML+=`<div class="placed-card">
-      <div class="placed-photo-wrap"><img src="placed-${slug}.jpg" alt="${s.name}" class="placed-photo" onerror="this.parentNode.style.display='none';this.parentNode.nextElementSibling.style.display='flex'"/></div>
-      <div class="placed-fallback" style="display:none;">${initials}</div>
-      <div class="placed-name">${s.name}</div>
-      <div class="placed-usn">${s.usn}</div>
-      <div class="placed-company">${s.company}</div>
-    </div>`;
-  });
+const s8=[
+  {usn:"1TJ22AI001",name:"Abshiek T",company:"E2E Rosh"},
+  {usn:"1TJ22AI002",name:"Altaf Ali",company:"TAP Academy"},
+  {usn:"1TJ22AI004",name:"Anthonaiah C",company:"Robomanthan"},
+  {usn:"1TJ22AI008",name:"Deekshita L",company:"TAP Academy"},
+  {usn:"1TJ22AI009",name:"Dimple H",company:"TAP Academy"},
+  {usn:"1TJ22AI012",name:"Shakthi Ganesh K",company:"Dhee Coding Labs"},
+  {usn:"1TJ22AI014",name:"Karthik K A",company:"Q Spiders"},
+  {usn:"1TJ22AI015",name:"Kashvi Ramesh Babu",company:"Pie Infotech"},
+  {usn:"1TJ22AI016",name:"Mohamad Harshad S",company:"Dhee Coding Lab"},
+  {usn:"1TJ22AI018",name:"Mohammed Salman",company:"Dhee Coding Lab"},
+  {usn:"1TJ22AI020",name:"Nandini K",company:"Eduquest"},
+  {usn:"1TJ22AI022",name:"Pavithra N",company:"Robomanthan"},
+  {usn:"1TJ22AI023",name:"Prathibha P",company:"Netpy"},
+  {usn:"1TJ22AI024",name:"Punyashree R",company:"Contriver"},
+  {usn:"1TJ22AI025",name:"Rohan Sarkar",company:"E2E Rosh"},
+  {usn:"1TJ22AI027",name:"Shivani Shrikant Sail",company:"Edubricz"},
+  {usn:"1TJ22AI028",name:"Sudarshan S",company:"Contriver"},
+  {usn:"1TJ22AI030",name:"Syed Mohammed Tahir",company:"Techvolt Pvt Ltd"},
+  {usn:"1TJ22AI031",name:"Syed Usman",company:"E2E Rosh"},
+  {usn:"1TJ23AI401",name:"Mohammed Abuzar",company:"Techvolt Pvt Ltd"},
+  {usn:"1TJ23AI402",name:"Mohammed Maaz Sheikh K",company:"Techvolt Pvt Ltd"},
+];
+function makeCard(name,company,usn){
+  const initials=name.split(" ").map(w=>w[0]).join("").slice(0,2).toUpperCase();
+  const slug=name.toLowerCase().replace(/\s+/g,"-");
+  return `<div class="placed-card">
+    <div class="placed-photo-wrap"><img src="placed-${slug}.jpg" alt="${name}" class="placed-photo" onerror="this.parentNode.style.display='none';this.parentNode.nextElementSibling.style.display='flex'"/></div>
+    <div class="placed-fallback" style="display:none;">${initials}</div>
+    <div class="placed-name">${name}</div>
+    ${usn?`<div class="placed-usn">${usn}</div>`:''}
+    <div class="placed-company">${company}</div>
+  </div>`;
 }
-function filterCompany(co,btn){
-  document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
-  btn.classList.add("active");
-  document.querySelectorAll("#placementTable tbody tr").forEach(tr=>{
-    const c=tr.dataset.company||"";
-    tr.style.display=(co==="all"||c.includes(co))?"":"none";
-  });
-}
+// Build S6 cards
+const s6grid=document.getElementById("s6CardGrid");
+s6.forEach(s=>{ s6grid.innerHTML+=makeCard(s.name,s.company,''); });
+// Build S8 cards
+const s8grid=document.getElementById("placedCardGrid");
+s8.forEach(s=>{ s8grid.innerHTML+=makeCard(s.name,s.company,s.usn); });
 </script>
 </body>
 </html>
