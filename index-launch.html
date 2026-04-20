@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>PARICHAY 4.0 — Welcome</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Share+Tech+Mono&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;height:100%;overflow:hidden;background:#000;}
+body{cursor:none;}
+
+#cur{position:fixed;width:10px;height:10px;border-radius:50%;background:#00f5ff;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);mix-blend-mode:screen;transition:transform .12s,background .2s;}
+#cur-ring{position:fixed;width:30px;height:30px;border-radius:50%;border:1px solid rgba(0,245,255,.5);pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:left .08s,top .08s;mix-blend-mode:screen;}
+
+#bg-canvas{position:fixed;inset:0;z-index:0;}
+#firework-canvas{position:fixed;inset:0;z-index:5;pointer-events:none;}
+
+/* ── CURTAINS ── */
+#curtain-left,#curtain-right{
+  position:fixed;top:0;height:100%;z-index:20;
+  background:linear-gradient(135deg,#0a0118 0%,#12012e 40%,#06011a 100%);
+  transition:transform 3.2s cubic-bezier(.77,0,.18,1);
+}
+#curtain-left{
+  left:0;width:50%;
+  transform-origin:left center;
+  box-shadow:inset -40px 0 80px rgba(157,0,255,.25);
+}
+#curtain-right{
+  right:0;width:50%;
+  transform-origin:right center;
+  box-shadow:inset 40px 0 80px rgba(157,0,255,.25);
+}
+#curtain-left::before,#curtain-right::before{
+  content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(90deg,rgba(157,0,255,.04) 0px,transparent 1px,transparent 18px,rgba(157,0,255,.04) 19px);
+}
+
+/* ── Edge highlight lines: only visible on the OUTER edges, not the center seam ── */
+#curtain-left::after{
+  content:"";position:absolute;top:0;left:0;width:3px;height:100%;
+  background:linear-gradient(180deg,transparent,rgba(255,215,0,.8),rgba(255,150,0,.6),rgba(255,215,0,.8),transparent);
+}
+#curtain-right::after{
+  content:"";position:absolute;top:0;right:0;width:3px;height:100%;
+  background:linear-gradient(180deg,transparent,rgba(255,215,0,.8),rgba(255,150,0,.6),rgba(255,215,0,.8),transparent);
+}
+
+#pelmet{
+  position:fixed;top:0;left:0;right:0;height:60px;z-index:25;
+  background:linear-gradient(180deg,#1a0035,#0d0020);
+  box-shadow:0 4px 30px rgba(157,0,255,.5);
+  border-bottom:2px solid rgba(255,215,0,.4);
+  display:flex;align-items:center;justify-content:center;
+}
+/* ── INCREASED: pelmet text ── */
+.pelmet-text{font-family:"Orbitron",monospace;font-size:.85rem;letter-spacing:.4em;color:rgba(255,215,0,.75);text-transform:uppercase;}
+.fold{position:absolute;top:0;bottom:0;width:1px;background:rgba(255,255,255,.03);}
+
+#curtain-left.open{transform:translateX(-100%);}
+#curtain-right.open{transform:translateX(100%);}
+
+/* ── CURTAIN CENTER CONTENT ── */
+#curtain-center{
+  position:fixed;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  z-index:30; /* raised above pelmet (25) and curtains (20) */
+  text-align:center;
+  pointer-events:none;
+  display:flex;flex-direction:column;align-items:center;gap:1rem;
+}
+.cl-main{
+  font-family:"Orbitron",monospace;font-weight:900;
+  font-size:clamp(2.8rem,9vw,7rem);
+  letter-spacing:.06em;white-space:nowrap;
+  background:linear-gradient(135deg,#9d00ff,#ff00c8,#ffd700);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 35px rgba(157,0,255,.6));
+}
+.cl-ver{
+  font-family:"Orbitron",monospace;font-weight:900;
+  font-size:clamp(1rem,2.5vw,1.8rem);letter-spacing:.5em;
+  color:#ff00c8;text-shadow:0 0 20px rgba(255,0,200,.6);
+  margin-top:-.3rem;
+}
+/* ── INCREASED: subtitle and date ── */
+.cl-sub{
+  font-family:"Share Tech Mono",monospace;font-size:.88rem;letter-spacing:.35em;
+  color:rgba(255,215,0,.7);text-transform:uppercase;
+}
+.cl-date{
+  font-family:"Share Tech Mono",monospace;font-size:.8rem;letter-spacing:.35em;
+  color:rgba(255,215,0,.55);text-transform:uppercase;
+  animation:blinkAnim 1.4s step-end infinite;
+}
+@keyframes blinkAnim{0%,100%{opacity:1}50%{opacity:.2}}
+
+/* ── REVEAL BUTTON ── */
+#reveal-btn-wrap{
+  position:fixed;
+  top:50%;left:50%;
+  transform:translate(-50%, calc(-50% + 230px));
+  z-index:31; /* raised above everything on curtain */
+  pointer-events:auto;
+}
+.reveal-btn{
+  display:inline-flex;align-items:center;gap:.8rem;
+  padding:1.1rem 3.2rem;
+  font-family:"Orbitron",monospace;font-size:.78rem;font-weight:900;letter-spacing:.28em;text-transform:uppercase;
+  background:linear-gradient(135deg,rgba(255,215,0,.12),rgba(255,100,0,.1));
+  border:1.5px solid rgba(255,215,0,.65);
+  color:#ffd700;
+  clip-path:polygon(12px 0,calc(100% - 12px) 0,100% 12px,100% calc(100% - 12px),calc(100% - 12px) 100%,12px 100%,0 calc(100% - 12px),0 12px);
+  cursor:none;position:relative;overflow:hidden;
+  transition:all .35s;
+  box-shadow:0 0 30px rgba(255,215,0,.2),0 0 60px rgba(255,215,0,.06);
+  animation:btnPulse 2.5s ease-in-out infinite;
+}
+.reveal-btn::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,215,0,.18),transparent);
+  transform:translateX(-100%);transition:transform .5s;
+}
+.reveal-btn:hover::before{transform:translateX(100%);}
+.reveal-btn:hover{
+  border-color:#ffd700;color:#fff;
+  box-shadow:0 0 55px rgba(255,215,0,.45),0 0 100px rgba(255,215,0,.15);
+  background:linear-gradient(135deg,rgba(255,215,0,.22),rgba(255,100,0,.2));
+}
+.reveal-btn .ico{font-size:1.1rem;position:relative;z-index:1;}
+.reveal-btn span{position:relative;z-index:1;}
+@keyframes btnPulse{
+  0%,100%{box-shadow:0 0 30px rgba(255,215,0,.2),0 0 60px rgba(255,215,0,.06);}
+  50%{box-shadow:0 0 55px rgba(255,215,0,.4),0 0 80px rgba(255,215,0,.15);}
+}
+.btn-ring{
+  position:absolute;inset:-8px;
+  clip-path:polygon(12px 0,calc(100% - 12px) 0,100% 12px,100% calc(100% - 12px),calc(100% - 12px) 100%,12px 100%,0 calc(100% - 12px),0 12px);
+  border:1px solid rgba(255,215,0,.2);
+  animation:ringPulse 2.5s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes ringPulse{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:.8;transform:scale(1.03)}}
+
+/* ── POSTER STAGE ── */
+#poster-stage{
+  position:fixed;inset:0;z-index:10;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:radial-gradient(ellipse 80% 70% at 50% 50%,rgba(20,0,50,1),rgba(2,0,10,1));
+}
+#poster-stage::before{
+  content:"";position:absolute;
+  width:min(700px,90vw);height:min(700px,90vw);
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,215,0,.07) 0%,rgba(157,0,255,.05) 40%,transparent 70%);
+  animation:spotlight 4s ease-in-out infinite alternate;
+  pointer-events:none;z-index:0;
+}
+@keyframes spotlight{0%{transform:scale(1);}100%{transform:scale(1.15);}}
+
+.poster-frame{
+  position:relative;z-index:2;
+  width:min(420px,82vw);padding:8px;
+  background:linear-gradient(135deg,rgba(255,215,0,.35),rgba(255,100,0,.2),rgba(255,215,0,.35));
+  box-shadow:0 0 0 1px rgba(255,215,0,.2),0 0 60px rgba(255,215,0,.15),0 0 120px rgba(157,0,255,.1);
+  opacity:0;transform:scale(.85) translateY(30px);
+  transition:opacity .8s ease,transform .8s ease;
+}
+.poster-frame.visible{opacity:1;transform:scale(1) translateY(0);}
+.poster-frame::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.08) 0%,transparent 50%,rgba(255,215,0,.05) 100%);pointer-events:none;z-index:3;}
+.poster-corner{position:absolute;width:20px;height:20px;z-index:4;}
+.poster-corner.tl{top:-1px;left:-1px;border-top:2px solid rgba(255,215,0,.9);border-left:2px solid rgba(255,215,0,.9);}
+.poster-corner.tr{top:-1px;right:-1px;border-top:2px solid rgba(255,215,0,.9);border-right:2px solid rgba(255,215,0,.9);}
+.poster-corner.bl{bottom:-1px;left:-1px;border-bottom:2px solid rgba(255,215,0,.9);border-left:2px solid rgba(255,215,0,.9);}
+.poster-corner.br{bottom:-1px;right:-1px;border-bottom:2px solid rgba(255,215,0,.9);border-right:2px solid rgba(255,215,0,.9);}
+.poster-img{width:100%;height:auto;display:block;position:relative;z-index:2;}
+.poster-frame::after{content:"";position:absolute;inset:0;z-index:5;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.12) 50%,transparent 60%);transform:translateX(-100%);pointer-events:none;transition:transform 0s;}
+.poster-frame.shine::after{transition:transform 1s ease;transform:translateX(150%);}
+
+.launch-wrap{
+  position:relative;z-index:2;margin-top:1.8rem;
+  opacity:0;transform:translateY(16px);
+  transition:opacity .6s ease,transform .6s ease;
+}
+.launch-wrap.visible{opacity:1;transform:translateY(0);}
+.launch-btn{
+  display:inline-flex;align-items:center;gap:.8rem;
+  padding:1rem 3rem;
+  font-family:"Orbitron",monospace;font-size:.8rem;font-weight:900;letter-spacing:.28em;text-transform:uppercase;
+  background:linear-gradient(135deg,rgba(255,215,0,.12),rgba(255,100,0,.1));
+  border:1.5px solid rgba(255,215,0,.6);
+  color:#ffd700;text-decoration:none;
+  clip-path:polygon(12px 0,calc(100% - 12px) 0,100% 12px,100% calc(100% - 12px),calc(100% - 12px) 100%,12px 100%,0 calc(100% - 12px),0 12px);
+  cursor:none;position:relative;overflow:hidden;
+  transition:all .35s;
+  box-shadow:0 0 30px rgba(255,215,0,.2),0 0 60px rgba(255,215,0,.06);
+  animation:btnPulse 2.5s ease-in-out infinite;
+}
+.launch-btn::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,215,0,.15),transparent);transform:translateX(-100%);transition:transform .5s;}
+.launch-btn:hover::before{transform:translateX(100%);}
+.launch-btn:hover{border-color:#ffd700;color:#fff;box-shadow:0 0 50px rgba(255,215,0,.4),0 0 100px rgba(255,215,0,.15);background:linear-gradient(135deg,rgba(255,215,0,.2),rgba(255,100,0,.18));}
+.launch-btn span,.launch-btn .ico{position:relative;z-index:1;}
+.launch-btn .ico{font-size:1.1rem;}
+
+/* ── INCREASED: poster subtitle ── */
+.poster-subtitle{font-family:"Share Tech Mono",monospace;font-size:.82rem;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,215,0,.5);margin-top:.7rem;position:relative;z-index:2;opacity:0;transition:opacity .5s ease;}
+.poster-subtitle.visible{opacity:1;}
+
+#flash{position:fixed;inset:0;z-index:90;background:#fff8dc;opacity:0;pointer-events:none;}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="cur-ring"></div>
+<canvas id="bg-canvas"></canvas>
+<canvas id="firework-canvas"></canvas>
+<div id="flash"></div>
+
+<!-- PELMET -->
+<div id="pelmet">
+  <div class="pelmet-text">PARICHAY 4.0 &nbsp;·&nbsp; AIML DEPT &nbsp;·&nbsp; T. JOHN INSTITUTE OF TECHNOLOGY</div>
+</div>
+
+<!-- LEFT CURTAIN -->
+<div id="curtain-left">
+  <div class="fold" style="left:15%"></div>
+  <div class="fold" style="left:30%"></div>
+  <div class="fold" style="left:50%"></div>
+  <div class="fold" style="left:65%"></div>
+  <div class="fold" style="left:80%"></div>
+</div>
+
+<!-- RIGHT CURTAIN -->
+<div id="curtain-right">
+  <div class="fold" style="left:20%"></div>
+  <div class="fold" style="left:35%"></div>
+  <div class="fold" style="left:50%"></div>
+  <div class="fold" style="left:70%"></div>
+  <div class="fold" style="left:85%"></div>
+</div>
+
+<!-- CURTAIN CENTER — PARICHAY together, centered across both curtains -->
+<div id="curtain-center">
+  <div class="cl-main">PARICHAY</div>
+  <div class="cl-ver">4.0</div>
+  <div class="cl-sub">AI Minds × T. John Institute of Technology</div>
+  <div class="cl-date">APR 21 2026 &nbsp;·&nbsp; 09:00 AM ONWARDS</div>
+</div>
+
+<!-- REVEAL BUTTON — sits below the text, on top of curtains -->
+<div id="reveal-btn-wrap">
+  <div class="btn-ring"></div>
+  <button class="reveal-btn" id="revealBtn" onclick="onReveal()">
+    <span class="ico">🎬</span>
+    <span>Reveal PARICHAY 4.0</span>
+    <span class="ico">✦</span>
+  </button>
+</div>
+
+<!-- POSTER STAGE (behind curtains) -->
+<div id="poster-stage">
+  <div class="poster-frame" id="posterFrame">
+    <div class="poster-corner tl"></div>
+    <div class="poster-corner tr"></div>
+    <div class="poster-corner bl"></div>
+    <div class="poster-corner br"></div>
+    <img src="parichay-poster.png" alt="PARICHAY 4.0 Official Poster" class="poster-img"/>
+  </div>
+  <div class="launch-wrap" id="launchWrap">
+    <a href="launch.html" class="launch-btn">
+      <span class="ico">⚡</span>
+      <span>Enter the Experience</span>
+      <span class="ico">→</span>
+    </a>
+  </div>
+  <div class="poster-subtitle" id="posterSub">APR 21 2026 &nbsp;·&nbsp; T. JOHN INSTITUTE OF TECHNOLOGY</div>
+</div>
+
+<script>
+/* ── CURSOR ── */
+const cur=document.getElementById('cur'),curR=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function rc(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(rc);})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.transform='translate(-50%,-50%) scale(2.5)';cur.style.background='#ffd700';});
+  el.addEventListener('mouseleave',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';cur.style.background='#00f5ff';});
+});
+
+/* ── BG CANVAS ── */
+const bgC=document.getElementById('bg-canvas');
+const bgX=bgC.getContext('2d');
+let W,H;
+function rsz(){W=bgC.width=innerWidth;H=bgC.height=innerHeight;}
+rsz();window.addEventListener('resize',rsz);
+let nodes=[];
+function mkN(){
+  nodes=[];const n=Math.min(Math.floor(W*H/9000),100);
+  const p=['rgba(157,0,255,','rgba(255,0,200,','rgba(255,215,0,'];
+  for(let i=0;i<n;i++) nodes.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*1.8+.4,ph:Math.random()*Math.PI*2,c:p[i%3]});
+}
+mkN();
+function drawBG(){
+  bgX.fillStyle='rgba(1,0,8,.94)';bgX.fillRect(0,0,W,H);
+  nodes.forEach(n=>{n.x+=n.vx;n.y+=n.vy;n.ph+=.012;
+    if(n.x<0)n.x=W;if(n.x>W)n.x=0;if(n.y<0)n.y=H;if(n.y>H)n.y=0;});
+  const D=Math.min(W,H)*.15;
+  for(let i=0;i<nodes.length;i++) for(let j=i+1;j<nodes.length;j++){
+    const dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y,d=Math.sqrt(dx*dx+dy*dy);
+    if(d<D){const s=1-d/D;bgX.beginPath();bgX.strokeStyle=`rgba(157,0,255,${s*.07})`;bgX.lineWidth=s*.7;bgX.moveTo(nodes[i].x,nodes[i].y);bgX.lineTo(nodes[j].x,nodes[j].y);bgX.stroke();}
+  }
+  nodes.forEach(n=>{
+    const pv=(Math.sin(n.ph)+1)/2;
+    const rg=bgX.createRadialGradient(n.x,n.y,0,n.x,n.y,n.r*5+pv*3);
+    rg.addColorStop(0,n.c+'.3)');rg.addColorStop(1,n.c+'0)');
+    bgX.beginPath();bgX.arc(n.x,n.y,n.r*5+pv*3,0,Math.PI*2);bgX.fillStyle=rg;bgX.fill();
+    bgX.beginPath();bgX.arc(n.x,n.y,n.r,0,Math.PI*2);bgX.fillStyle=n.c+'.75)';bgX.fill();
+  });
+  requestAnimationFrame(drawBG);
+}
+drawBG();
+
+/* ── FIREWORKS ── */
+const fwC=document.getElementById('firework-canvas');
+const fwX=fwC.getContext('2d');
+function rsz2(){fwC.width=innerWidth;fwC.height=innerHeight;}
+rsz2();window.addEventListener('resize',rsz2);
+const rockets=[],explosions=[];
+const COLORS=['#ffd700','#ff9500','#ff00c8','#00f5ff','#ff4444','#00ff88','#ffffff','#ff66aa','#aaddff','#ffcc44'];
+
+function launchRocket(sx,sy,tx,ty){
+  const x=sx!==undefined?sx:innerWidth*(.15+Math.random()*.7);
+  const y=sy!==undefined?sy:innerHeight;
+  rockets.push({
+    x,y,
+    tx:tx!==undefined?tx:x+(Math.random()-.5)*innerWidth*.25,
+    ty:ty!==undefined?ty:innerHeight*(.05+Math.random()*.35),
+    speed:13+Math.random()*7,trail:[],
+    col:COLORS[Math.floor(Math.random()*COLORS.length)],done:false
+  });
+}
+
+function explode(x,y,col){
+  const count=110+Math.floor(Math.random()*60);
+  const burst={x,y,particles:[],done:false};
+  for(let i=0;i<count;i++){
+    const a=Math.random()*Math.PI*2,spd=Math.random()*12+2,sz=Math.random()*3+1;
+    burst.particles.push({
+      x,y,vx:Math.cos(a)*spd,vy:Math.sin(a)*spd,
+      col:Math.random()<.2?'#fff':col,
+      alt:COLORS[Math.floor(Math.random()*COLORS.length)],
+      size:sz,life:1,decay:.012+Math.random()*.018,gravity:.18,
+      twinkle:Math.random()<.3
+    });
+  }
+  explosions.push(burst);
+}
+
+let fwRunning=false,fwTimer=null;
+function drawFireworks(){
+  if(!fwRunning)return;
+  fwX.fillStyle='rgba(0,0,0,.18)';fwX.fillRect(0,0,fwC.width,fwC.height);
+  for(let i=rockets.length-1;i>=0;i--){
+    const r=rockets[i];
+    if(r.done){rockets.splice(i,1);continue;}
+    const dx=r.tx-r.x,dy=r.ty-r.y,dist=Math.sqrt(dx*dx+dy*dy);
+    r.trail.push({x:r.x,y:r.y});
+    if(r.trail.length>14)r.trail.shift();
+    for(let t=0;t<r.trail.length;t++){const a=t/r.trail.length;fwX.globalAlpha=a*.7;fwX.beginPath();fwX.arc(r.trail[t].x,r.trail[t].y,1.5*a,0,Math.PI*2);fwX.fillStyle=r.col;fwX.fill();fwX.globalAlpha=1;}
+    fwX.beginPath();fwX.arc(r.x,r.y,2.5,0,Math.PI*2);fwX.fillStyle='#fff';fwX.fill();
+    if(dist<r.speed+2){r.done=true;explode(r.x,r.y,r.col);}
+    else{r.x+=dx/dist*r.speed;r.y+=dy/dist*r.speed;}
+  }
+  for(let i=explosions.length-1;i>=0;i--){
+    const e=explosions[i];let alive=false;
+    e.particles.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;p.vy+=p.gravity;p.vx*=.97;p.vy*=.97;p.life-=p.decay;
+      if(p.life>0){alive=true;fwX.globalAlpha=Math.max(0,p.life);const sz=p.twinkle?(Math.random()<.5?p.size*1.8:p.size*.5):p.size;fwX.beginPath();fwX.arc(p.x,p.y,sz*p.life,0,Math.PI*2);fwX.fillStyle=p.twinkle&&Math.random()<.3?p.alt:p.col;fwX.fill();fwX.globalAlpha=1;}
+    });
+    if(!alive)explosions.splice(i,1);
+  }
+  requestAnimationFrame(drawFireworks);
+}
+
+/* ── CURTAIN EASING ── */
+function curtainEase(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;}
+
+/* ── ON REVEAL BUTTON CLICK ── */
+let revealed=false;
+function onReveal(){
+  if(revealed)return; revealed=true;
+
+  const btn=document.getElementById('revealBtn');
+  const btnWrap=document.getElementById('reveal-btn-wrap');
+  const curtainCenter=document.getElementById('curtain-center');
+  btn.style.opacity='.5';btn.style.pointerEvents='none';
+
+  const CURTAIN_DUR=3200;
+
+  curtainCenter.style.transition='opacity .4s ease';
+  curtainCenter.style.opacity='0';
+  btnWrap.style.transition='opacity .3s ease';
+  btnWrap.style.opacity='0';
+  setTimeout(()=>{
+    curtainCenter.style.pointerEvents='none';
+    btnWrap.style.pointerEvents='none';
+  },400);
+
+  setTimeout(()=>{
+    document.getElementById('curtain-left').classList.add('open');
+    document.getElementById('curtain-right').classList.add('open');
+  },200);
+
+  fwRunning=true; drawFireworks();
+  const trackOffsets=[0,300,600,900,1200,1500,1800,2100,2500,2900];
+  trackOffsets.forEach(offset=>{
+    setTimeout(()=>{
+      const t=Math.min(offset/CURTAIN_DUR,1);
+      const progress=curtainEase(t);
+      const halfW=innerWidth/2;
+      const edgeL=halfW-progress*halfW;
+      const edgeR=halfW+progress*halfW;
+      launchRocket(edgeL+(Math.random()*60-20),innerHeight*(.7+Math.random()*.25),edgeL-Math.random()*innerWidth*.15,innerHeight*(.05+Math.random()*.3));
+      launchRocket(edgeR+(Math.random()*60-40),innerHeight*(.7+Math.random()*.25),edgeR+Math.random()*innerWidth*.15,innerHeight*(.05+Math.random()*.3));
+    },offset);
+  });
+
+  const CURTAIN_DONE=200+CURTAIN_DUR;
+  setTimeout(()=>{
+    const fl=document.getElementById('flash');
+    fl.style.transition='opacity .08s';fl.style.opacity='.7';
+    setTimeout(()=>{fl.style.transition='opacity .5s';fl.style.opacity='0';},100);
+  },CURTAIN_DONE);
+
+  setTimeout(()=>{document.getElementById('posterFrame').classList.add('visible');},CURTAIN_DONE+100);
+
+  setTimeout(()=>{
+    const salvo=[0,80,160,240,320,420,540,680,840,1050,1280,1550];
+    salvo.forEach(t=>setTimeout(()=>launchRocket(),t));
+    fwTimer=setInterval(()=>{launchRocket();if(Math.random()<.4)setTimeout(launchRocket,200);},700);
+    setTimeout(()=>clearInterval(fwTimer),12000);
+  },CURTAIN_DONE+150);
+
+  setTimeout(()=>{document.getElementById('posterFrame').classList.add('shine');},CURTAIN_DONE+900);
+
+  setTimeout(()=>{
+    document.getElementById('launchWrap').classList.add('visible');
+    document.getElementById('posterSub').classList.add('visible');
+    for(let i=0;i<6;i++) setTimeout(launchRocket,i*100);
+  },CURTAIN_DONE+1300);
+}
+</script>
+</body>
+</html>
